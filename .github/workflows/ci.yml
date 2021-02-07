@@ -22,9 +22,10 @@ jobs:
         with:
           node-version: 15
       - run: |
+          export BASE_URL="https://keila.io"
           npm ci
           npm run generate
           mkdir ~/.ssh
           echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          rsync -avz ./dist/ $DEPLOY_TARGET
+          rsync -avz ./dist/ "${{ secrets.DEPLOY_TARGET }}"
