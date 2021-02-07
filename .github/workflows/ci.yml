@@ -9,7 +9,10 @@ on:
       - main
 
 jobs:
-  ci:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      BASE_URL=https://keila.io
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
@@ -22,7 +25,6 @@ jobs:
         with:
           node-version: 15
       - run: |
-          export BASE_URL="https://keila.io"
           npm ci
           npm run generate
           mkdir ~/.ssh
