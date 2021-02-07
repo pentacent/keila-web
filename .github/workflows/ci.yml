@@ -29,5 +29,6 @@ jobs:
           npm run generate
           mkdir ~/.ssh
           echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/*
           rsync -avz ./dist/ "${{ secrets.DEPLOY_TARGET }}"
