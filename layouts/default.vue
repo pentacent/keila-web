@@ -1,0 +1,60 @@
+<template>
+  <div>
+    <div class="container max-w-4xl mx-auto my-5 p-10">
+      <h1 class="text-green-500 text-5xl text-center">
+        <a href="/">
+          <logo class="h-16 -mr-3 w-auto inline-block" />
+          Keila
+        </a>
+      </h1>
+    </div>
+    <main>
+      <Nuxt />
+    </main>
+    <footer class="container max-w-4xl mx-auto my-5 p-10">
+      <p>Made in 🇩🇪 ❤️ 🇪🇺.</p>
+      <p class="text-sm flex gap-2">
+        <a class="underline" href="/credits">Credits</a>
+        <a class="underline" href="https://pentacent.com/legal">Legal notice</a>
+        <a class="underline" href="https://pentacent.com/privacy"
+          >Privacy policy</a
+        >
+      </p>
+    </footer>
+  </div>
+</template>
+
+<script>
+import ogImage from '@/static/og_image.png'
+import logo from '../components/logo.vue'
+const baseUrl = process.env.BASE_URL || ''
+
+export default {
+  components: { logo },
+  head() {
+    return {
+      meta: [
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: baseUrl + ogImage,
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            'Open Source Newsletters - We’re building a free alternative to Mailchimp',
+        },
+      ],
+    }
+  },
+}
+</script>
+
+<style>
+body {
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  @apply bg-gradient-to-b from-gray-200 via-gray-100 to-gray-100;
+  overflow-y: scroll;
+}
+</style>
