@@ -12,7 +12,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      BASE_URL=https://keila.io
+      BASE_URL: https://keila.io
     steps:
       - uses: actions/checkout@v2
       - uses: actions/cache@v2
