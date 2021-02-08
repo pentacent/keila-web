@@ -3,6 +3,7 @@
     action="https://app.keila.io/forms/frm_GX8qGEZd"
     class="flex flex-col gap-5"
     method="post"
+    target="_blank"
   >
     <div class="flex flex-col">
       <label for="contact_email">Email</label
