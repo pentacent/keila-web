@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'keila-web',
+    title: 'Keila - Open Source Newsletters',
     htmlAttrs: {
       lang: 'en',
     },
