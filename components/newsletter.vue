@@ -29,7 +29,6 @@
         class="h-captcha"
         data-sitekey="a1c5fab7-71df-4ea4-af75-87a3d07c61de"
       ></div>
-      <script src="https://hcaptcha.com/1/api.js" async defer></script>
     </div>
     <div class="flex justify-start">
       <button
@@ -46,3 +45,15 @@
     </div>
   </form>
 </template>
+
+<script>
+export default {
+  head() {
+    return {
+      script: [
+        { src: 'https://hcaptcha.com/1/api.js', async: true, defer: true },
+      ],
+    }
+  },
+}
+</script>
