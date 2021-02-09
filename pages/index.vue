@@ -23,9 +23,10 @@
             <div class="bg-yellow-400 rounded-full w-3 h-3 ml-2"></div>
             <div class="bg-green-400 rounded-full w-3 h-3 ml-2"></div>
           </div>
-          <img
-            src="https://raw.githubusercontent.com/pentacent/keila/main/.github/assets/screenshot-form.png"
-          />
+          <video poster="/poster.png" loop controls>
+            <source src="/keila.webm" type='video/webm;codecs="vp9"' />
+            <source src="/keila.mp4" type="video/mp4" />
+          </video>
         </div>
       </div>
 
