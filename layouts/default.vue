@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container max-w-4xl mx-auto my-5 p-10">
+    <div class="container max-w-4xl mx-auto my-5 p-5 md:p-10">
       <h1 class="text-green-500 text-5xl text-center">
         <a href="/">
           <logo class="h-16 -mr-3 w-auto inline-block" />
@@ -11,12 +11,14 @@
     <main>
       <Nuxt />
     </main>
-    <footer class="container max-w-4xl mx-auto my-5 p-10">
+    <footer class="container max-w-4xl mx-auto my-5 p-5 md:p-10">
       <p>Made in 🇩🇪 ❤️ 🇪🇺.</p>
-      <p class="text-sm flex gap-2">
+      <p class="text-sm flex">
         <a class="underline" href="/credits">Credits</a>
-        <a class="underline" href="https://pentacent.com/legal">Legal notice</a>
-        <a class="underline" href="https://pentacent.com/privacy"
+        <a class="underline ml-2" href="https://pentacent.com/legal"
+          >Legal notice</a
+        >
+        <a class="underline ml-2" href="https://pentacent.com/privacy"
           >Privacy policy</a
         >
       </p>

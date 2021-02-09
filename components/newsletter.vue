@@ -1,7 +1,7 @@
 <template>
   <form
     action="https://app.keila.io/forms/frm_GX8qGEZd"
-    class="flex flex-col gap-5"
+    class="flex grid grid-auto-rows gap-5"
     method="post"
     target="_blank"
   >

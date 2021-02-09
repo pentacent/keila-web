@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="container max-w-4xl mx-auto bg-white p-10 text-gray-800 rounded-t"
+      class="container max-w-4xl mx-auto bg-white p-5 md:p-10 text-gray-800 rounded-t"
     >
       <p class="text-5xl font-semibold">Hey, we’re the Keila Project.<br /></p>
 
@@ -30,8 +30,12 @@
         </div>
       </div>
 
-      <div class="my-16 -mx-10 px-10 py-12 bg-green-600 text-white">
-        <h2 class="text-3xl font-semibold flex items-center gap-5">
+      <div
+        class="my-16 -mx-5 md:-mx-10 px-5 md:px-10 py-12 bg-green-600 text-white"
+      >
+        <h2
+          class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -80,7 +84,9 @@
       </div>
 
       <div class="my-16">
-        <h2 class="text-3xl font-semibold flex items-center gap-5">
+        <h2
+          class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -177,7 +183,9 @@
       </div>
 
       <div class="my-16">
-        <h2 class="text-3xl font-semibold flex items-center gap-5">
+        <h2
+          class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
