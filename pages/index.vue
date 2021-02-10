@@ -16,14 +16,14 @@
 
       <div class="my-12">
         <div
-          class="border border-1 border-gray-400 shadow-md rounded overflow-hidden"
+          class="border border-1 border-gray-400 -mx-5 lg:-mx-12 shadow-lg rounded overflow-hidden"
         >
           <div class="h-8 bg-gray-200 flex items-center">
             <div class="bg-red-400 rounded-full w-3 h-3 ml-2"></div>
             <div class="bg-yellow-400 rounded-full w-3 h-3 ml-2"></div>
             <div class="bg-green-400 rounded-full w-3 h-3 ml-2"></div>
           </div>
-          <video poster="/poster.png" loop controls>
+          <video poster="/poster.png" loop controls class="w-full">
             <source src="/keila.webm" type='video/webm;codecs="vp9"' />
             <source src="/keila.mp4" type="video/mp4" />
           </video>

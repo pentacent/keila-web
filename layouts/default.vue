@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container max-w-4xl mx-auto my-5 p-5 md:p-10">
+    <div class="container max-w-4xl mx-auto p-5 md:p-10">
       <h1 class="text-green-500 text-5xl text-center">
         <a href="/">
           <logo class="h-16 -mr-3 w-auto inline-block" />
@@ -56,7 +56,7 @@ export default {
 <style>
 body {
   font-family: Inter, Arial, Helvetica, sans-serif;
-  @apply bg-gradient-to-b from-gray-200 via-gray-100 to-gray-100;
+  @apply bg-gradient-to-b from-green-100 via-gray-200 to-green-100;
   overflow-y: scroll;
 }
 </style>
