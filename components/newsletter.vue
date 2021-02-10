@@ -32,7 +32,7 @@
     </div>
     <div class="flex justify-start">
       <button
-        class="bg-green-900 hover:shadow hover:bg-green-800 text-white rounded py-2 px-4 font-semibold"
+        class="bg-indigo-700 border border-2 border-indigo-400 hover:shadow hover:bg-indigo-600 text-white rounded py-3 px-5 font-semibold"
       >
         Sign up to the latest Keila updates!
       </button>

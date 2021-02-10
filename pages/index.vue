@@ -105,7 +105,7 @@
         </h2>
         <p class="text-xl mt-5">
           We have <span class="font-semibold">big plans</span> for Keila. Here
-          are some highlights:
+          are some completed and planned features:
         </p>
         <ul>
           <li class="flex mt-5">
