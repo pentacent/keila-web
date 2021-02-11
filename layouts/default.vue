@@ -47,6 +47,11 @@ export default {
           content:
             'Open Source Newsletters - We’re building a free alternative to Mailchimp',
         },
+        {
+          hid: 'twitter:card',
+          name: 'twitter:card',
+          content: 'summary',
+        },
       ],
     }
   },
