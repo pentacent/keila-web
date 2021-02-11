@@ -42,10 +42,16 @@ export default {
           content: baseUrl + ogImage,
         },
         {
+          hid: 'og:title',
+          property: 'og:title',
+          content:
+            'Keila - Open Source Newsletter',
+        },
+        {
           hid: 'og:description',
           property: 'og:description',
           content:
-            'Open Source Newsletters - We’re building a free alternative to Mailchimp',
+            'We’re building a free alternative to Mailchimp that you can host yourself',
         },
         {
           hid: 'twitter:card',
