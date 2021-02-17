@@ -111,6 +111,20 @@
           <li class="flex mt-5">
             <check-complete class="mr-2 flex-shrink-0" />
             <p>
+              Compose hybrid text &amp; HTML emails with
+              <a
+                href="https://en.wikipedia.org/wiki/Markdown"
+                target="_blank"
+                class="underline"
+              >
+                Markdown</a
+              >.
+            </p>
+          </li>
+          <li class="flex mt-5">
+            <check-complete class="mr-2 flex-shrink-0" />
+
+            <p>
               Compose plain-text emails with support for
               <a
                 href="https://shopify.github.io/liquid/"
@@ -139,15 +153,6 @@
           <li class="flex mt-5">
             <check-complete class="mr-2 flex-shrink-0" />
             <p>One-click unsubscription feature.</p>
-          </li>
-          <li class="flex mt-5">
-            <check-in-progress class="mr-2 flex-shrink-0" />
-            <p>
-              Compose hybrid text &amp; HTML emails with
-              <a href="https://en.wikipedia.org/wiki/Markdown" target="_blank">
-                Markdown</a
-              >.
-            </p>
           </li>
           <li class="flex mt-5">
             <check-in-progress class="mr-2 flex-shrink-0" />
