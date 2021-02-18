@@ -33,7 +33,7 @@
         </li>
       </ul>
     </nav>
-    <article class="flex-grow p-5 md:py-10">
+    <article class="flex-grow p-5 md:py-10 overflow-hidden">
       <nuxt-content :document="article" />
       <nuxt-link
         v-if="next"
@@ -125,7 +125,8 @@ nav a.nuxt-link-exact-active {
 }
 
 >>> article table {
-  @apply w-full shadow;
+  @apply block w-full shadow overflow-x-auto;
+  white-space: nowrap;
 }
 
 >>> article table th {
