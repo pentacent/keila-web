@@ -1,28 +1,55 @@
 <template>
-  <div>
-    <div class="container max-w-4xl mx-auto p-5 md:p-10">
-      <h1 class="text-green-500 text-5xl text-center">
-        <a href="/">
-          <logo class="h-16 -mr-3 w-auto inline-block" />
-          Keila
-        </a>
-      </h1>
-    </div>
+  <div class="bg-white min-h-screen">
+    <header class="shadow relative">
+      <div class="max-w-6xl mx-auto p-5 md:p-10 flex items-center">
+        <h1 class="text-green-500 text-3xl md:text-5xlx">
+          <a href="/" class="flex">
+            <logo class="h-16 -mr-3 w-auto inline-block" />
+            Keila
+          </a>
+        </h1>
+
+        <nav class="hidden md:block text-xl font-semibold flex-grow text-right">
+          <ul class="flex justify-end">
+            <li class="mr-10">
+              <nuxt-link to="/">Start</nuxt-link>
+            </li>
+            <li class="mr-10">
+              <nuxt-link to="/docs">Docs</nuxt-link>
+            </li>
+            <li class="mr-10">
+              <a href="https://github.com/pentacent/keila">GitHub</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="relative ml-10">
+          <input
+            v-model="query"
+            class="p-5 bg-gray-100 w-full"
+            type="search"
+            autocomplete="off"
+            placeholder="Search"
+          />
+          <ul
+            v-if="searchResults.length"
+            class="bg-gray-100 shadow absolute w-full z-40"
+          >
+            <li v-for="article of searchResults" :key="article.slug">
+              <nuxt-link
+                class="p-5 block"
+                :to="`/docs/${article.slug}`"
+                @click.native="clearSearch"
+                >{{ article.title }}</nuxt-link
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
     <main>
       <Nuxt />
     </main>
-    <footer class="container max-w-4xl mx-auto my-5 p-5 md:p-10">
-      <p>Made in 🇩🇪 ❤️ 🇪🇺.</p>
-      <p class="text-sm flex">
-        <a class="underline" href="/credits">Credits</a>
-        <a class="underline ml-2" href="https://pentacent.com/legal"
-          >Legal notice</a
-        >
-        <a class="underline ml-2" href="https://pentacent.com/privacy"
-          >Privacy policy</a
-        >
-      </p>
-    </footer>
+    <page-footer />
   </div>
 </template>
 
@@ -33,6 +60,9 @@ const baseUrl = process.env.BASE_URL || ''
 
 export default {
   components: { logo },
+  data() {
+    return { searchResults: [], query: '' }
+  },
   head() {
     return {
       meta: [
@@ -60,13 +90,32 @@ export default {
       ],
     }
   },
+  watch: {
+    async query(query) {
+      if (!query) {
+        this.searchResults = []
+        return
+      }
+
+      this.searchResults = await this.$content('docs')
+        .where({ slug: { $ne: 'index' } })
+        .only(['title', 'slug'])
+        .limit(4)
+        .search(query)
+        .fetch()
+    },
+  },
+  methods: {
+    clearSearch() {
+      this.query = ''
+    },
+  },
 }
 </script>
 
 <style>
 body {
   font-family: Inter, Arial, Helvetica, sans-serif;
-  @apply bg-gradient-to-b from-green-100 via-gray-200 to-green-100;
   overflow-y: scroll;
 }
 </style>

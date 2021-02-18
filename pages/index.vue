@@ -230,5 +230,7 @@
 </template>
 
 <script>
-export default {}
+export default {
+  layout: 'minimal',
+}
 </script>
