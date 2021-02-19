@@ -19,7 +19,6 @@ export default {
     },
   },
   data() {
-    console.log(this.src)
     return {
       image: require(`~/assets/${this.src}`),
     }
