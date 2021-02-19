@@ -50,9 +50,8 @@ variables:
 | `MAILER_SMTP_PASSWORD` | yes      | -       | Password for the SMTP server   |
 
 ## Deployment
-If you want to deploy a private instance of Keila and not allow users to create
-an account, set the following variable:
 
 | Variable               | Required | Default | Description                    |
 | ---------------------- | -------- | ------- | ------------------------------ |
+| `PORT`                 |          | `4000`  | Port on which Keila will listen |
 | `DISABLE_REGISTRATION` |          | `false` | Disable user registration by setting this variable to `true` |

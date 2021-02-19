@@ -8,27 +8,20 @@
         <li class="with-sub">
           <nuxt-link to="/docs/installation">Installation</nuxt-link>
           <ul>
-            <li>
-              <nuxt-link to="/docs/installation">Requirements</nuxt-link>
-            </li>
+            <li><nuxt-link to="/docs/installation">Requirements</nuxt-link></li>
             <li>
               <nuxt-link to="/docs/configuration">Configuration</nuxt-link>
             </li>
-            <li>
-              <nuxt-link to="/docs/setup">First Steps</nuxt-link>
-            </li>
+            <li><nuxt-link to="/docs/setup">First Steps</nuxt-link></li>
           </ul>
         </li>
         <li class="with-sub">
-          <nuxt-link to="/docs/contacts">Usage</nuxt-link>
+          <nuxt-link to="/docs/senders">Usage</nuxt-link>
           <ul>
+            <li><nuxt-link to="/docs/senders">Senders</nuxt-link></li>
             <li><nuxt-link to="/docs/contacts">Contacts</nuxt-link></li>
-            <li>
-              <nuxt-link to="/docs/forms">Forms</nuxt-link>
-            </li>
-            <li>
-              <nuxt-link to="/docs/campaigns">Campaigns</nuxt-link>
-            </li>
+            <li><nuxt-link to="/docs/forms">Forms</nuxt-link></li>
+            <li><nuxt-link to="/docs/campaigns">Campaigns</nuxt-link></li>
           </ul>
         </li>
       </ul>
@@ -140,5 +133,13 @@ nav a.nuxt-link-exact-active {
 
 >>> article a {
   @apply text-green-600;
+}
+
+>>> article ul {
+  @apply ml-5 list-disc;
+}
+
+>>> article code {
+  @apply bg-gray-100 border-2 border-gray-100;
 }
 </style>
