@@ -31,7 +31,7 @@
       <nuxt-link
         v-if="next"
         :to="`/docs/${next.slug}`"
-        class="block p-10 mt-10 shadow-sm rounded bg-white hover:bg-gray-100"
+        class="next block w-1/2 p-10 border-2 border-green-300 rounded bg-white hover:bg-gray-100"
       >
         Read next:
         <span class="font-semibold">{{ next.title }}</span>
@@ -141,5 +141,9 @@ nav a.nuxt-link-exact-active {
 
 >>> article code {
   @apply bg-gray-100 border-2 border-gray-100;
+}
+
+>>> article .next {
+  @apply mt-10;
 }
 </style>
