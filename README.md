@@ -1,6 +1,13 @@
-# keila-web
+# Keila Website
 
-## Build Setup
+This is the repository for the [Keila website](https://keila.io) which includes
+the landing page the [Keila docs](https://keila.io/docs)
+
+## Installation
+
+This site is powered by [Nuxt](https://nuxtjs.org/).
+
+You can install it on a local machine like this:
 
 ```bash
 # install dependencies
@@ -17,4 +24,9 @@ $ npm run start
 $ npm run generate
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+For detailed explanation on how things work, check out the 
+[Nuxt.js docs](https://nuxtjs.org) and the
+[Nuxt Content docs](https://content.nuxtjs.org/).
+
+## License
+This repository is made available under the terms of the [MIT license](LICENSE.md).
