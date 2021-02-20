@@ -3,32 +3,36 @@
     <div
       class="container max-w-4xl mx-auto bg-white p-5 md:p-10 text-gray-800 rounded-t"
     >
-      <p class="text-5xl font-semibold">Hey, we’re the Keila Project.<br /></p>
+      <lazy-hydrate never>
+        <p class="text-5xl font-semibold">
+          Hey, we’re the Keila Project.<br />
+        </p>
 
-      <p class="text-3xl font-medium text-gray-700">
-        We’re building an
-        <span class="font-bold">OpenSource email newsletter</span> tool. That’s
-        right, we’re building a
-        <span class="text-green-500 font-bold">
-          free alternative to MailChimp</span
-        >!
-      </p>
+        <p class="text-3xl font-medium text-gray-700">
+          We’re building an
+          <span class="font-bold">OpenSource email newsletter</span> tool.
+          That’s right, we’re building a
+          <span class="text-green-500 font-bold">
+            free alternative to MailChimp</span
+          >!
+        </p>
 
-      <div class="my-12">
-        <div
-          class="border border-1 border-gray-400 -mx-5 lg:-mx-12 shadow-lg rounded overflow-hidden"
-        >
-          <div class="h-8 bg-gray-200 flex items-center">
-            <div class="bg-red-400 rounded-full w-3 h-3 ml-2"></div>
-            <div class="bg-yellow-400 rounded-full w-3 h-3 ml-2"></div>
-            <div class="bg-green-400 rounded-full w-3 h-3 ml-2"></div>
+        <div class="my-12">
+          <div
+            class="border border-1 border-gray-400 -mx-5 lg:-mx-12 shadow-lg rounded overflow-hidden"
+          >
+            <div class="h-8 bg-gray-200 flex items-center">
+              <div class="bg-red-400 rounded-full w-3 h-3 ml-2"></div>
+              <div class="bg-yellow-400 rounded-full w-3 h-3 ml-2"></div>
+              <div class="bg-green-400 rounded-full w-3 h-3 ml-2"></div>
+            </div>
+            <video poster="/poster.png" loop controls class="w-full">
+              <source src="/keila.webm" type='video/webm;codecs="vp9"' />
+              <source src="/keila.mp4" type="video/mp4" />
+            </video>
           </div>
-          <video poster="/poster.png" loop controls class="w-full">
-            <source src="/keila.webm" type='video/webm;codecs="vp9"' />
-            <source src="/keila.mp4" type="video/mp4" />
-          </video>
         </div>
-      </div>
+      </lazy-hydrate>
 
       <div
         class="my-16 -mx-5 md:-mx-10 px-5 md:px-10 py-12 bg-green-600 text-white"
@@ -83,148 +87,153 @@
         </div>
       </div>
 
-      <div class="my-16">
-        <h2
-          class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            class="h-12 text-green-500"
+      <lazy-hydrate never>
+        <div class="my-16">
+          <h2
+            class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
-            />
-          </svg>
-          Features &amp; Roadmap
-        </h2>
-        <p class="text-xl mt-5">
-          We have <span class="font-semibold">big plans</span> for Keila. Here
-          are some completed and planned features:
-        </p>
-        <ul>
-          <li class="flex mt-5">
-            <check-complete class="mr-2 flex-shrink-0" />
-            <p>
-              Compose hybrid text &amp; HTML emails with
-              <a
-                href="https://en.wikipedia.org/wiki/Markdown"
-                target="_blank"
-                class="underline"
-              >
-                Markdown</a
-              >.
-            </p>
-          </li>
-          <li class="flex mt-5">
-            <check-complete class="mr-2 flex-shrink-0" />
-
-            <p>
-              Compose plain-text emails with support for
-              <a
-                href="https://shopify.github.io/liquid/"
-                target="_blank"
-                class="underline"
-                >Liquid templating</a
-              >.
-            </p>
-          </li>
-          <li class="flex mt-5">
-            <check-complete class="mr-2 flex-shrink-0" />
-            <p>Send emails with SMTP, Sendgrid, AWS&nbsp;SES.</p>
-          </li>
-          <li class="flex mt-5">
-            <check-complete class="mr-2 flex-shrink-0" />
-            <p>Create &amp; design your own signup forms.</p>
-          </li>
-          <li class="flex mt-5">
-            <check-complete class="mr-2 flex-shrink-0" />
-            <p>Import existing subscribers from CSV.</p>
-          </li>
-          <li class="flex mt-5">
-            <check-complete class="mr-2 flex-shrink-0" />
-            <p>Protect your forms against spammers with hCaptcha.</p>
-          </li>
-          <li class="flex mt-5">
-            <check-complete class="mr-2 flex-shrink-0" />
-            <p>One-click unsubscription feature.</p>
-          </li>
-          <li class="flex mt-5">
-            <check-in-progress class="mr-2 flex-shrink-0" />
-            <p>Create custom HTML templates with reusable blocks.</p>
-          </li>
-          <li class="flex mt-5">
-            <check-in-progress class="mr-2 flex-shrink-0" />
-            Upload images &amp; file attachments.
-          </li>
-          <li class="flex mt-5">
-            <check-in-progress class="mr-2 flex-shrink-0" />
-            Powerful email automations.
-          </li>
-          <li class="flex mt-5">
-            <check-in-progress class="mr-2 flex-shrink-0" />
-            <p>
-              … maybe your idea?
-              <a
-                class="underline"
-                href="https://github.com/pentacent/keila/projects/1"
-                >Let us know on GitHub!</a
-              >
-            </p>
-          </li>
-        </ul>
-        <p class="mt-10">
-          <a
-            href="https://github.com/pentacent/keila/projects/1"
-            class="underline"
-            >Check out our development roadmap on GitHub.</a
-          >
-        </p>
-      </div>
-
-      <div class="my-16">
-        <h2
-          class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            class="h-12 text-green-500"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-            />
-          </svg>
-          Participate &amp; Follow us!
-        </h2>
-        <ul class="text-lg">
-          <li class="mt-5">
-            <a class="underline" href="https://twitter.com/keila_io"
-              >Follow the Keila Project on Twitter</a
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="h-12 text-green-500"
             >
-          </li>
-          <li class="mt-5">
-            <a class="underline" href="https://app.keila.io/forms/frm_GX8qGEZd">
-              Sign up to our newsletter
-            </a>
-          </li>
-          <li class="mt-5">
-            <a class="underline" href="https://github.com/pentacent/keila"
-              >Join the development on GitHub</a
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"
+              />
+            </svg>
+            Features &amp; Roadmap
+          </h2>
+          <p class="text-xl mt-5">
+            We have <span class="font-semibold">big plans</span> for Keila. Here
+            are some completed and planned features:
+          </p>
+          <ul>
+            <li class="flex mt-5">
+              <check-complete class="mr-2 flex-shrink-0" />
+              <p>
+                Compose hybrid text &amp; HTML emails with
+                <a
+                  href="https://en.wikipedia.org/wiki/Markdown"
+                  target="_blank"
+                  class="underline"
+                >
+                  Markdown</a
+                >.
+              </p>
+            </li>
+            <li class="flex mt-5">
+              <check-complete class="mr-2 flex-shrink-0" />
+
+              <p>
+                Compose plain-text emails with support for
+                <a
+                  href="https://shopify.github.io/liquid/"
+                  target="_blank"
+                  class="underline"
+                  >Liquid templating</a
+                >.
+              </p>
+            </li>
+            <li class="flex mt-5">
+              <check-complete class="mr-2 flex-shrink-0" />
+              <p>Send emails with SMTP, Sendgrid, AWS&nbsp;SES.</p>
+            </li>
+            <li class="flex mt-5">
+              <check-complete class="mr-2 flex-shrink-0" />
+              <p>Create &amp; design your own signup forms.</p>
+            </li>
+            <li class="flex mt-5">
+              <check-complete class="mr-2 flex-shrink-0" />
+              <p>Import existing subscribers from CSV.</p>
+            </li>
+            <li class="flex mt-5">
+              <check-complete class="mr-2 flex-shrink-0" />
+              <p>Protect your forms against spammers with hCaptcha.</p>
+            </li>
+            <li class="flex mt-5">
+              <check-complete class="mr-2 flex-shrink-0" />
+              <p>One-click unsubscription feature.</p>
+            </li>
+            <li class="flex mt-5">
+              <check-in-progress class="mr-2 flex-shrink-0" />
+              <p>Create custom HTML templates with reusable blocks.</p>
+            </li>
+            <li class="flex mt-5">
+              <check-in-progress class="mr-2 flex-shrink-0" />
+              Upload images &amp; file attachments.
+            </li>
+            <li class="flex mt-5">
+              <check-in-progress class="mr-2 flex-shrink-0" />
+              Powerful email automations.
+            </li>
+            <li class="flex mt-5">
+              <check-in-progress class="mr-2 flex-shrink-0" />
+              <p>
+                … maybe your idea?
+                <a
+                  class="underline"
+                  href="https://github.com/pentacent/keila/projects/1"
+                  >Let us know on GitHub!</a
+                >
+              </p>
+            </li>
+          </ul>
+          <p class="mt-10">
+            <a
+              href="https://github.com/pentacent/keila/projects/1"
+              class="underline"
+              >Check out our development roadmap on GitHub.</a
             >
-          </li>
-        </ul>
-      </div>
+          </p>
+        </div>
+
+        <div class="my-16">
+          <h2
+            class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="h-12 text-green-500"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+              />
+            </svg>
+            Participate &amp; Follow us!
+          </h2>
+          <ul class="text-lg">
+            <li class="mt-5">
+              <a class="underline" href="https://twitter.com/keila_io"
+                >Follow the Keila Project on Twitter</a
+              >
+            </li>
+            <li class="mt-5">
+              <a
+                class="underline"
+                href="https://app.keila.io/forms/frm_GX8qGEZd"
+              >
+                Sign up to our newsletter
+              </a>
+            </li>
+            <li class="mt-5">
+              <a class="underline" href="https://github.com/pentacent/keila"
+                >Join the development on GitHub</a
+              >
+            </li>
+          </ul>
+        </div>
+      </lazy-hydrate>
     </div>
   </div>
 </template>
