@@ -44,9 +44,9 @@ variables:
 | Variable               | Required | Default | Description                    |
 | ---------------------- | -------- | ------- | ------------------------------ |
 | `MAILER_TYPE`          |          | `smtp`  | Currently only `smtp` is supported |
-| `MAILER_HOST`          | yes      | -       | Hostname of the SMTP server    |
+| `MAILER_SMTP_HOST`     | yes      | -       | Hostname of the SMTP server    |
 | `MAILER_SMTP_PORT`     |          | `587`   | Port of the SMTP server   |
-| `MAILER_USER`          | yes      | -       | Username for the SMTP server   |
+| `MAILER_SMTP_USER`     | yes      | -       | Username for the SMTP server   |
 | `MAILER_SMTP_PASSWORD` | yes      | -       | Password for the SMTP server   |
 
 ## Deployment
