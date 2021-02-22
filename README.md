@@ -1,7 +1,7 @@
 # Keila Website
 
 This is the repository for the [Keila website](https://keila.io) which includes
-the landing page the [Keila docs](https://keila.io/docs)
+the landing page and the [Keila docs](https://keila.io/docs)
 
 ## Installation
 
