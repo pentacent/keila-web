@@ -27,16 +27,13 @@ Configure the URL that Keila uses to generate URLs with the following variables:
 | `URL_SCHEMA`  |          | `http`  | `http` or `https`. Used for URL generation |
 | `URL_PORT`    |          | `80` for schema `http`<br>443 for schema `https` | Used for URL generation |
 
+## Deployment
 
-## hCaptcha
-Keila uses hCaptcha to protect your sign-up forms. Configure hCaptcha with the
-following variables:
-
-| Variable              | Required | Default | Description                     |
-| --------------------- | -------- | ------- | ------------------------------- |
-| `HCAPTCHA_SITE_KEY`   |          | -       | hCaptcha site key               |
-| `HCAPTCHA_SECRET_KEY` |          | `http`  | hCaptcha secret key             |
-| `HCAPTCHA_URL`        |          | `https://hcaptcha.com/siteverify` | hCaptcha verification URL |
+| Variable               | Required | Default | Description                    |
+| ---------------------- | -------- | ------- | ------------------------------ |
+| `PORT`                 |          | `4000`  | Port on which Keila will listen |
+| `SECRET_KEY_BASE`      | yes      | -       | Strong secret with at least 64 characters. Can be generated with `head -c 48 /dev/urandom | base64` |
+| `DISABLE_REGISTRATION` |          | `false` | Disable user registration by setting this variable to `true` |
 
 ## System mailer
 Keila needs to be able to send system emails, e.g. for registration and password
@@ -51,9 +48,12 @@ variables:
 | `MAILER_SMTP_USER`     | yes      | -       | Username for the SMTP server   |
 | `MAILER_SMTP_PASSWORD` | yes      | -       | Password for the SMTP server   |
 
-## Deployment
+## hCaptcha
+Keila uses hCaptcha to protect your sign-up forms. Configure hCaptcha with the
+following variables:
 
-| Variable               | Required | Default | Description                    |
-| ---------------------- | -------- | ------- | ------------------------------ |
-| `PORT`                 |          | `4000`  | Port on which Keila will listen |
-| `DISABLE_REGISTRATION` |          | `false` | Disable user registration by setting this variable to `true` |
+| Variable              | Required | Default | Description                     |
+| --------------------- | -------- | ------- | ------------------------------- |
+| `HCAPTCHA_SITE_KEY`   |          | -       | hCaptcha site key               |
+| `HCAPTCHA_SECRET_KEY` |          | `http`  | hCaptcha secret key             |
+| `HCAPTCHA_URL`        |          | `https://hcaptcha.com/siteverify` | hCaptcha verification URL |
