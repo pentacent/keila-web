@@ -12,8 +12,10 @@ You can configure Keila with environment variables.
 Configure the PostgreSQL database used by Keila:
 
 | Variable      | Required | Default | Description  |
-| ------------- | -------- | ------- | --------------------------------------- |
-| `DB_URL`      | yes      | -       | URL following the schema `postgres://user:password/database` |
+| ---------------- | -------- | ------- | --------------------------------------- |
+| `DB_URL`         | yes      | -       | URL following the schema `postgres://user:password@host/database` |
+| `KEILA_USER`     |          | `root@localhost` | Email address for the root user |
+| `KEILA_PASSWORD` |          | *random* | Password for the root user           |
 
 ## URL
 Configure the URL that Keila uses to generate URLs with the following variables:
