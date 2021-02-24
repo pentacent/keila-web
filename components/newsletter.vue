@@ -26,8 +26,10 @@
     </div>
     <div class="flex flex-col">
       <div
+        ref="h-captcha"
         class="h-captcha"
         data-sitekey="a1c5fab7-71df-4ea4-af75-87a3d07c61de"
+        :data-loaded="captchaLoaded"
       ></div>
     </div>
     <div class="flex justify-start">
@@ -48,12 +50,39 @@
 
 <script>
 export default {
-  head() {
-    return {
-      script: [
-        { src: 'https://hcaptcha.com/1/api.js', async: true, defer: true },
-      ],
+  data() {
+    return { captchaLoaded: false }
+  },
+  mounted() {
+    const callbackName = `render-h-captcha-${Math.random().toString(32)}`
+    window[callbackName] = () => {
+      window.hcaptcha.render(this.$el.querySelector('.h-captcha'))
+      this.captchaLoaded = true
     }
+
+    const hCaptcha = document.createElement('script')
+    hCaptcha.setAttribute(
+      'src',
+      `https://hcaptcha.com/1/api.js?onload=${callbackName}&render=explicit`
+    )
+    hCaptcha.setAttribute('async', true)
+    hCaptcha.setAttribute('defer', true)
+    hCaptcha.addEventListener('load', () => (this.captchaLoaded = true))
+    document.head.appendChild(hCaptcha)
   },
 }
 </script>
+
+<style scoped>
+.h-captcha:not([data-loaded]) {
+  @apply bg-gray-200;
+  height: 78px;
+  max-width: 303px;
+  overflow: hidden;
+}
+
+.h-captcha:not([data-loaded]):before {
+  content: '';
+  @apply block bg-white shadow animate-pulse h-10 w-10 m-4 rounded;
+}
+</style>
