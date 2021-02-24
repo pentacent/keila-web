@@ -41,7 +41,7 @@
         </div>
       </lazy-hydrate>
 
-      <lazy-hydrate when-idle on-interaction>
+      <lazy-hydrate on-interaction when-visible>
         <div
           class="my-16 -mx-5 md:-mx-10 px-5 md:px-10 py-12 bg-green-600 text-white"
         >
