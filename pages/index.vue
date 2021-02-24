@@ -27,7 +27,12 @@
                 <div class="bg-yellow-400 rounded-full w-3 h-3 ml-2"></div>
                 <div class="bg-green-400 rounded-full w-3 h-3 ml-2"></div>
               </div>
-              <video poster="/poster.png" loop controls class="w-full">
+              <video
+                :poster="require('~/assets/poster.png')"
+                loop
+                controls
+                class="w-full"
+              >
                 <source src="/keila.webm" type='video/webm;codecs="vp9"' />
                 <source src="/keila.mp4" type="video/mp4" />
               </video>
