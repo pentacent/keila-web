@@ -37,12 +37,14 @@ export default {
   modules: [
     [
       '@nuxt/content',
-      'nuxt-matomo',
-      {
-        matomoUrl: 'https://tracking.vanbittern.com/',
-        siteId: 33,
-        cookies: false,
-      },
+      [
+        'nuxt-matomo',
+        {
+          matomoUrl: 'https://tracking.vanbittern.com/',
+          siteId: 33,
+          cookies: false,
+        },
+      ],
     ],
   ],
 
