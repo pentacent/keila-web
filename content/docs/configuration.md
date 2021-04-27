@@ -34,6 +34,7 @@ Configure the URL that Keila uses to generate URLs with the following variables:
 | `PORT`                 |          | `4000`  | Port on which Keila will listen |
 | `SECRET_KEY_BASE`      | yes      | -       | Strong secret with at least 64 characters. Can be generated with `head -c 48 /dev/urandom | base64` |
 | `DISABLE_REGISTRATION` |          | `false` | Disable user registration by setting this variable to `true` |
+| `DISABLE_PRECEDENCE_HEADER` |     | `false` | Disable the `Precedence: Bulk` header by settings this variable to `true` |
 
 ## System mailer
 Keila needs to be able to send system emails, e.g. for registration and password
