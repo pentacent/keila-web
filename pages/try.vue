@@ -5,7 +5,7 @@
     >
       <h1 class="text-5xl font-semibold">Try Keila!</h1>
       <p class="text-3xl font-medium text-gray-700">
-        Your choice: Install Keila on your own server or give our hosted servicy
+        Your choice: Install Keila on your own server or give our hosted service
         a try!
       </p>
       <div class="mt-12 -mx-5 md:-mx-10 p-5 md:p-10 bg-green-300 text-black">
