@@ -9,18 +9,18 @@
             Hey, we’re the Keila Project.<br />
           </p>
 
-          <p class="text-3xl font-medium text-gray-700">
+          <p class="text-3xl font-medium text-gray-900">
             We’re building an
             <span class="font-bold">OpenSource email newsletter</span> tool.
             That’s right, we’re building a
-            <span class="text-green-500 font-bold">
+            <span class="text-green-600 font-bold">
               free alternative to MailChimp</span
             >!
           </p>
 
           <div class="my-12">
             <div
-              class="border border-1 border-gray-400 -mx-5 lg:-mx-12 shadow-lg rounded overflow-hidden"
+              class="border border-1 border-gray-400 -mx-5 lg:-mx-12 shadow-lg rounded overflow-hidden bg-white"
             >
               <div class="h-8 bg-gray-200 flex items-center">
                 <div class="bg-red-400 rounded-full w-3 h-3 ml-2"></div>
@@ -43,7 +43,7 @@
 
       <lazy-hydrate on-interaction when-visible>
         <div
-          class="my-16 -mx-5 md:-mx-10 px-5 md:px-10 py-12 bg-green-600 text-white"
+          class="my-16 -mx-5 md:-mx-10 px-5 md:px-10 py-12 bg-green-300 text-black"
         >
           <h2
             class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
@@ -53,7 +53,7 @@
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              class="h-12 text-white"
+              class="h-12"
             >
               <path
                 stroke-linecap="round"
@@ -73,7 +73,7 @@
               <div>
                 <svg
                   viewBox="0 0 565 372.136"
-                  class="md:hidden mt-5 h-16 md:w-1/4 md:h-auto text-green-400"
+                  class="md:hidden mt-5 h-16 md:w-1/4 md:h-auto text-green-700"
                 >
                   <path
                     fill="currentColor"
@@ -84,7 +84,7 @@
 
                 <svg
                   viewBox="0 0 421.944 189.395"
-                  class="hidden md:block mt-5 w-1/3 h-auto text-green-400"
+                  class="hidden md:block mt-5 w-1/3 h-auto text-green-700"
                 >
                   <path
                     fill="currentColor"

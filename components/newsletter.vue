@@ -1,7 +1,7 @@
 <template>
   <form
     action="https://app.keila.io/forms/frm_GX8qGEZd"
-    class="flex grid grid-auto-rows gap-5"
+    class="flex grid grid-auto-rows gap-4"
     method="post"
     target="_blank"
   >
@@ -34,9 +34,9 @@
     </div>
     <div class="flex justify-start">
       <button
-        class="bg-indigo-700 border border-2 border-indigo-400 hover:shadow hover:bg-indigo-600 text-white rounded py-3 px-5 font-semibold"
+        class="inline-flex items-center gap-4 px-4 py-4 bg-green-600 text-white font-semibold rounded-lg shadow-sm hover:bg-green-500 hover:shadow-lg"
       >
-        Sign up to the latest Keila updates!
+        Sign up to Keila updates!
       </button>
     </div>
     <div class="text-xs">
@@ -51,24 +51,29 @@
 <script>
 export default {
   data() {
-    return { captchaLoaded: false }
+    return { hCaptchaReady: false, captchaLoaded: false }
   },
-  mounted() {
-    const callbackName = `render-h-captcha-${Math.random().toString(32)}`
-    window[callbackName] = () => {
+  head() {
+    return {
+      script: [
+        {
+          hid: 'hcaptcha',
+          src: 'https://hcaptcha.com/1/api.js?render=explicit',
+          defer: true,
+          async: true,
+          callback: () => {
+            this.hCaptchaReady = true
+          },
+        },
+      ],
+    }
+  },
+  watch: {
+    hCaptchaReady(ready) {
+      if (!ready) return
       window.hcaptcha.render(this.$el.querySelector('.h-captcha'))
       this.captchaLoaded = true
-    }
-
-    const hCaptcha = document.createElement('script')
-    hCaptcha.setAttribute(
-      'src',
-      `https://hcaptcha.com/1/api.js?onload=${callbackName}&render=explicit`
-    )
-    hCaptcha.setAttribute('async', true)
-    hCaptcha.setAttribute('defer', true)
-    hCaptcha.addEventListener('load', () => (this.captchaLoaded = true))
-    document.head.appendChild(hCaptcha)
+    },
   },
 }
 </script>
