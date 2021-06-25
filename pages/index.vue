@@ -167,15 +167,31 @@
             </li>
             <li class="flex mt-5">
               <check-complete class="mr-2 flex-shrink-0" />
-              <p>One-click unsubscription feature.</p>
+              <p>One-click unsubscriptions.</p>
             </li>
             <li class="flex mt-5">
               <check-in-progress class="mr-2 flex-shrink-0" />
-              <p>Create custom HTML templates with reusable blocks.</p>
+              <p>Privacy-friendly click &amp; open tracking.</p>
+            </li>
+            <li class="flex mt-5">
+              <check-in-progress class="mr-2 flex-shrink-0" />
+              <p>Automatic contact quality monitoring &amp; bounce handling.</p>
+            </li>
+            <li class="flex mt-5">
+              <check-in-progress class="mr-2 flex-shrink-0" />
+              <p>Powerful segementation and custom fields.</p>
             </li>
             <li class="flex mt-5">
               <check-in-progress class="mr-2 flex-shrink-0" />
               Upload images &amp; file attachments.
+            </li>
+            <li class="flex mt-5">
+              <check-in-progress class="mr-2 flex-shrink-0" />
+              Fully-featured API for sending campaigns and syncing contacts
+            </li>
+            <li class="flex mt-5">
+              <check-in-progress class="mr-2 flex-shrink-0" />
+              <p>Create custom HTML templates with reusable blocks.</p>
             </li>
             <li class="flex mt-5">
               <check-in-progress class="mr-2 flex-shrink-0" />
