@@ -14,6 +14,13 @@ export default {
       { hid: 'description', name: 'description', content: '' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [
+      {
+        hid: 'tawk',
+        src: 'https://embed.tawk.to/60dca0ef65b7290ac638bf28/1f9et9ak1',
+        defer: true,
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
