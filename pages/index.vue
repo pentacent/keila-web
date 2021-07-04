@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="container max-w-4xl mx-auto bg-white p-5 md:p-10 text-gray-800 rounded-t"
+      class="container max-w-4xl mx-auto bg-white p-5 md:p-10 text-gray-800 rounded shadow-lg"
     >
       <lazy-hydrate never>
         <div>
@@ -20,7 +20,7 @@
 
           <div class="my-12">
             <div
-              class="border border-1 border-gray-400 -mx-5 lg:-mx-12 shadow-lg rounded overflow-hidden bg-white"
+              class="border border-1 border-gray-400 -mx-5 lg:-mx-16 shadow-lg rounded overflow-hidden bg-white"
             >
               <div class="h-8 bg-gray-200 flex items-center">
                 <div class="bg-red-400 rounded-full w-3 h-3 ml-2"></div>
@@ -271,6 +271,5 @@ export default {
   components: {
     'lazy-hydrate': LazyHydrate,
   },
-  layout: 'minimal',
 }
 </script>

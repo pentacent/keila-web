@@ -1,6 +1,6 @@
 <template>
   <div class="flex min-h-full max-w-6xl mx-auto">
-    <nav class="hidden md:block text-lg bg-white bg-green-600 text-white p-5">
+    <nav class="hidden md:block text-lg bg-white bg-gray-200 text-gray-800 p-5">
       <ul>
         <li>
           <nuxt-link to="/docs/">Introduction </nuxt-link>
@@ -26,7 +26,9 @@
         </li>
       </ul>
     </nav>
-    <article class="flex-grow p-5 md:py-10 overflow-hidden">
+    <article
+      class="flex-grow p-5 pt-0 md:pb-10 overflow-hidden bg-white rounded"
+    >
       <nuxt-content :document="article" />
       <nuxt-link
         v-if="next"
@@ -42,6 +44,7 @@
 
 <script>
 export default {
+  layout: 'docs',
   data() {
     return { article: {}, next: null }
   },
@@ -78,7 +81,7 @@ nav a {
 }
 
 nav li.with-sub > a {
-  @apply font-bold bg-transparent;
+  @apply font-bold bg-transparent text-gray-900;
 }
 
 nav a:hover {
@@ -90,10 +93,10 @@ nav li li a {
 }
 
 nav a.nuxt-link-exact-active {
-  @apply bg-green-800;
+  @apply bg-green-700 text-white;
 }
 
->>> article * + * {
+>>> .nuxt-content * + * {
   @apply mt-5;
 }
 

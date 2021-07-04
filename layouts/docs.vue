@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <div class="container max-w-4xl mx-auto p-5 md:p-10 flex items-center">
+      <div class="container max-w-6xl mx-auto p-5 md:p-10 flex items-center">
         <h1 class="text-gray-900 text-3xl sm:text-5xl text-center">
           <nuxt-link to="/">
             <logo class="h-16 -mr-3 w-auto inline-block" />
@@ -9,7 +9,29 @@
           </nuxt-link>
         </h1>
         <div class="flex-grow"></div>
-        <nav class="block text-l flex-grow text-right">
+        <div class="relative flex-grow">
+          <input
+            v-model="query"
+            class="px-5 py-5 bg-gray-200 w-full"
+            type="search"
+            autocomplete="off"
+            placeholder="Search …"
+          />
+          <ul
+            v-if="searchResults.length"
+            class="bg-gray-100 shadow absolute w-full z-40"
+          >
+            <li v-for="article of searchResults" :key="article.slug">
+              <nuxt-link
+                class="p-5 block"
+                :to="`/docs/${article.slug}`"
+                @click.native="clearSearch"
+                >{{ article.title }}</nuxt-link
+              >
+            </li>
+          </ul>
+        </div>
+        <nav class="block text-l text-right">
           <ul
             class="flex flex-wrap gap-2 align-center justify-end font-semibold text-black"
           >
@@ -29,14 +51,11 @@
             </li>
             <div class="hidden md:block flex-grow"></div>
             <li class="block">
-              <a href="https://app.keila.io" class="px-3 py-5">Login</a>
-            </li>
-            <li class="block">
               <nuxt-link
-                to="/try"
+                to="/"
                 class="p-3 bg-green-600 font-semibold text-white rounded-md hover:bg-green-500"
               >
-                Try now
+                Back to keila.io
               </nuxt-link>
             </li>
           </ul>
@@ -46,18 +65,7 @@
     <main>
       <Nuxt />
     </main>
-    <footer class="container max-w-4xl mx-auto my-5 p-5 md:p-10">
-      <p>Made in 🇩🇪 ❤️ 🇪🇺.</p>
-      <p class="text-sm flex">
-        <a class="underline" href="/credits">Credits</a>
-        <a class="underline ml-2" href="https://pentacent.com/legal"
-          >Legal notice</a
-        >
-        <a class="underline ml-2" href="https://pentacent.com/privacy"
-          >Privacy policy</a
-        >
-      </p>
-    </footer>
+    <page-footer />
   </div>
 </template>
 
@@ -68,6 +76,9 @@ const baseUrl = process.env.BASE_URL || ''
 
 export default {
   components: { logo },
+  data() {
+    return { searchResults: [], query: '' }
+  },
   head() {
     return {
       meta: [
@@ -95,15 +106,32 @@ export default {
       ],
     }
   },
+  watch: {
+    async query(query) {
+      if (!query) {
+        this.searchResults = []
+        return
+      }
+
+      this.searchResults = await this.$content('docs')
+        .where({ slug: { $ne: 'index' } })
+        .only(['title', 'slug'])
+        .limit(4)
+        .search(query)
+        .fetch()
+    },
+  },
+  methods: {
+    clearSearch() {
+      this.query = ''
+    },
+  },
 }
 </script>
 
 <style>
 body {
   font-family: Inter, Arial, Helvetica, sans-serif;
-  /*@apply bg-gradient-to-b from-indigo-800 via-indigo-300 to-green-100;*/
-  @apply bg-gradient-to-b from-white via-green-300 to-pink-600;
-  @apply bg-fixed bg-gradient-to-b from-white via-gray-100 to-gray-200;
   overflow-y: scroll;
 }
 </style>

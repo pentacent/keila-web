@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="container max-w-4xl mx-auto bg-white p-5 md:p-10 text-gray-800 rounded-l shadow-lg"
+      class="container max-w-4xl mx-auto bg-white p-5 md:p-10 text-gray-800 rounded shadow-lg"
     >
       <h1 class="text-5xl font-semibold">Try Keila!</h1>
       <p class="text-3xl font-medium text-gray-700">
@@ -189,7 +189,6 @@ export default {
   components: {
     'lazy-hydrate': LazyHydrate,
   },
-  layout: 'minimal',
   data() {
     return {
       paddleReady: false,
