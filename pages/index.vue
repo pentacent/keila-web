@@ -171,8 +171,8 @@
               <p>One-click unsubscriptions.</p>
             </li>
             <li class="flex mt-5">
-              <check-in-progress class="mr-2 flex-shrink-0" />
-              <p>Privacy-friendly click &amp; open tracking.</p>
+              <check-complete class="mr-2 flex-shrink-0" />
+              <p>Click &amp; open tracking of campaigns.</p>
             </li>
             <li class="flex mt-5">
               <check-in-progress class="mr-2 flex-shrink-0" />
