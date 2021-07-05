@@ -6,8 +6,9 @@
       <a class="underline ml-2" href="https://pentacent.com/legal"
         >Legal notice</a
       >
-      <a class="underline ml-2" href="https://pentacent.com/privacy"
-        >Privacy policy</a
+      <nuxt-link class="underline ml-2" to="/privacy">Privacy policy</nuxt-link>
+      <nuxt-link class="underline ml-2" to="/terms"
+        >Terms &amp; Conditions</nuxt-link
       >
     </p>
   </footer>

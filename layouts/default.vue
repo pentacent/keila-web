@@ -46,18 +46,7 @@
     <main>
       <Nuxt />
     </main>
-    <footer class="container max-w-4xl mx-auto my-5 p-5 md:p-10">
-      <p>Made in 🇩🇪 ❤️ 🇪🇺.</p>
-      <p class="text-sm flex">
-        <a class="underline" href="/credits">Credits</a>
-        <a class="underline ml-2" href="https://pentacent.com/legal"
-          >Legal notice</a
-        >
-        <a class="underline ml-2" href="https://pentacent.com/privacy"
-          >Privacy policy</a
-        >
-      </p>
-    </footer>
+    <page-footer class="max-w-4xl" />
   </div>
 </template>
 
@@ -105,5 +94,33 @@ body {
   @apply bg-gradient-to-b from-white via-green-300 to-pink-600;
   @apply bg-fixed bg-gradient-to-b from-white via-gray-100 to-gray-200;
   overflow-y: scroll;
+}
+
+.legal .nuxt-content-container {
+  @apply max-w-md mx-auto text-gray-800;
+}
+
+.legal .nuxt-content-container h1 {
+  @apply text-3xl font-bold mb-4;
+}
+
+.legal .nuxt-content-container h2 {
+  @apply text-xl font-bold mt-4;
+}
+
+.legal .nuxt-content-container h3 {
+  @apply text-lg font-bold mt-2;
+}
+
+.legal .nuxt-content-container a {
+  @apply underline text-green-600;
+}
+
+.legal .nuxt-content-container p + p {
+  @apply mt-2;
+}
+
+.legal .nuxt-content-container .footnote {
+  @apply text-sm text-gray-600 mt-8;
 }
 </style>

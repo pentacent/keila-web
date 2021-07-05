@@ -1,0 +1,100 @@
+---
+title: Privacy Policy
+slug: privacy
+---
+# Privacy Policy
+
+Pentacent – Philipp Schmieder Medien ("Pentacent" or "we") is the operator of the Keila website and Managed Keila service (we’ll refer to them simply as "Keila" after this). This privacy policy explains which data we store and process when you decide to use Keila.
+
+## Controller
+Pentacent is the controller, i.e. the responsible entity for processing all information that is subject to this privacy policy.
+
+<div class="bg-green-200 p-5 mt-5">
+
+Pentacent – Philipp Schmieder Medien  
+Hauptstraße 10  
+95517 Seybothenreuth  
+Germany  
+  
+hello [no spam!] [at] keila [dot] io
+
+</div>
+
+
+## Your rights
+You may, at any time and free of charge, request that we delete, correct or provide you with a copy of the data we have stored about you.
+
+## Which data is being collected and why?
+
+### Newsletter data
+When you sign up to one of our newsletters, we collect the information that is necessary for providing your with email updates (i.e. your email address and which types of emails you would like to receive).
+
+### Account data
+When you sign up to the Managed Keila service, we collect information that is necessary for creating and identifying your account (i.e. name/pseudonym, email address, password or third-party identifier).
+If you subscribe to a paid plan for Keila, we also collect payment data and may collect your billing address (including your full name and street address).
+
+### Metrics data
+We are continuously improving the Keila website by measuring how people are using our services. For this reason, we collect the following types of data:
+
+- Browser/device data: Your browser and the Keila apps automatically transmit certain information (e.g. IP address, operating system and installed version of Keila). This data is anonymized and not associated with your account data.
+
+- Usage data: When you’re using the Managed Keila service, data about which interactions you perform with Keila may be stored by us.
+
+## Cookies & Co.
+For technical reasons, some parts of Keila (e.g. your account) can only be used with the help of cookies or similar technologies.
+
+On the Keila website, cookies are also used to improve our metrics data. You may deactivate cookies in your web browser to disable their use on the Keila website.
+
+## Who can access your data?
+We never rent or sell your data to third parties. We limit the amount of data that is shared with employees and contractors to what is strictly necessary for running Keila. Here is how your data may be shared:
+
+*Pentacent employees*: Pentacent employees may only access your data when necessary for the operation of Keila.
+
+*Technology partners*: We rely on third parties to provide certain services to us that allow us to operate Keila. We have legal agreements in place with them that ensure they keep your data secure and don’t use it for other purposes. We have published a [full list of technology partners](#partners).
+
+*Other users*: If you choose to use sharing and collaboration features of Keila, parts of your account information and the data you select for sharing are made available to whomever you decide to share them with.
+
+*Law enforcement*: We comply with disclosure requests by governmental bodies. If we determine in good faith that it’s required to prevent harm to any person, fraud or abuse, we may still disclose your data to governmental authorities or third parties.
+
+## How long do we store your data?
+Account data is stored as long as you keep using Keila. When request the deletion of your account, your data will be deleted within 14 days.
+
+Due to our legal obligation to preserve business records, payment transaction data and invoices are stored for a minimum of ten calendar years.
+
+## Privacy policy changes
+We may update this privacy policy from time to time and will notify you when a major change occurs.
+
+We encourage you to to frequently check this page for updates. Your continued use of Keila after any change to this privacy policy constitutes your consent to the revised policy.
+
+## Supervisory authority
+You have the right to contact our supervisory data protection authority:
+
+<div class="bg-green-200 p-5 mt-5">
+
+Bayerisches Landesamt für Datenschutzaufsicht
+Promenade 27
+91522 Ansbach
+
+[www.lda.bayern.de](https://www.lda.bayern.de/)
+
+</div>
+
+
+## List of Technology Partners
+
+<a id="partners"></a>
+The following is a list of technology partners who help us process your data.
+
+## [Scaleway SAS](https://www.scaleway.com/)
+Scaleway, based in France, is a leading European provider of cloud server infrastructure. We use their technology to operate parts of the Managed Keila service.
+
+## [Amazon Web Services EMEA SARL](https://aws.amazon.com/)
+Amazon Web Services EMEA, is the European branch of the world’s leading cloud provider. We use their EU-based infrastructure to operate parts of the Managed Keila service.
+
+## [Hetzner Online AG](https://www.hetzner.com/)
+Hetzner Online AG, based in Germany, is a leading German data center operator. We rely on their infrastrucutre to operate the Keila website.
+
+## [Tawk.to Inc./Tawk.to Ltd](https://www.tawk.to/)
+Tawk.to, based in the USA, operates the chat widget on the Keila website.
+Data for users from the European Economic Area are processed by their affiliate,
+Tawk.to Ltd, based in the United Kingdom.
