@@ -9,7 +9,7 @@
           </nuxt-link>
         </h1>
         <div class="flex-grow"></div>
-        <div class="relative flex-grow">
+        <div class="relative flex-grow pr-4">
           <input
             v-model="query"
             class="px-5 py-5 bg-gray-200 w-full"
@@ -33,7 +33,7 @@
         </div>
         <nav class="block text-l text-right">
           <ul
-            class="flex flex-wrap gap-2 align-center justify-end font-semibold text-black"
+            class="flex gap-2 align-center justify-end font-semibold text-black"
           >
             <li class="hidden md:block">
               <nuxt-link to="/" class="px-3 py-5">Start</nuxt-link>
@@ -55,7 +55,7 @@
                 to="/"
                 class="p-3 bg-green-600 font-semibold text-white rounded-md hover:bg-green-500"
               >
-                Back to keila.io
+                keila.io
               </nuxt-link>
             </li>
           </ul>
