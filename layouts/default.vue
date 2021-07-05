@@ -96,31 +96,31 @@ body {
   overflow-y: scroll;
 }
 
-.legal .nuxt-content-container {
+.legal .nuxt-content {
   @apply max-w-md mx-auto text-gray-800;
 }
 
-.legal .nuxt-content-container h1 {
+.legal .nuxt-content h1 {
   @apply text-3xl font-bold mb-4;
 }
 
-.legal .nuxt-content-container h2 {
+.legal .nuxt-content h2 {
   @apply text-xl font-bold mt-4;
 }
 
-.legal .nuxt-content-container h3 {
+.legal .nuxt-content h3 {
   @apply text-lg font-bold mt-2;
 }
 
-.legal .nuxt-content-container a {
+.legal .nuxt-content a {
   @apply underline text-green-600;
 }
 
-.legal .nuxt-content-container p + p {
+.legal .nuxt-content p + p {
   @apply mt-2;
 }
 
-.legal .nuxt-content-container .footnote {
+.legal .nuxt-content .footnote {
   @apply text-sm text-gray-600 mt-8;
 }
 </style>
