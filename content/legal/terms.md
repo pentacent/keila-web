@@ -16,7 +16,7 @@ You agree that we may automatically upgrade Managed Keila, and these terms will 
 
 Managed Keila is not directed to children younger than 16, and access and use of Managed Keila is only offered to users 16 years of age or older. If you are under 16 years old, please do not register to use Managed Keila. Any person who registers as a user or provides their personal information to Managed Keila represents that they are 16 years of age or older.
 
-## Your accout with Managed Keila
+## Your account with Managed Keila
 
 Use of Managed Keila requires the creation of an account. You agree to provide us with complete and accurate information when you register for an account. You are further responsible for maintaining the security of your account and your account password (if you have set one). You will be solely responsible and liable for any activity that occurs under your user account.
 
