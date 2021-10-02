@@ -175,12 +175,16 @@
               <p>Click &amp; open tracking of campaigns.</p>
             </li>
             <li class="flex mt-5">
-              <check-in-progress class="mr-2 flex-shrink-0" />
+              <check-complete class="mr-2 flex-shrink-0" />
               <p>Automatic contact quality monitoring &amp; bounce handling.</p>
             </li>
             <li class="flex mt-5">
               <check-in-progress class="mr-2 flex-shrink-0" />
               <p>Powerful segementation and custom fields.</p>
+            </li>
+            <li class="flex mt-5">
+              <check-in-progress class="mr-2 flex-shrink-0" />
+              A/B tests
             </li>
             <li class="flex mt-5">
               <check-in-progress class="mr-2 flex-shrink-0" />
