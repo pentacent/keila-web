@@ -23,9 +23,10 @@ Configure the URL that Keila uses to generate URLs with the following variables:
 
 | Variable      | Required | Default | Description  |
 | ------------- | -------- | ------- | --------------------------------------- |
-| `URL_HOST`    | yes      | -       | Domain used for URL generation          |
-| `URL_SCHEMA`  |          | `http`  | `http` or `https`. Used for URL generation |
-| `URL_PORT`    |          | `80` for schema `http`<br>443 for schema `https` | Used for URL generation |
+| `URL_HOST`    | yes      | -       | Domain of your Keila instance           |
+| `URL_PATH`    |          | `/`     | Path of your Keila instance             |
+| `URL_SCHEMA`  |          | `http`  | `http` or `https`. URL scheme of your Keila instance |
+| `URL_PORT`    |          | `80` for schema `http`<br>443 for schema `https` | Port of your Keila instance |
 
 ## Deployment
 
