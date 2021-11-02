@@ -5,21 +5,12 @@ slug: setup
 
 # First Steps
 
-Keila doesn’t yet automatically set up your database on first run. This is a
-feature that will be added in a future version.
+When you start Keila for the first time, the database you’ve configured with
+`DB_URL` is set up automatically.
 
-To set up your database, you need to run a command in the interactive Elixir
-shell (`IEx`).
+Keila automatically creates a root user with full admin privileges and prints
+the credentials to stdout on first launch. To specify a custom email and
+password for your root user, use the `KEILA_USER` and `KEILA_PASSWORD`
+environment variables.
 
-If you are running Keila with our Docker image, you can access it like this:
-
-```bash
-docker exec -it $CONTAINER_ID bin/keila remote
-```
-
-Next, set up the database by executing the following lines in IEx:
-
-```elixir
-Ecto.Migrator.with_repo(Keila.Repo, &Ecto.Migrator.run(&1, :up, all: true))
-Code.eval_file("priv/repo/seeds.exs")
-```
+**Note:** The root user credentials are only printed on first start.
