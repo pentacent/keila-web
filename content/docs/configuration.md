@@ -14,6 +14,14 @@ Configure the PostgreSQL database used by Keila:
 | Variable      | Required | Default | Description  |
 | ---------------- | -------- | ------- | --------------------------------------- |
 | `DB_URL`         | yes      | -       | URL following the schema `postgres://user:password@host/database` |
+
+## Root User
+When you start Keila for the first time, a root user is created. If you don’t
+specify otherwise, a user with a random password is created printed to
+stdout.
+
+| Variable      | Required | Default | Description  |
+| ---------------- | -------- | ------- | --------------------------------------- |
 | `KEILA_USER`     |          | `root@localhost` | Email address for the root user |
 | `KEILA_PASSWORD` |          | *random* | Password for the root user           |
 
