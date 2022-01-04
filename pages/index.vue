@@ -1,24 +1,35 @@
 <template>
   <div>
     <div
-      class="container max-w-4xl mx-auto bg-white p-5 md:p-10 text-gray-800 rounded shadow-lg"
+      class="container max-w-6xl mx-auto p-5 md:p-10 text-gray-800 rounded shadow-lg"
     >
       <lazy-hydrate never>
         <div>
-          <p class="text-5xl font-semibold">
-            Hey, we’re the Keila Project.<br />
+          <p class="text-3xl md:text-5xl font-semibold">
+            Email Newsletters: Reliable &amp; Easy.<br />
           </p>
 
-          <p class="text-3xl font-medium text-gray-900">
-            We’re building an
-            <span class="font-bold">OpenSource email newsletter</span> tool.
-            That’s right, we’re building a
-            <span class="text-green-600 font-bold">
-              free alternative to MailChimp</span
-            >!
+          <p class="text-xl md:text-2xl font-medium text-gray-700">
+            Grow your contact lists, use custom data, and send your campaigns
+            with Keila.<br />
+            Proudly Open Source, made in Germany and hosted in the EU 🇩🇪 🇪🇺
           </p>
 
-          <div class="my-12">
+          <p class="mt-6 flex items-start gap-6">
+            <a
+              href="https://app.keila.io/auth/register"
+              class="text-xl p-3 bg-green-600 font-semibold text-white rounded-md hover:bg-green-500"
+              >Try now</a
+            >
+            <a
+              href="https://github.com/pentacent/keila/"
+              class="text-xl p-3 bg-green-200 text-green-800 font-semibold text-white rounded-md hover:bg-green-300"
+              target="_blank"
+              >Join the community</a
+            >
+          </p>
+
+          <div class="mt-12 -my-4">
             <div
               class="border border-1 border-gray-400 -mx-5 lg:-mx-16 shadow-lg rounded overflow-hidden bg-white"
             >
@@ -28,14 +39,14 @@
                 <div class="bg-green-400 rounded-full w-3 h-3 ml-2"></div>
               </div>
               <video
-                :poster="require('~/assets/keila-20210705.jpg')"
+                :poster="require('~/assets/keila-20211203.jpg')"
                 loop
                 controls
                 class="w-full"
-                width="1024"
-                height="576"
+                width="1280"
+                height="800"
               >
-                <source src="/keila-20210705.mp4" type="video/mp4" />
+                <source src="/keila-20211203.mp4" type="video/mp4" />
               </video>
             </div>
           </div>
@@ -44,7 +55,7 @@
 
       <lazy-hydrate on-interaction when-visible>
         <div
-          class="my-16 -mx-5 md:-mx-10 px-5 md:px-10 py-12 bg-green-300 text-black"
+          class="-mx-5 md:-mx-10 px-5 md:px-10 py-12 bg-green-300 text-black"
         >
           <h2
             class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
@@ -69,8 +80,7 @@
             <newsletter class="row-start-2 md:row-start-1" />
             <div class="row-start-1 text-xl font-semibold md:mt-4">
               This is a real newsletter form powered by Keila!<br />
-              Give it a try and stay up to date with our progress building
-              Keila!
+              Give it a try and stay up to date when we release new features!
               <div>
                 <svg
                   viewBox="0 0 565 372.136"
@@ -120,8 +130,8 @@
             Features &amp; Roadmap
           </h2>
           <p class="text-xl mt-5">
-            We have <span class="font-semibold">big plans</span> for Keila. Here
-            are some completed and planned features:
+            Keila is <span class="font-semibold">constantly evolving</span>.
+            Here are some completed and planned features:
           </p>
           <ul>
             <li class="flex mt-5">
@@ -152,7 +162,7 @@
             </li>
             <li class="flex mt-5">
               <check-complete class="mr-2 flex-shrink-0" />
-              <p>Send emails with SMTP, Sendgrid, AWS&nbsp;SES.</p>
+              <p>Send emails with SMTP, Sendgrid, Mailgun, AWS&nbsp;SES.</p>
             </li>
             <li class="flex mt-5">
               <check-complete class="mr-2 flex-shrink-0" />
@@ -179,8 +189,12 @@
               <p>Automatic contact quality monitoring &amp; bounce handling.</p>
             </li>
             <li class="flex mt-5">
-              <check-in-progress class="mr-2 flex-shrink-0" />
+              <check-complete class="mr-2 flex-shrink-0" />
               <p>Powerful segementation and custom fields.</p>
+            </li>
+            <li class="flex mt-5">
+              <check-complete class="mr-2 flex-shrink-0" />
+              Fully-featured API for sending campaigns and syncing contacts
             </li>
             <li class="flex mt-5">
               <check-in-progress class="mr-2 flex-shrink-0" />
@@ -189,10 +203,6 @@
             <li class="flex mt-5">
               <check-in-progress class="mr-2 flex-shrink-0" />
               Upload images &amp; file attachments.
-            </li>
-            <li class="flex mt-5">
-              <check-in-progress class="mr-2 flex-shrink-0" />
-              Fully-featured API for sending campaigns and syncing contacts
             </li>
             <li class="flex mt-5">
               <check-in-progress class="mr-2 flex-shrink-0" />

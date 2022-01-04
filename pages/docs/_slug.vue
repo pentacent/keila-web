@@ -1,6 +1,8 @@
 <template>
   <div class="flex min-h-full max-w-6xl mx-auto">
-    <nav class="hidden md:block text-lg bg-white bg-gray-200 text-gray-800 p-5">
+    <nav
+      class="hidden md:block text-md text-gray-800 p-5 md:p-10 border-gray-900 border-r-2"
+    >
       <ul>
         <li>
           <nuxt-link to="/docs/">Introduction </nuxt-link>
@@ -20,15 +22,35 @@
           <ul>
             <li><nuxt-link to="/docs/senders">Senders</nuxt-link></li>
             <li><nuxt-link to="/docs/contacts">Contacts</nuxt-link></li>
+            <li><nuxt-link to="/docs/segments">Segments</nuxt-link></li>
+
             <li><nuxt-link to="/docs/forms">Forms</nuxt-link></li>
             <li><nuxt-link to="/docs/campaigns">Campaigns</nuxt-link></li>
           </ul>
         </li>
+        <li class="with-sub">
+          <nuxt-link to="/docs/api">API</nuxt-link>
+          <ul>
+            <li>
+              <a href="https://app.keila.io/api/#/Contact" target="_blank"
+                >Contacts</a
+              >
+            </li>
+            <li>
+              <a href="https://app.keila.io/api/#/Segment" target="_blank"
+                >Segments</a
+              >
+            </li>
+            <li>
+              <a href="https://app.keila.io/api/#/Campaign" target="_blank"
+                >Campaigns</a
+              >
+            </li>
+          </ul>
+        </li>
       </ul>
     </nav>
-    <article
-      class="flex-grow p-5 pt-0 md:pb-10 overflow-hidden bg-white rounded"
-    >
+    <article class="flex-grow p-5 md:p-10 md:pt-5 overflow-hidden">
       <nuxt-content :document="article" />
       <nuxt-link
         v-if="next"
@@ -74,14 +96,16 @@ export default {
 </script>
 
 <style scoped>
-@apply color-gray-800;
-
 nav a {
-  @apply block px-10 py-5 rounded font-medium;
+  @apply block px-2 py-2 rounded font-medium text-gray-800;
 }
 
 nav li.with-sub > a {
-  @apply font-bold bg-transparent text-gray-900;
+  @apply font-bold bg-transparent text-gray-700;
+}
+
+nav > ul > li + li {
+  @apply mt-2;
 }
 
 nav a:hover {
@@ -89,27 +113,39 @@ nav a:hover {
 }
 
 nav li li a {
-  @apply ml-10 pl-5 py-4;
+  @apply font-normal ml-4 py-1;
 }
 
 nav a.nuxt-link-exact-active {
   @apply bg-green-700 text-white;
 }
 
->>> .nuxt-content * + * {
-  @apply mt-5;
+>>> .nuxt-content > * + * {
+  @apply text-gray-800 mt-5;
 }
 
 >>> article h1 {
   @apply text-5xl mb-5 font-bold text-gray-800;
 }
 
->>> article h2 {
+>>> .nuxt-content > h2 {
   @apply text-xl font-semibold mt-10;
 }
 
 >>> article h3 {
   @apply text-xl italic;
+}
+
+>>> .nuxt-content > * + h3 {
+  @apply mt-10;
+}
+
+>>> .nuxt-content > h2 + h3 {
+  @apply mt-5;
+}
+
+>>> article h4 {
+  @apply font-bold;
 }
 
 >>> article * + p {
@@ -143,7 +179,11 @@ nav a.nuxt-link-exact-active {
 }
 
 >>> article code {
-  @apply bg-gray-100 border-2 border-gray-100;
+  @apply bg-gray-300 border-2 border-gray-300;
+}
+
+>>> article pre code {
+  @apply bg-transparent border-0;
 }
 
 >>> article .next {

@@ -18,3 +18,6 @@ Currently, the following sender types are supported:
 - AWS SES
 - Sendgrid
 - Mailgun
+
+Additionally, if you’re using our [managed newsletter solution at keila.io](https://www.keila.io/try),
+you can select *Send with Keila*.

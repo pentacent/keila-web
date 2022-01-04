@@ -14,6 +14,7 @@ Configure the PostgreSQL database used by Keila:
 | Variable      | Required | Default | Description  |
 | ---------------- | -------- | ------- | --------------------------------------- |
 | `DB_URL`         | yes      | -       | URL following the schema `postgres://user:password@host/database` |
+| `DB_ENABLE_SSL`  | no       | -       | Use SSL/TLS for the database connection |
 
 ## Root User
 When you start Keila for the first time, a root user is created. If you don’t

@@ -2,7 +2,7 @@
   <div>
     <header>
       <div class="container max-w-6xl mx-auto p-5 md:p-10 flex items-center">
-        <h1 class="text-gray-900 text-3xl sm:text-5xl text-center">
+        <h1 class="text-3xl sm:text-5xl text-center">
           <nuxt-link to="/">
             <logo class="h-16 -mr-3 w-auto inline-block" />
             Keila
@@ -36,16 +36,10 @@
             class="flex gap-2 align-center justify-end font-semibold text-black"
           >
             <li class="hidden md:block">
-              <nuxt-link to="/" class="px-3 py-5">Start</nuxt-link>
-            </li>
-            <li class="hidden md:block">
-              <nuxt-link to="/docs" class="px-3 py-5">Docs</nuxt-link>
-            </li>
-            <li class="hidden md:block">
               <a
                 href="https://github.com/pentacent/keila"
                 target="_blank"
-                class="px-3 py-5"
+                class="px-3 py-5 text-gray-800"
                 >GitHub</a
               >
             </li>

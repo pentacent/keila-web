@@ -1,10 +1,10 @@
 <template>
   <div>
     <header>
-      <div class="container max-w-4xl mx-auto p-5 md:p-10 flex items-center">
+      <div class="container max-w-6xl mx-auto p-5 md:p-10 flex items-center">
         <h1 class="text-gray-900 text-3xl sm:text-5xl text-center">
           <nuxt-link to="/">
-            <logo class="h-16 -mr-3 w-auto inline-block" />
+            <logo class="h-12 md:h-16 -mr-3 w-auto inline-block" />
             Keila
           </nuxt-link>
         </h1>
@@ -20,6 +20,9 @@
               <nuxt-link to="/docs" class="px-3 py-5">Docs</nuxt-link>
             </li>
             <li class="hidden md:block">
+              <nuxt-link to="/try" class="px-3 py-5">Pricing</nuxt-link>
+            </li>
+            <li class="hidden md:block">
               <a
                 href="https://github.com/pentacent/keila"
                 target="_blank"
@@ -32,12 +35,12 @@
               <a href="https://app.keila.io" class="px-3 py-5">Login</a>
             </li>
             <li class="block">
-              <nuxt-link
-                to="/try"
+              <a
+                href="https://app.keila.io"
                 class="p-3 bg-green-600 font-semibold text-white rounded-md hover:bg-green-500"
               >
                 Try now
-              </nuxt-link>
+              </a>
             </li>
           </ul>
         </nav>
@@ -91,9 +94,9 @@ export default {
 body {
   font-family: Inter, Arial, Helvetica, sans-serif;
   /*@apply bg-gradient-to-b from-indigo-800 via-indigo-300 to-green-100;*/
-  @apply bg-gradient-to-b from-white via-green-300 to-pink-600;
+  /* @apply bg-gradient-to-b from-white via-green-300 to-pink-600;
   @apply bg-fixed bg-gradient-to-b from-white via-gray-100 to-gray-200;
-  overflow-y: scroll;
+  overflow-y: scroll; */
 }
 
 .legal .nuxt-content {

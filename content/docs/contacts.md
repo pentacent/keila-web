@@ -1,7 +1,7 @@
 ---
 title: Contacts
 slug: contacts
-next: forms
+next: segments
 ---
 
 # Contacts
@@ -12,6 +12,12 @@ You can see a list of all contacts on the *Contacts* page which is accessible
 from the main menu:
 
 <docs-image src="docs/contacts.png" alt="Screenshot of the contacts overview page in Keila"></docs-image>
+
+## Contact Data
+
+You can store additional data for every contact. This data needs to be in [JSON format](https://en.wikipedia.org/wiki/JSON) and can also include nested fields.
+
+<docs-image src="docs/contact.png" alt="Screenshot of editing a contact with custom data in Keila"></docs-image>
 
 ## Importing Contacts
 

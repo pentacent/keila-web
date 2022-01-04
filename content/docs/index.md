@@ -1,6 +1,6 @@
 ---
 slug: index 
-next: installation
+next: senders
 ---
 
 # Welcome to the Keila Docs
