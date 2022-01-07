@@ -5,9 +5,9 @@
     >
       <lazy-hydrate never>
         <div>
-          <p class="text-3xl md:text-5xl font-semibold">
+          <h1 class="text-3xl md:text-5xl font-semibold">
             Email Newsletters: Reliable &amp; Easy.<br />
-          </p>
+          </h1>
 
           <p class="text-xl md:text-2xl font-medium text-gray-700">
             Grow your contact lists, use custom data, and send your campaigns
