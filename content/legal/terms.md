@@ -4,7 +4,7 @@ slug: terms
 ---
 # Terms and Conditions
 
-Pentacent – Philipp Schmieder Medien ("Pentacent" or "we") is the operator of the Managed Keila Service on [app.keila.io](app.keila.io) (we’ll refer to it simply as "Managed Keila" after this).
+Pentacent – Philipp Schmieder Medien ("Pentacent" or "we") is the operator of the Managed Keila Service on [app.keila.io](https://app.keila.io) (we’ll refer to it simply as "Managed Keila" after this).
 
 The following terms and conditions govern all use of Managed Keila. Managed Keila is offered subject to your acceptance without modification of all of the terms and conditions contained herein and all other operating rules, policies (including, without limitation, [our privacy policy](/privacy)) and procedures that may be published from time to time by Pentacent (collectively, the "Agreement").
 
