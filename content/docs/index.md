@@ -1,4 +1,5 @@
 ---
+title: Documentation
 slug: index 
 next: senders
 ---

@@ -84,7 +84,7 @@ export default {
         {
           hid: 'og:title',
           property: 'og:title',
-          content: 'Keila - Open Source Newsletters',
+          content: 'Keila - Open Source Email Newsletters',
         },
         {
           hid: 'og:description',

@@ -204,6 +204,7 @@ export default {
   },
   head() {
     return {
+      title: 'Try for free & self hosting options - Keila',
       script: [
         {
           hid: 'paddle',

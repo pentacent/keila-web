@@ -92,6 +92,20 @@ export default {
         )[0] || null
     }
   },
+  head() {
+    const title = this.article.title
+    if (!title) return {}
+    return {
+      title: `${title} - Keila Open Source Email Newsletters`,
+      meta: [
+        {
+          hid: 'og:title',
+          property: 'og:title',
+          content: `${title} - Keila Open Source Email Newsletters`,
+        },
+      ],
+    }
+  },
 }
 </script>
 
