@@ -190,7 +190,7 @@
             </li>
             <li class="flex mt-5">
               <check-complete class="mr-2 flex-shrink-0" />
-              <p>Powerful segementation and custom fields.</p>
+              <p>Powerful segmentation and custom fields.</p>
             </li>
             <li class="flex mt-5">
               <check-complete class="mr-2 flex-shrink-0" />
