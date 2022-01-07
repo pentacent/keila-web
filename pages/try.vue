@@ -3,10 +3,11 @@
     <div
       class="container max-w-6xl mx-auto p-5 md:p-10 text-gray-800 rounded shadow-lg"
     >
-      <h1 class="text-5xl font-semibold">Try Keila for free!</h1>
+      <h1 class="text-5xl font-semibold">Try Keila for free or self-host!</h1>
       <p class="text-3xl font-medium text-gray-700">
-        Your choice: Install Keila on your own server or give our hosted service
-        a try!
+        <strong>With Keila it’s your choice:</strong>
+        Try our fully managed email newsletter service for free - or run Keila
+        on your own servers!
       </p>
       <div class="mt-12 -mx-5 md:-mx-10 p-5 md:p-10 bg-green-300 text-black">
         <h2
