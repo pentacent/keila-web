@@ -42,5 +42,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  head() {
+    return {
+      title: 'Credits - Keila',
+    }
+  },
+}
 </script>

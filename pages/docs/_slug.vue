@@ -96,7 +96,7 @@ export default {
     const title = this.article.title
     if (!title) return {}
     return {
-      title: `${title} - Keila Open Source Email Newsletters`,
+      title: `${title} - Keila`,
       meta: [
         {
           hid: 'og:title',
