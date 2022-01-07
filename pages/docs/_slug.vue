@@ -5,7 +5,7 @@
     >
       <ul>
         <li>
-          <nuxt-link to="/docs/">Introduction </nuxt-link>
+          <nuxt-link to="/docs">Introduction </nuxt-link>
         </li>
         <li class="with-sub">
           <nuxt-link to="/docs/installation">Installation</nuxt-link>
