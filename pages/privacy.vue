@@ -1,7 +1,7 @@
 <template>
   <lazy-hydrate>
     <div
-      class="container legal max-w-4xl mx-auto bg-white p-5 md:p-10 text-gray-800 rounded shadow-lg"
+      class="container legal max-w-6xl mx-auto p-5 md:p-10 text-gray-800 rounded shadow-lg"
     >
       <nuxt-content :document="article" />
     </div>
