@@ -28,4 +28,9 @@ Keila can import contacts from CSV files. Make sure to follow the instructions
 on the *Import Contacts* page to ensure your file is correctly formatted will be
 imported successfully.
 
+Use the checkbox *Replace to duplicates* to determine what should happen with
+email addresses that already exist within your Keila project. If you check the
+option, existing contacts will be updated from your import file. If you disable
+the option, existing contacts will remain unchanged.
+
 <docs-image src="docs/contacts-import.png" alt="Screenshot of the contacts import page in Keila"></docs-image>
