@@ -57,7 +57,7 @@ We never rent or sell your data to third parties. We limit the amount of data th
 *Law enforcement*: We comply with disclosure requests by governmental bodies. If we determine in good faith that it’s required to prevent harm to any person, fraud or abuse, we may still disclose your data to governmental authorities or third parties.
 
 ## How long do we store your data?
-Account data is stored as long as you keep using Keila. When request the deletion of your account, your data will be deleted within 14 days.
+Account data is stored as long as you keep using Keila. When you request the deletion of your account, your data will be deleted within 14 days.
 
 Due to our legal obligation to preserve business records, payment transaction data and invoices are stored for a minimum of ten calendar years.
 
