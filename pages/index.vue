@@ -109,6 +109,128 @@
       </lazy-hydrate>
 
       <lazy-hydrate never>
+        <div class="-mx-5 md:-mx-10 px-5 md:px-10 py-12 bg-green-100">
+          <h2
+            class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-12 text-green-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"
+              />
+            </svg>
+            Some Things You’ll Love About Keila
+          </h2>
+          <p class="mt-5"></p>
+          <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-y-10">
+            <div>
+              <h3 class="text-xl font-bold">Import Existing Contacts</h3>
+              <p class="text-gray-700">
+                Keila makes it really easy to get started if you have a list of
+                existing contacts. Simply
+                <nuxt-link
+                  to="docs/contacts#importing-contacts"
+                  class="text-green-700"
+                  >upload a CSV file</nuxt-link
+                >
+                and you’re ready to go.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">Custom Data &amp; Tags</h3>
+              <p class="text-gray-700">
+                Complete freedom to add custom data and tags to your contacts.
+                Use data to filter contacts and as merge fields in campaigns.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">Powerful Segmentation</h3>
+              <p class="text-gray-700">
+                Create smart subsets of your contact lists. Build segments with
+                the
+                <nuxt-link to="/docs/segments" class="text-green-700"
+                  >visual segment editor</nuxt-link
+                >
+                or our
+                <nuxt-link
+                  to="/docs/segments#keila-query-language"
+                  class="text-green-700"
+                  >powerful query language</nuxt-link
+                >.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">Built for Privacy</h3>
+              <p class="text-gray-700">
+                Keila gives you the stats you need while respecting the privacy
+                of your contacts.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">Own Your Data</h3>
+              <p class="text-gray-700">
+                With Keila, your data is yours. If you use our managed email
+                newsletter service, we will never share your data with third
+                parties.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">Hosted in the EU</h3>
+              <p class="text-gray-700">
+                Our managed email newsletter service is fully operated within
+                the European Union, guaranteeing strict European privacy
+                standards.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">Live Statistics</h3>
+              <p class="text-gray-700">
+                As soon as you click <em>Send</em>, Keila gives you live
+                statistics for your newsletter campaign, including open and
+                click rates.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">Integrate &amp; Automate</h3>
+              <p class="text-gray-700">
+                Integrate your email newsletter with other applications using
+                Keila’s powerful
+                <nuxt-link to="/docs/api" class="text-green-700">API</nuxt-link>
+                for managing contacts and email campaigns.
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold">OpenSource &amp; Self-Hosting</h3>
+              <p class="text-gray-700">
+                Keila is Free/Libre Open Source Software. You can run it on your
+                own servers using the code on
+                <a
+                  href="https://github.com/pentacent/keila"
+                  class="text-green-700"
+                  >GitHub</a
+                >
+                or our
+                <a
+                  href="https://hub.docker.com/r/pentacent/keila"
+                  class="text-green-700"
+                  >official Docker image</a
+                >
+                image.
+              </p>
+            </div>
+          </div>
+        </div>
+      </lazy-hydrate>
+
+      <lazy-hydrate never>
         <div class="my-16">
           <h2
             class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
