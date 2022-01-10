@@ -3,7 +3,7 @@ title: Campaigns
 slug: campaigns
 ---
 
-# Cmapaigns: Create, Schedule, and Send Your Newsletters
+# Campaigns: Create, Schedule, and Send Your Newsletters
 
 *Campaigns* are the emails you send to your contacts.
 
@@ -43,3 +43,8 @@ trick you can use with Keila:
 
 `#### [Your text](https://example.com) ####` is automatically turned into a
 call-to-action button.
+
+## Scheduling Campaigns
+
+You can schedule your newsletters to be sent at a later date. In order to do
+that, click on *Schedule* on the top right and select the desired date and time.

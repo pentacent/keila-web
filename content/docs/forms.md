@@ -6,10 +6,10 @@ next: campaigns
 
 # Forms: Create and Embed Newsletter Signup Forms
 
-*Forms* are how new contacts usually get into your Keila database.
+Create *Forms* to allow new contacts to sign up to your newsletter.
 
-You can either use them as stand-alone landing pages or include Keila forms into
-existing websites.
+You can either use them as stand-alone landing pages or include Keila signup
+forms in your existing websites.
 
 In order to create a form, navigate to the *Forms* page and click on *Create new
 Form*.
