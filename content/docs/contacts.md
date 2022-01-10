@@ -4,7 +4,7 @@ slug: contacts
 next: segments
 ---
 
-# Contacts
+# Contacts: Manage Email Contacts & Custom Data
 
 Subscribers to your newsletter are called *Contacts* in Keila.
 

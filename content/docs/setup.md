@@ -3,7 +3,7 @@ title: Setup
 slug: setup
 ---
 
-# First Steps
+# Self-Hosting Keila: First Steps
 
 When you start Keila for the first time, the database you’ve configured with
 `DB_URL` is set up automatically.

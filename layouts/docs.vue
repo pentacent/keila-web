@@ -2,12 +2,12 @@
   <div>
     <header>
       <div class="container max-w-6xl mx-auto p-5 md:p-10 flex items-center">
-        <h1 class="text-3xl sm:text-5xl text-center">
+        <div class="text-3xl sm:text-5xl text-center">
           <nuxt-link to="/">
             <logo class="h-16 -mr-3 w-auto inline-block" />
             Keila
           </nuxt-link>
-        </h1>
+        </div>
         <div class="flex-grow"></div>
         <div class="relative flex-grow pr-4">
           <input

@@ -139,7 +139,7 @@ nav a.nuxt-link-exact-active {
 }
 
 >>> article h1 {
-  @apply text-5xl mb-5 font-bold text-gray-800;
+  @apply text-3xl mb-5 font-bold text-gray-800;
 }
 
 >>> .nuxt-content > h2 {

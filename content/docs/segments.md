@@ -4,7 +4,7 @@ slug: segments
 next: forms
 ---
 
-# Segments
+# Segments: Build Smart Contact Segments
 
 Keila enables you to build subsets of your contact list. These subsets are called
 *Segments*.

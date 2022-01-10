@@ -3,7 +3,7 @@ title: Campaigns
 slug: campaigns
 ---
 
-# Campaigns
+# Cmapaigns: Create, Schedule, and Send Your Newsletters
 
 *Campaigns* are the emails you send to your contacts.
 

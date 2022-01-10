@@ -4,7 +4,7 @@ slug: configuration
 next: setup
 ---
 
-# Configuration
+# Self-Hosting Keila: Configuration
 
 You can configure Keila with environment variables.
 

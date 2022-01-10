@@ -4,7 +4,7 @@ slug: senders
 next: contacts
 ---
 
-# Senders
+# Senders: Send Your Newsletters With Your Favorite Email Service
 
 Before you can send your first campaign with Keila, you need to define a *Sender*.
 

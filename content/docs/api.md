@@ -4,7 +4,7 @@ slug: api
 ---
 
 
-# API
+# API: Integrate Email Newsletters Into Your Existing Apps
 
 You can use the Keila API to manage your contacts and campaigns.
 

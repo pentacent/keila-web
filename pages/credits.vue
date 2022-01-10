@@ -3,7 +3,7 @@
     <div
       class="container max-w-4xl mx-auto bg-white p-10 text-gray-800 rounded-t"
     >
-      <p class="text-5xl font-semibold">Credits<br /></p>
+      <h1 class="text-5xl font-semibold">Credits<br /></h1>
       <p>
         This website is built with
         <a class="underline" href="https://nuxtjs.org/">Nuxt</a>.

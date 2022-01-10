@@ -3,7 +3,7 @@ title: Requirements
 slug: installation
 next: configuration
 ---
-# Installation
+# Self-Hosting Keila: Requirements
 
 This guide leads you through the installation of Keila on your own server.
 

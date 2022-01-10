@@ -4,7 +4,7 @@ slug: forms
 next: campaigns
 ---
 
-# Forms
+# Forms: Create and Embed Newsletter Signup Forms
 
 *Forms* are how new contacts usually get into your Keila database.
 
