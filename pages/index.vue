@@ -208,7 +208,7 @@
               </p>
             </div>
             <div>
-              <h3 class="text-xl font-bold">OpenSource &amp; Self-Hosting</h3>
+              <h3 class="text-xl font-bold">Open Source &amp; Self-Hosting</h3>
               <p class="text-gray-700">
                 Keila is Free/Libre Open Source Software. You can run it on your
                 own servers using the code on
