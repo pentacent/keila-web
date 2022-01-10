@@ -408,5 +408,23 @@ export default {
   components: {
     'lazy-hydrate': LazyHydrate,
   },
+  head() {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content:
+            'A reliable and easy-to-use email newsletter tool. Keila is an Open Source alternative to Mailchimp that you can host yourself.',
+        },
+        {
+          hid: 'og:description',
+          property: 'og:description',
+          content:
+            'A reliable and easy-to-use email newsletter tool. Keila is an Open Source alternative to Mailchimp that you can host yourself.',
+        },
+      ],
+    }
+  },
 }
 </script>
