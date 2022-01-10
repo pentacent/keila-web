@@ -6,7 +6,8 @@ slug: api
 
 # API: Integrate Email Newsletters Into Your Existing Apps
 
-You can use the Keila API to manage your contacts and campaigns.
+You can use the Keila API to integrate your email newsletters with your existing
+apps, and programmatically manage your contacts and campaigns.
 
 The API design is based on [JSON API](https://jsonapi.org/), making it easy to
 understand and work with.

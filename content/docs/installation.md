@@ -5,7 +5,8 @@ next: configuration
 ---
 # Self-Hosting Keila: Requirements
 
-This guide leads you through the installation of Keila on your own server.
+This guide leads you through the installation for self-hosting Keila on your own
+server.
 
 ## Requirements
 

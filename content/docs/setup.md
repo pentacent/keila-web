@@ -5,8 +5,8 @@ slug: setup
 
 # Self-Hosting Keila: First Steps
 
-When you start Keila for the first time, the database you’ve configured with
-`DB_URL` is set up automatically.
+When you start your self-hosted instance of Keila for the first time, the
+database you’ve configured with `DB_URL` is set up automatically.
 
 Keila automatically creates a root user with full admin privileges and prints
 the credentials to stdout on first launch. To specify a custom email and

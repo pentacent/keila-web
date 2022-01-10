@@ -6,7 +6,8 @@ next: setup
 
 # Self-Hosting Keila: Configuration
 
-You can configure Keila with environment variables.
+When self-hosting Keila, you can configure most aspects of the application with
+environment variables.
 
 ## Database
 Configure the PostgreSQL database used by Keila:

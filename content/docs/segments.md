@@ -6,11 +6,11 @@ next: forms
 
 # Segments: Build Smart Contact Segments
 
-Keila enables you to build subsets of your contact list. These subsets are called
-*Segments*.
+Build smart subsets of your contact list with Keila using contact metadata or
+custom data.These subsets are called *Segments*.
 
-You can either use the visual editor to combine conditions, or use
-the query editor to create more complex segments.
+You can either use the visual editor to combine conditions, or build more
+complex segments with the query editor.
 
 <docs-image src="docs/segment.png" alt="Screenshot of editing a contact segment in Keila"></docs-image>
 

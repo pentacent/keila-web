@@ -194,8 +194,7 @@
               <h3 class="text-xl font-bold">Live Statistics</h3>
               <p class="text-gray-700">
                 As soon as you click <em>Send</em>, Keila gives you live
-                statistics for your newsletter campaign, including open and
-                click rates.
+                statistics for your newsletters, including open and click rates.
               </p>
             </div>
             <div>
