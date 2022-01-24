@@ -36,7 +36,7 @@
             </li>
             <li class="block">
               <a
-                href="https://app.keila.io"
+                href="https://app.keila.io/auth/register"
                 class="p-3 bg-green-600 font-semibold text-white rounded-md hover:bg-green-500"
               >
                 Try now
