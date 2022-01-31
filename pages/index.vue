@@ -230,6 +230,54 @@
       </lazy-hydrate>
 
       <lazy-hydrate never>
+        <div class="py-12">
+          <h2
+            class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-12 text-green-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+              />
+            </svg>
+            What Our Users Say
+          </h2>
+          <div class="grid gap-5 sm:grid-cols-1 mt-5">
+            <blockquote class="flex flex-row gap-4">
+              <img
+                :src="require('~/assets/testimonials/anouk.jpg')"
+                alt="Anouk Ooms"
+                class="rounded-full h-24"
+              />
+              <div>
+                <p class="text-xl gray-600">
+                  »Keila has helped us send millions of emails to subscribers
+                  all across Europe while keeping full control of our data.«
+                </p>
+                <cite
+                  >Anouk Ooms, General Secretary of
+                  <a
+                    href="https://www.volteuropa.org"
+                    target="_blank"
+                    class="underline"
+                    >Volt Europa</a
+                  ></cite
+                >
+              </div>
+            </blockquote>
+          </div>
+        </div>
+      </lazy-hydrate>
+
+      <lazy-hydrate never>
         <div class="my-16">
           <h2
             class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
