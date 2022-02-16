@@ -3,12 +3,12 @@
     <div
       class="container max-w-6xl mx-auto p-5 md:p-10 text-gray-800 rounded shadow-lg"
     >
-      <h1 class="text-5xl font-semibold">Try Keila for free or self-host!</h1>
-      <p class="text-3xl font-medium text-gray-700">
-        <strong>With Keila it’s your choice:</strong>
-        Try our fully managed email newsletter service for free - or run Keila
-        on your own servers!
-      </p>
+      <h1 class="text-5xl font-semibold">{{ $t('h1') }}</h1>
+      <i18n tag="p" path="tagline" class="text-3xl font-medium text-gray-700">
+        <template #highlight
+          ><strong>{{ $t('tagline:highlight') }}</strong></template
+        >
+      </i18n>
       <div class="mt-12 -mx-5 md:-mx-10 p-5 md:p-10 bg-green-300 text-black">
         <h2
           class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
@@ -25,15 +25,14 @@
               stroke-linejoin="round"
               stroke-width="2"
               d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-            />
-          </svg>
-          Try Keila as a Service
+            /></svg
+          >{{ $t('saas:h2') }}
         </h2>
-        <p class="text-xl mt-5">
-          Start creating and sending newsletters right away. Try
-          <span class="font-semibold">Keila as a Service</span> and we’ll take
-          care of everything.
-        </p>
+        <i18n tag="p" path="saas:tagline" class="text-xl mt-5">
+          <template #highlight
+            ><strong>{{ $t('saas:tagline:highlight') }}</strong></template
+          >
+        </i18n>
         <br />
         <p>
           <a
@@ -52,9 +51,8 @@
                 stroke-linejoin="round"
                 stroke-width="2"
                 d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-              />
-            </svg>
-            Try Keila for free now
+              /></svg
+            >{{ $t('saas:cta') }}
           </a>
         </p>
       </div>
@@ -67,25 +65,26 @@
           >
             <h3 class="font-bold">
               <span class="text-2xl">{{ plan.name }}</span>
-              <span class="block -mt-2 text-sm">{{ plan.net }}/month</span>
+              <span class="block -mt-2 text-sm">{{
+                $t('saas:price', { amount: plan.net })
+              }}</span>
               <span
                 v-if="plan.loaded"
                 class="block -mt-1 text-xs text-green-600"
+                >{{ $t('saas:price:gross', { amount: plan.gross }) }}</span
               >
-                ({{ plan.gross }} incl tax)
-              </span>
-              <span v-else class="block -mt-1 text-xs text-green-600">
-                ({{ plan.gross }} excl tax)
-              </span>
+              <span v-else class="block -mt-1 text-xs text-green-600">{{
+                $t('saas:price:net', { amount: plan.gross })
+              }}</span>
             </h3>
             <ul>
               <li class="flex">
                 <check-complete class="mr-2 flex-shrink-0" />
-                {{ plan.limit }} emails/month
+                {{ $t('saas:emails:limited', { limit: $n(plan.limit) }) }}
               </li>
               <li class="flex">
                 <check-complete class="mr-2 flex-shrink-0" />
-                unlimited contacts
+                {{ $t('saas:contacts:unlimited') }}
               </li>
             </ul>
           </div>
@@ -94,9 +93,8 @@
           <a
             href="https://app.keila.io/auth/register"
             class="font-semibold underline"
+            >{{ $t('saas:cta-link') }}</a
           >
-            Try Keila for free now. No credit card required.
-          </a>
         </p>
       </div>
 
@@ -117,65 +115,19 @@
                 stroke-linejoin="round"
                 stroke-width="2"
                 d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
-              />
-            </svg>
-            Try Keila on Your Own Server
+              /></svg
+            >{{ $t('self:h2') }}
           </h2>
-          <p class="text-xl mt-5">
-            Keila is free/libre Open Source software. You can check out its
-            source code on GitHub and install it on your own servers.
-          </p>
+          <i18n tag="p" path="self:tagline" class="text-xl mt-5" />
           <br /><br />
           <p>
-            <nuxt-link class="p-5 bg-green-600 text-white" to="/docs"
-              >To the Installation Guide</nuxt-link
-            >
+            <nuxt-link class="p-5 bg-green-600 text-white" to="/docs">{{
+              $t('self:cta')
+            }}</nuxt-link>
           </p>
         </div>
       </lazy-hydrate>
-      <lazy-hydrate never>
-        <div class="my-16">
-          <h2
-            class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              class="h-12 text-green-600"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-              />
-            </svg>
-            Participate &amp; Follow us!
-          </h2>
-          <ul class="text-lg">
-            <li class="mt-5">
-              <a class="underline" href="https://twitter.com/keila_io"
-                >Follow the Keila Project on Twitter</a
-              >
-            </li>
-            <li class="mt-5">
-              <a
-                class="underline"
-                href="https://app.keila.io/forms/frm_GX8qGEZd"
-              >
-                Sign up to our newsletter
-              </a>
-            </li>
-            <li class="mt-5">
-              <a class="underline" href="https://github.com/pentacent/keila"
-                >Join the development on GitHub</a
-              >
-            </li>
-          </ul>
-        </div>
-      </lazy-hydrate>
+      <participate-cta />
     </div>
   </div>
 </template>
@@ -194,12 +146,12 @@ export default {
     return {
       paddleReady: false,
       plans: [
-        plan('XS', 660926, '2,000', '€8', '€8.00'),
-        plan('S', 660927, '5,000', '€16', '€16.00'),
-        plan('M', 660928, '15,000', '€32', '€32.00'),
-        plan('L', 660929, '50,000', '€64', '€64.00'),
-        plan('XL', 660930, '100,000', '€128', '€128.00'),
-        plan('XXL', 660931, '250,000', '€256', '€256.00'),
+        plan('XS', 660926, 2000, '€8', '€8.00'),
+        plan('S', 660927, 5000, '€16', '€16.00'),
+        plan('M', 660928, 15000, '€32', '€32.00'),
+        plan('L', 660929, 50000, '€64', '€64.00'),
+        plan('XL', 660930, 100000, '€128', '€128.00'),
+        plan('XXL', 660931, 250000, '€256', '€256.00'),
       ],
     }
   },
@@ -237,3 +189,48 @@ export default {
   },
 }
 </script>
+
+<i18n>
+{
+  "en": {
+    "h1": "Try Keila for free or self-host!",
+    "tagline": "{highlight} Try our fully managed email newsletter service for free - or run Keila on your own servers!",
+    "tagline:highlight": "With Keila it’s your choice:",
+    "saas:h2": "Try Keila as a Service",
+    "saas:tagline": "Start creating and sending newsletters right away. Try {highlight} and we’ll take care of everything.",
+    "saas:tagline:highlight": "Keila as a Service",
+    "saas:cta": "Try Keila for free now!",
+    "saas:price": "{amount}/month",
+    "saas:price:net": "({amount} excl tax)",
+    "saas:price:gross": "({amount} incl tax)",
+    "saas:emails:limited": "{limit} emails/month",
+    "saas:emails:unlimited": "unlimited emails",
+    "saas:contacts:limited": "{limit} contacts",
+    "saas:contacts:unlimited": "unlimited contacts",
+    "saas:cta-link": "Try Keila for free now. No credit card required.",
+    "self:h2": "Try Keila on Your Own Server",
+    "self:tagline": "Keila is free/libre Open Source software. You can check out its source code on GitHub and install it on your own servers.",
+    "self:cta": "To the Installation Guide"
+  },
+  "de": {
+    "h1": "Teste Keila kostenlos oder hoste es selbst!",
+    "tagline": "{highlight} Teste unseren verwalteten E-Mail-Newsletter-Dienst kostenlos – oder installiere Keila auf einem eigenen Server!",
+    "tagline:highlight": "Mit Keila hast du die Wahl:",
+    "saas:h2": "Teste Keila as a Service",
+    "saas:tagline": "Lege sofort los und sende deinen Newsletter. Teste {highlight} und wir kümmern uns um alles.",
+    "saas:tagline:highlight": "Keila as a Service",
+    "saas:cta": "Keila jetzt kostenlos testen!",
+    "saas:price": "{amount}/Monat",
+    "saas:price:net": "({amount} zzgl MwSt)",
+    "saas:price:gross": "({amount} inkl MwSt)",
+    "saas:emails:limited": "{limit} E-Mails/Monat",
+    "saas:emails:unlimited": "beliebig viele E-Mails",
+    "saas:contacts:limited": "{limit} Kontakte",
+    "saas:contacts:unlimited": "beliebig viele Kontakte",
+    "saas:cta-link": "Keila jetzt kostenlos testen. Es wird keine Kreditkarte benötigt.",
+    "self:h2": "Keila auf einem eigenen Server installieren",
+    "self:tagline": "Keila ist Freie Open Source Software. Du findest den vollständigen Quelltext auf GitHub und kannst Keila auf einem eigenen Server selbst hosten.",
+    "self:cta": "Zum Installation Guide"
+  }
+}
+</i18n>

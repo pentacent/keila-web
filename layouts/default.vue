@@ -3,7 +3,7 @@
     <header>
       <div class="container max-w-6xl mx-auto p-5 md:p-10 flex items-center">
         <div class="text-gray-900 text-3xl sm:text-5xl text-center">
-          <nuxt-link to="/">
+          <nuxt-link :to="localePath('/')">
             <logo class="h-12 md:h-16 -mr-3 w-auto inline-block" />
             Keila
           </nuxt-link>
@@ -14,32 +14,40 @@
             class="flex flex-wrap gap-2 align-center justify-end font-semibold text-black"
           >
             <li class="hidden md:block">
-              <nuxt-link to="/" class="px-3 py-5">Start</nuxt-link>
+              <nuxt-link :to="localePath('/')" class="px-3 py-5">{{
+                $t('menu:home')
+              }}</nuxt-link>
             </li>
             <li class="hidden md:block">
-              <nuxt-link to="/docs" class="px-3 py-5">Docs</nuxt-link>
+              <nuxt-link to="/docs" class="px-3 py-5">{{
+                $t('menu:docs')
+              }}</nuxt-link>
             </li>
             <li class="hidden md:block">
-              <nuxt-link to="/try" class="px-3 py-5">Pricing</nuxt-link>
+              <nuxt-link :to="localePath('/try')" class="px-3 py-5">{{
+                $t('menu:pricing')
+              }}</nuxt-link>
             </li>
             <li class="hidden md:block">
               <a
                 href="https://github.com/pentacent/keila"
                 target="_blank"
                 class="px-3 py-5"
-                >GitHub</a
+                >{{ $t('menu:github') }}</a
               >
             </li>
             <div class="hidden md:block flex-grow"></div>
             <li class="block">
-              <a href="https://app.keila.io" class="px-3 py-5">Login</a>
+              <a href="https://app.keila.io" class="px-3 py-5">{{
+                $t('menu:login')
+              }}</a>
             </li>
             <li class="block">
               <a
                 href="https://app.keila.io/auth/register"
                 class="p-3 bg-green-600 font-semibold text-white rounded-md hover:bg-green-500"
               >
-                Try now
+                {{ $t('menu:try') }}
               </a>
             </li>
           </ul>
@@ -127,3 +135,24 @@ body {
   @apply text-sm text-gray-600 mt-8;
 }
 </style>
+
+<i18n>
+{
+  "en": {
+    "menu:home": "Start",
+    "menu:docs": "Docs",
+    "menu:pricing": "Pricing",
+    "menu:github": "GitHub",
+    "menu:login": "Login",
+    "menu:try": "Try now"
+  },
+  "de": {
+    "menu:home": "Start",
+    "menu:docs": "Docs",
+    "menu:pricing": "Preise",
+    "menu:github": "GitHub",
+    "menu:login": "Login",
+    "menu:try": "Jetzt testen"
+  }
+}
+</i18n>

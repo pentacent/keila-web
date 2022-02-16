@@ -67,6 +67,9 @@
 <script>
 export default {
   layout: 'docs',
+  nuxtI18n: {
+    locales: ['en'],
+  },
   data() {
     return { article: {}, next: null }
   },

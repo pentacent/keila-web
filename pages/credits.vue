@@ -43,6 +43,9 @@
 
 <script>
 export default {
+  nuxtI18n: {
+    locales: ['en'],
+  },
   head() {
     return {
       title: 'Credits - Keila',

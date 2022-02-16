@@ -6,17 +6,17 @@
     target="_blank"
   >
     <div class="flex flex-col">
-      <label for="contact_email">Email</label
+      <label for="contact_email">{{ $t('email') }}</label
       ><input
         id="contact_email"
         name="contact[email]"
-        placeholder="wonderful@you"
+        :placeholder="$t('email:placeholder')"
         class="bg-white-200 text-black shadow-sm p-2"
         type="email"
       />
     </div>
     <div class="flex flex-col">
-      <label for="contact_first_name">First name (optional)</label
+      <label for="contact_first_name">{{ $t('first-name') }}</label
       ><input
         id="contact_first_name"
         class="bg-white-200 text-black shadow-sm p-2"
@@ -36,15 +36,16 @@
       <button
         class="inline-flex items-center gap-4 px-4 py-4 bg-green-600 text-white font-semibold rounded-lg shadow-sm hover:bg-green-500 hover:shadow-lg"
       >
-        Sign up to Keila updates!
+        {{ $t('submit') }}
       </button>
     </div>
-    <div class="text-xs">
-      We won’t spam you!
-      <a href="https://pentacent.com/privacy" class="underline"
-        >Learn how we treat your data.</a
-      >
-    </div>
+    <i18n tag="div" path="privacy-hint" class="text-xs">
+      <template #link>
+        <a href="https://pentacent.com/privacy" class="underline">{{
+          $t('privacy-hint:link')
+        }}</a>
+      </template>
+    </i18n>
   </form>
 </template>
 
@@ -91,3 +92,24 @@ export default {
   @apply block bg-white shadow animate-pulse h-10 w-10 m-4 rounded;
 }
 </style>
+
+<i18n>
+{
+  "en": {
+    "email": "Email",
+    "email:placeholder": "you.are@wonderful",
+    "first-name": "First name (optional)",
+    "submit": "Sign up to Keila updates!",
+    "privacy-hint": "We won’t spam you! {link}",
+    "privacy-hint:link": "Learn how we treat your data."
+  },
+  "de": {
+    "email": "E-Mail",
+    "email:placeholder": "du.bist@wunderbar",
+    "first-name": "Vorname (freiwillig)",
+    "submit": "Jetzt für Keila-Updates anmelden!",
+    "privacy-hint": "Wir schicken dir keinen Spam. Versprochen! {link}",
+    "privacy-hint:link": "Weitere Informationen zum Datenschutz."
+  }
+}
+</i18n>

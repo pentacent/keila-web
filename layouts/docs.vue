@@ -3,7 +3,7 @@
     <header>
       <div class="container max-w-6xl mx-auto p-5 md:p-10 flex items-center">
         <div class="text-3xl sm:text-5xl text-center">
-          <nuxt-link to="/">
+          <nuxt-link :to="localePath('/')">
             <logo class="h-16 -mr-3 w-auto inline-block" />
             Keila
           </nuxt-link>

@@ -12,6 +12,9 @@
 import LazyHydrate from 'vue-lazy-hydration'
 
 export default {
+  nuxtI18n: {
+    locales: ['en'],
+  },
   components: {
     'lazy-hydrate': LazyHydrate,
   },
