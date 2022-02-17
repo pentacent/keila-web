@@ -157,7 +157,7 @@ export default {
   },
   head() {
     return {
-      title: 'Try for free or run on your own servers - Keila',
+      title: this.$t('meta:title'),
       script: [
         {
           hid: 'paddle',
@@ -193,6 +193,7 @@ export default {
 <i18n>
 {
   "en": {
+    "meta:title": "Try for free or run on your own servers - Keila",
     "h1": "Try Keila for free or self-host!",
     "tagline": "{highlight} Try our fully managed email newsletter service for free - or run Keila on your own servers!",
     "tagline:highlight": "With Keila it’s your choice:",
@@ -213,6 +214,7 @@ export default {
     "self:cta": "To the Installation Guide"
   },
   "de": {
+    "meta:title": "Jetzt kostenlos testen oder selbst installieren - Keila",
     "h1": "Teste Keila kostenlos oder hoste es selbst!",
     "tagline": "{highlight} Teste unseren verwalteten E-Mail-Newsletter-Dienst kostenlos – oder installiere Keila auf einem eigenen Server!",
     "tagline:highlight": "Mit Keila hast du die Wahl:",

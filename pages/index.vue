@@ -489,18 +489,17 @@ export default {
   },
   head() {
     return {
+      title: this.$t('meta:title'),
       meta: [
         {
           hid: 'description',
           name: 'description',
-          content:
-            'A reliable and easy-to-use email newsletter tool. Keila is an Open Source alternative to Mailchimp that you can host yourself.',
+          content: this.$t('meta:description'),
         },
         {
           hid: 'og:description',
           property: 'og:description',
-          content:
-            'A reliable and easy-to-use email newsletter tool. Keila is an Open Source alternative to Mailchimp that you can host yourself.',
+          content: this.$t('meta:description'),
         },
       ],
     }
@@ -511,6 +510,8 @@ export default {
 <i18n>
 {
   "en": {
+    "meta:title": "Keila - Open Source Email Newsletters Easy & Reliable",
+    "meta:description": "A reliable and easy-to-use email newsletter tool. Keila is an Open Source alternative to Mailchimp that you can host yourself.",
     "h1": "Email Newsletters: Reliable & Easy",
     "tagline-1": "Grow your contact lists and send data-driven newsletter campaigns easier than ever before.",
     "tagline-2": "Keila is proudly Open Source, made in Germany and hosted in the EU 🇩🇪 🇪🇺",
@@ -574,6 +575,8 @@ export default {
     "features:roadmap": "Check out our development roadmap on GitHub."
   },
   "de": {
+    "meta:title": "Keila - Newsletter, zuverlässig & einfach. 100% Open Source",
+    "meta:description": "Die zuverlässige und benutzerfreundliche Lösung für E-Mail-Newsletter. Keila ist die Open-Source-Alternative zu Mailchimp.",
     "h1": "E-Mail-Newsletter: Zuverlässig & Einfach",
     "tagline-1": "Gewinne neue Abonnenten und sende datengetriebene Newsletter einfacher als je zuvor.",
     "tagline-2": "Keila ist Freie Software, entwickelt in Deutschland und gehosted in der EU 🇩🇪 🇪🇺",

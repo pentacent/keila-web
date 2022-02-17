@@ -84,8 +84,7 @@ export default {
         {
           hid: 'og:description',
           property: 'og:description',
-          content:
-            'We’re building a free alternative to Mailchimp that you can host yourself',
+          content: this.$t('meta:description'),
         },
         {
           hid: 'twitter:card',
@@ -139,6 +138,7 @@ body {
 <i18n>
 {
   "en": {
+    "meta:description": "A reliable and easy-to-use email newsletter tool. Keila is an Open Source alternative to Mailchimp that you can host yourself.",
     "menu:home": "Start",
     "menu:docs": "Docs",
     "menu:pricing": "Pricing",
@@ -147,6 +147,7 @@ body {
     "menu:try": "Try now"
   },
   "de": {
+    "meta:description": "Die zuverlässige und benutzerfreundliche Lösung für E-Mail-Newsletter. Keila ist die Open-Source-Alternative zu Mailchimp.",
     "menu:home": "Start",
     "menu:docs": "Docs",
     "menu:pricing": "Preise",
