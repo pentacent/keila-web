@@ -84,7 +84,7 @@ export default {
         {
           hid: 'og:description',
           property: 'og:description',
-          content: this.$t('meta:description')
+          content: this.$t('meta:description'),
         },
         {
           hid: 'twitter:card',
