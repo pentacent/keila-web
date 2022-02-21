@@ -41,7 +41,10 @@
 </template>
 
 <script>
+import LazyHydrate from 'vue-lazy-hydration'
+
 export default {
+  components: { LazyHydrate },
   data() {
     return { hCaptchaReady: false, captchaLoaded: false }
   },

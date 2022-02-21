@@ -69,7 +69,11 @@ const baseUrl = process.env.BASE_URL || ''
 export default {
   components: { logo },
   head() {
+    const i18nHead = this.$nuxtI18nHead
+      ? this.$nuxtI18nHead({ addSeoAttributes: true })
+      : {}
     return {
+      ...i18nHead,
       meta: [
         {
           hid: 'og:image',

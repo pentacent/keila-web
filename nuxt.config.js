@@ -3,27 +3,21 @@ export default {
   target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
-  head() {
-    const i18nHead = this.$nuxtI18nHead
-      ? this.$nuxtI18nHead({ addSeoAttributes: true })
-      : {}
-    return {
-      ...i18nHead,
-      title: 'Keila - Open Source Email Newsletters',
-      meta: [
-        { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { hid: 'description', name: 'description', content: '' },
-      ],
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-      script: [
-        {
-          hid: 'tawk',
-          src: 'https://embed.tawk.to/60dca0ef65b7290ac638bf28/1f9et9ak1',
-          defer: true,
-        },
-      ],
-    }
+  head: {
+    title: 'Keila - Open Source Email Newsletters',
+    meta: [
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: '' },
+    ],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    script: [
+      {
+        hid: 'tawk',
+        src: 'https://embed.tawk.to/60dca0ef65b7290ac638bf28/1f9et9ak1',
+        defer: true,
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
