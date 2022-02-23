@@ -374,9 +374,8 @@
                     href="https://en.wikipedia.org/wiki/Markdown"
                     target="_blank"
                     class="underline"
+                    >{{ $t('features:markdown:link') }}</a
                   >
-                    {{ $t('features:markdown:link') }}</a
-                  >.
                 </template>
               </i18n>
             </li>
@@ -394,9 +393,8 @@
                     href="https://shopify.github.io/liquid/"
                     target="_blank"
                     class="underline"
+                    >{{ $t('features:liquid:link') }}</a
                   >
-                    {{ $t('features:liquid:link') }}</a
-                  >.
                 </template>
               </i18n>
             </li>
@@ -604,7 +602,7 @@ export default {
     "highlights:stats:h3": "Live-Statistiken",
     "highlights:stats:text": "Sobald du auf Senden klickst, liefert Keila Statistiken, inklusive Klick- und Öffnungsraten.",
     "highlights:api:h3": "Integrieren & Automatisieren",
-    "highlights:api:text": "Integriere deinen Newsletter in andere Apps oder Websites mit Keilas mächtiger {link} zur Verwaltung von Kontakten und Kampagnen.",
+    "highlights:api:text": "Integriere deinen Newsletter in andere Apps oder Websites mit Keilas umfangreicher {link} zur Verwaltung von Kontakten und Kampagnen.",
     "highlights:api:link": "API",
     "highlights:floss:h3": "Open Source & Selbst hosten",
     "highlights:floss:text": "Keila ist Freie Open Source Software, die du auf eigenen Servern betreiben kannst. Nutze dazu den Code auf {link-github} oder unser {link-docker}.",
@@ -619,7 +617,7 @@ export default {
     "features:tagline:highlight": "Keila wird ständig weiterentwickelt.",
     "features:markdown": "Erstellung von hybriden Text- und HTML-E-Mails mit{link}",
     "features:markdown:link": "Markdown.",
-    "features:plain-text": "Erstellung von reinen Text-E-Mails",
+    "features:plain-text": "Erstellung von reinen Text-E-Mails.",
     "features:liquid": "Personalisierte E-Mails mit {link}.",
     "features:liquid:link": "Liquid",
     "features:senders": "Versenden von E-Mails über SMTP, Sendgrid, Mailgun oder AWS SES.",
