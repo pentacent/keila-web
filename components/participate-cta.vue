@@ -45,31 +45,6 @@ import LazyHydrate from 'vue-lazy-hydration'
 
 export default {
   components: { LazyHydrate },
-  data() {
-    return { hCaptchaReady: false, captchaLoaded: false }
-  },
-  head() {
-    return {
-      script: [
-        {
-          hid: 'hcaptcha',
-          src: 'https://hcaptcha.com/1/api.js?render=explicit',
-          defer: true,
-          async: true,
-          callback: () => {
-            this.hCaptchaReady = true
-          },
-        },
-      ],
-    }
-  },
-  watch: {
-    hCaptchaReady(ready) {
-      if (!ready) return
-      window.hcaptcha.render(this.$el.querySelector('.h-captcha'))
-      this.captchaLoaded = true
-    },
-  },
 }
 </script>
 
