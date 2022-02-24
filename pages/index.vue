@@ -615,7 +615,7 @@ export default {
     "features:h2": "Funktionen & Roadmap",
     "features:tagline": "{highlight} Hier sind einige bereits verfügbare Funktionen sowie Features, die sich derzeit in Entwicklung befinden:",
     "features:tagline:highlight": "Keila wird ständig weiterentwickelt.",
-    "features:markdown": "Erstellung von hybriden Text- und HTML-E-Mails mit{link}",
+    "features:markdown": "Erstellung von hybriden Text- und HTML-E-Mails mit {link}",
     "features:markdown:link": "Markdown.",
     "features:plain-text": "Erstellung von reinen Text-E-Mails.",
     "features:liquid": "Personalisierte E-Mails mit {link}.",
