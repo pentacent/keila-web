@@ -21,7 +21,9 @@ export default {
   },
   data() {
     return {
-      image: require(`~/assets/${this.src}`),
+      image: this.src.startsWith('~')
+        ? require(this.src)
+        : require(`~/assets/${this.src}`),
     }
   },
 }

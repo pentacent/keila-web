@@ -474,6 +474,57 @@
           </p>
         </div>
       </lazy-hydrate>
+
+      <lazy-hydrate v-if="updates.length > 0" never>
+        <div class="my-16">
+          <h2
+            class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              class="h-12 text-green-500"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+              />
+            </svg>
+            {{ $t('updates:h2') }}
+          </h2>
+          <ul>
+            <li
+              v-for="update in updates"
+              :key="update.slug"
+              class="flex flex-col gap-0 mt-5 items-top"
+            >
+              <formatted-date
+                :date="update.date"
+                class="text-xs whitespace-nowrap"
+              />
+              <nuxt-link
+                :to="localePath(`/updates/${update.slug}`)"
+                class="text-xl font-bold hover:underline"
+              >
+                {{ update.title }}</nuxt-link
+              >
+              <nuxt-content
+                :document="{ body: update.excerpt }"
+                class="text-gray-700 max-w-3xl"
+              />
+            </li>
+          </ul>
+          <p class="mt-10">
+            <nuxt-link class="underline" :to="localePath(`/updates`)">{{
+              $t('updates:link')
+            }}</nuxt-link>
+          </p>
+        </div>
+      </lazy-hydrate>
       <participate-cta />
     </div>
   </div>
@@ -484,6 +535,19 @@ import LazyHydrate from 'vue-lazy-hydration'
 export default {
   components: {
     'lazy-hydrate': LazyHydrate,
+  },
+  async asyncData({ $content, i18n, error }) {
+    const articles = await $content('updates')
+      .where({
+        language: i18n.locale,
+      })
+      .sortBy('date', 'desc')
+      .sortBy('type', 'asc')
+      .sortBy('title', 'asc')
+      .limit(3)
+      .fetch()
+
+    return { updates: articles }
   },
   head() {
     return {
@@ -570,7 +634,9 @@ export default {
     "features:automations": "Powerful email automations.",
     "features:your-idea": "… maybe your idea? {link}",
     "features:your-idea:link": "Let us know on GitHub!",
-    "features:roadmap": "Check out our development roadmap on GitHub."
+    "features:roadmap": "Check out our development roadmap on GitHub.",
+    "updates:h2": "Latest Updates",
+    "updates:link": "More Updates"
   },
   "de": {
     "meta:title": "Keila - Newsletter, zuverlässig & einfach. 100% Open Source",
