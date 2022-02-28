@@ -20,7 +20,7 @@ the *campaign level*.
 
 Specifying data at the campaign level allows the creation of fully automated
 campaigns, where some or all of the campaign text is generated based on custom
-data and a template .
+data and a template.
 
 ## Example
 
