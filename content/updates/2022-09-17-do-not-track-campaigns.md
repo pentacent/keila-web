@@ -1,5 +1,5 @@
 ---
-title: Rate Limiting for Senders
+title: Do-Not-Track Campaigns
 slug: do-not-track-campaigns
 type: added
 language: en
