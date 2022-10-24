@@ -7,7 +7,7 @@ date: 2022-09-05
 version: 0.10.0
 description: "Senders can now be rate-limited."
 ---
-It’s now possible to set rate-limits for senders and shared senders-
+It’s now possible to set rate-limits for senders and shared senders.
 <!--more-->
 To avoid overwhelming a mail server when sending out a campaign - or to make
 sure you’re respecting the limitations of a third-party service - Keila now
