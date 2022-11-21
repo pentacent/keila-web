@@ -21,6 +21,11 @@
       </h2>
       <ul class="text-lg">
         <li class="mt-5">
+          <a class="underline" rel="me" href="https://fosstodon.org/@keila">{{
+            $t('mastodon')
+          }}</a>
+        </li>
+        <li class="mt-5">
           <a class="underline" href="https://twitter.com/keila_io">{{
             $t('twitter')
           }}</a>
@@ -66,13 +71,15 @@ export default {
 {
   "en": {
     "h2": "Participate & Follow us",
-    "twitter": "Follow the Keila project on Twitter",
+    "mastodon": "Follow Keila on Mastodon",
+    "twitter": "Follow Keila on Twitter",
     "newsletter": "Sign up to our newsletter",
     "github": "Join the development on GitHub"
   },
   "de": {
     "h2": "Mach mit und bleibe auf dem Laufenden",
-    "twitter": "Folge dem Keila-Projekt auf Twitter",
+    "mastodon": "Folge Keila auf Mastodon",
+    "twitter": "Folge Keila auf Twitter",
     "newsletter": "Melde dich für unseren Newsletter an",
     "github": "Beteilige dich an der Entwicklung auf GitHub"
   }
