@@ -66,22 +66,3 @@ export default {
   @apply block bg-white shadow animate-pulse h-10 w-10 m-4 rounded;
 }
 </style>
-
-<i18n>
-{
-  "en": {
-    "h2": "Participate & Follow us",
-    "mastodon": "Follow Keila on Mastodon",
-    "twitter": "Follow Keila on Twitter",
-    "newsletter": "Sign up to our newsletter",
-    "github": "Join the development on GitHub"
-  },
-  "de": {
-    "h2": "Mach mit und bleibe auf dem Laufenden",
-    "mastodon": "Folge Keila auf Mastodon",
-    "twitter": "Folge Keila auf Twitter",
-    "newsletter": "Melde dich für unseren Newsletter an",
-    "github": "Beteilige dich an der Entwicklung auf GitHub"
-  }
-}
-</i18n>

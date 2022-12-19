@@ -3,7 +3,7 @@
     <div
       class="container legal max-w-6xl mx-auto p-5 md:p-10 text-gray-800 rounded shadow-lg"
     >
-      <nuxt-content :document="article" />
+      <ContentDoc />
     </div>
   </lazy-hydrate>
 </template>

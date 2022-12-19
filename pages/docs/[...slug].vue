@@ -51,7 +51,7 @@
       </ul>
     </nav>
     <article class="flex-grow p-5 md:p-10 md:pt-5 overflow-hidden">
-      <nuxt-content :document="article" />
+      <ContentDoc />
       <nuxt-link
         v-if="next"
         :to="`/docs/${next.slug}`"
