@@ -55,16 +55,16 @@
       </div>
     </header>
     <main>
-      <Nuxt />
+      <NuxtPage />
     </main>
     <page-footer class="max-w-4xl" />
   </div>
 </template>
 
 <script>
-import ogImage from '@/static/og_image.png'
 import logo from '../components/logo.vue'
-const baseUrl = process.env.BASE_URL || ''
+import ogImage from '@/static/og_image.png'
+const baseUrl = ''
 
 export default {
   components: { logo },
@@ -138,26 +138,3 @@ body {
   @apply text-sm text-gray-600 mt-8;
 }
 </style>
-
-<i18n>
-{
-  "en": {
-    "meta:description": "A reliable and easy-to-use email newsletter tool. Keila is an Open Source alternative to Mailchimp that you can host yourself.",
-    "menu:home": "Start",
-    "menu:docs": "Docs",
-    "menu:pricing": "Pricing",
-    "menu:github": "GitHub",
-    "menu:login": "Login",
-    "menu:try": "Try now"
-  },
-  "de": {
-    "meta:description": "Die zuverlässige und benutzerfreundliche Lösung für E-Mail-Newsletter. Keila ist die Open-Source-Alternative zu Mailchimp.",
-    "menu:home": "Start",
-    "menu:docs": "Docs",
-    "menu:pricing": "Preise",
-    "menu:github": "GitHub",
-    "menu:login": "Login",
-    "menu:try": "Jetzt testen"
-  }
-}
-</i18n>

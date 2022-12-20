@@ -39,14 +39,14 @@
                 <div class="bg-green-400 rounded-full w-3 h-3 ml-2"></div>
               </div>
               <video
-                :poster="require('~/assets/keila-20211203.jpg')"
+                :poster="'~/assets/keila-20211203.jpg'"
                 loop
                 controls
                 class="w-full"
                 width="1280"
                 height="800"
               >
-                <source src="/keila-20211203.mp4" type="video/mp4" />
+                <source :src="'~/assets/keila-20211203.mp4'" type="video/mp4" />
               </video>
             </div>
           </div>
@@ -307,7 +307,7 @@
           <div class="grid gap-5 sm:grid-cols-1 mt-5">
             <blockquote class="flex flex-row gap-4">
               <img
-                :src="require('~/assets/testimonials/anouk.jpg')"
+                :src="'~/assets/testimonials/anouk.jpg'"
                 alt="Anouk Ooms"
                 class="rounded-full h-24"
               />
@@ -568,140 +568,3 @@ export default {
   },
 }
 </script>
-
-<i18n>
-{
-  "en": {
-    "meta:title": "Keila - Open Source Email Newsletters Easy & Reliable",
-    "meta:description": "A reliable and easy-to-use email newsletter tool. Keila is an Open Source alternative to Mailchimp that you can host yourself.",
-    "h1": "Email Newsletters: Reliable & Easy",
-    "tagline-1": "Grow your contact lists and send data-driven newsletter campaigns easier than ever before.",
-    "tagline-2": "Keila is proudly Open Source, made in Germany and hosted in the EU 🇩🇪 🇪🇺",
-    "try-now": "Try now",
-    "join-community": "Join the Community",
-    "newsletter:h2": "Follow the development of Keila!",
-    "newsletter:tagline-1": "This is a real newsletter form powered by Keila!",
-    "newsletter:tagline-2": "Give it a try and stay up to date when we release new features!",
-    "highlights:h2": "Some Things You’ll Love About Keila",
-    "highlights:import:h3": "Import Existing Contacts",
-    "highlights:import:text": "Keila makes it really easy to get started if you have a list of existing contacts. Simply {link} and you’re ready to go.",
-    "highlights:import:link": "upload a CSV file",
-    "highlights:custom-data:h3": "Custom Data & Tags",
-    "highlights:custom-data:text": "Complete freedom to add custom data and tags to your contacts. Use data to filter contacts and as merge fields in campaigns.",
-    "highlights:segmentation:h3": "Powerful Segmentation",
-    "highlights:segmentation:text": "Create smart subsets of your contact lists. Build segments with the {link-ui} or our {link-query}.",
-    "highlights:segmentation:link-ui": "visual segment editor",
-    "highlights:segmentation:link-query": "powerful query language",
-    "highlights:privacy:h3": "Built for Privacy",
-    "highlights:privacy:text": "Keila gives you the stats you need while respecting the privacy of your contacts.",
-    "highlights:data-control:h3": "Own Your Data",
-    "highlights:data-control:text": "With Keila, your data is yours. If you use our managed email newsletter service, we will never share your data with third parties.",
-    "highlights:eu:h3": "Hosted in the EU",
-    "highlights:eu:text": "Our managed email newsletter service is fully operated within the European Union, guaranteeing strict European privacy standards.",
-    "highlights:stats:h3": "Live Statistics",
-    "highlights:stats:text": "As soon as you click Send, Keila gives you live statistics for your newsletters, including open and click rates.",
-    "highlights:api:h3": "Integrate & Automate",
-    "highlights:api:text": "Integrate your email newsletter with other applications using Keila’s powerful {link} for managing contacts and email campaigns.",
-    "highlights:api:link": "API",
-    "highlights:floss:h3": "Open Source & Self-Hosting",
-    "highlights:floss:text": "Keila is Free/Libre Open Source Software. You can run it on your own servers using the code on {link-github} or our {link-docker}.",
-    "highlights:floss:link-github": "GitHub",
-    "highlights:floss:link-docker": "official Docker image",
-    "testimonials:h2": "What Our Users Say",
-    "testimonials:volt:quote": "»Keila has helped us send millions of emails to subscribers all across Europe while keeping full control of our data.«",
-    "testimonials:volt:cite": "Anouk Ooms, General Secretary of {link}",
-    "testimonials:volt:cite:link": "Volt Europa",
-    "features:h2": "Features & Roadmap",
-    "features:tagline": "Keila is {highlight}. Here are some completed and planned features:",
-    "features:tagline:highlight": "constantly evolving",
-    "features:markdown": "Compose hybrid text & HTML emails with {link}.",
-    "features:markdown:link": "Markdown",
-    "features:plain-text": "Compose plain-text emails with style.",
-    "features:liquid": "Personalize your campaigns with {link}.",
-    "features:liquid:link": "Liquid",
-    "features:senders": "Send emails with SMTP, Sendgrid, Mailgun, AWS SES.",
-    "features:forms": "Create & design your own signup forms.",
-    "features:captcha": "Protect your forms against spammers with hCaptcha.",
-    "features:import": "Import existing subscribers from CSV.",
-    "features:unsubscribe": "One-click unsubscriptions.",
-    "features:tracking": "Click & open tracking of campaigns.",
-    "features:bounces": "Automatic contact quality monitoring & bounce handling.",
-    "features:segmentation": "Powerful segmentation and custom fields.",
-    "features:api": "Fully-featured API for sending campaigns and syncing contacts ",
-    "features:ab": "A/B tests.",
-    "features:images": "Upload images & file attachments.",
-    "features:html": "Create custom HTML templates with reusable blocks.",
-    "features:automations": "Powerful email automations.",
-    "features:your-idea": "… maybe your idea? {link}",
-    "features:your-idea:link": "Let us know on GitHub!",
-    "features:roadmap": "Check out our development roadmap on GitHub.",
-    "updates:h2": "Latest Updates",
-    "updates:link": "More Updates"
-  },
-  "de": {
-    "meta:title": "Keila - Newsletter, zuverlässig & einfach. 100% Open Source",
-    "meta:description": "Die zuverlässige und benutzerfreundliche Lösung für E-Mail-Newsletter. Keila ist die Open-Source-Alternative zu Mailchimp.",
-    "h1": "E-Mail-Newsletter: Zuverlässig & Einfach",
-    "tagline-1": "Gewinne neue Abonnenten und sende datengetriebene Newsletter einfacher als je zuvor.",
-    "tagline-2": "Keila ist Freie Software, entwickelt in Deutschland und gehosted in der EU 🇩🇪 🇪🇺",
-    "try-now": "Jetzt testen",
-    "join-community": "Werde Teil der Community",
-    "newsletter:h2": "Bleibe auf dem Laufenden!",
-    "newsletter:tagline-1": "Dies ist ein mit Keila erstelltes Newsletter-Formular!",
-    "newsletter:tagline-2": "Probiere es aus und wir schreiben dir, wenn es neue Funktionen für Keila gibt!",
-    "highlights:h2": "Darum wirst du Keila lieben",
-    "highlights:import:h3": "Existierende Kontakte importieren",
-    "highlights:import:text": "Du kannst mit Keila direkt loslegen, wenn du bereits eine Liste mit Kontakten hast. {link} und los geht’s!",
-    "highlights:import:link": "Lade einfach eine CSV-Datei hoch",
-    "highlights:custom-data:h3": "Daten, Daten, Daten!",
-    "highlights:custom-data:text": "Füge beliebige Daten zu deinen Kontakten und Kampagnen hinzu und erstelle datengetriebene Newsletter.",
-    "highlights:segmentation:h3": "Mächtige Segmentierung",
-    "highlights:segmentation:text": "Erstelle intelligente Segmente mit dem {link-ui} oder unserer {link-query}.",
-    "highlights:segmentation:link-ui": "visuellen Segment-Editor",
-    "highlights:segmentation:link-query": "mächtigen Query-Sprache",
-    "highlights:privacy:h3": "Gebaut für Datenschutz",
-    "highlights:privacy:text": "Keila liefert die Statistiken, die du willst – und respektiert dennoch die Privatsphäre deiner Kontakte.",
-    "highlights:data-control:h3": "Volle Datenkontrolle",
-    "highlights:data-control:text": "Mit Keila hast du volle Kontrolle über deine Daten. Auch deine Daten in unserer gehosteten Lösung werden wir nie verkaufen oder weitergeben.",
-    "highlights:eu:h3": "Gehosted in der EU",
-    "highlights:eu:text": "Unsere gehostete Lösung wird vollständig auf Servern innerhalb der europäischen Union betrieben. DSGVO? Ja bitte!",
-    "highlights:stats:h3": "Live-Statistiken",
-    "highlights:stats:text": "Sobald du auf Senden klickst, liefert Keila Statistiken, inklusive Klick- und Öffnungsraten.",
-    "highlights:api:h3": "Integrieren & Automatisieren",
-    "highlights:api:text": "Integriere deinen Newsletter in andere Apps oder Websites mit Keilas umfangreicher {link} zur Verwaltung von Kontakten und Kampagnen.",
-    "highlights:api:link": "API",
-    "highlights:floss:h3": "Open Source & Selbst hosten",
-    "highlights:floss:text": "Keila ist Freie Open Source Software, die du auf eigenen Servern betreiben kannst. Nutze dazu den Code auf {link-github} oder unser {link-docker}.",
-    "highlights:floss:link-github": "GitHub",
-    "highlights:floss:link-docker": "offizielles Docker-Image",
-    "testimonials:h2": "Das sagen unsere Nutzer*innen",
-    "testimonials:volt:quote": "»Mit Keila konnten wir Millionen von E-Mails an Unterstützer*innen in ganz Europa versenden und gleichzeitig die volle Kontrolle über unsere Daten behalten.«",
-    "testimonials:volt:cite": "Anouk Ooms, Generalsekretärin von {link}",
-    "testimonials:volt:cite:link": "Volt Europa",
-    "features:h2": "Funktionen & Roadmap",
-    "features:tagline": "{highlight} Hier sind einige bereits verfügbare Funktionen sowie Features, die sich derzeit in Entwicklung befinden:",
-    "features:tagline:highlight": "Keila wird ständig weiterentwickelt.",
-    "features:markdown": "Erstellung von hybriden Text- und HTML-E-Mails mit {link}",
-    "features:markdown:link": "Markdown.",
-    "features:plain-text": "Erstellung von reinen Text-E-Mails.",
-    "features:liquid": "Personalisierte E-Mails mit {link}.",
-    "features:liquid:link": "Liquid",
-    "features:senders": "Versenden von E-Mails über SMTP, Sendgrid, Mailgun oder AWS SES.",
-    "features:forms": "Erstellung & Gestaltung von Anmeldeformularen.",
-    "features:captcha": "Schutz vor Spammern mit hCaptcha.",
-    "features:import": "Importierung existierender Kontakte mit CSV.",
-    "features:unsubscribe": "Ein-Klick-Abmeldung.",
-    "features:tracking": "Statistiken mit Klick- und Öffnungsraten der Kampagnen.",
-    "features:bounces": "Automatische Überwachung der Kontakt-Qualität und Handhabung von Rückläufern.",
-    "features:segmentation": "Mächtige Segmentierung und benutzerdefinierte Felder.",
-    "features:api": "Umfangreiche API zur Verwaltung von Kontakten und zum Versenden von Kampagnen.",
-    "features:ab": "A/B-Tests.",
-    "features:images": "Dateianhänge & Upload von Bildern.",
-    "features:html": "Erstellung eigener HTML-Templates mit wiederverwendbaren Blöcken.",
-    "features:automations": "Umfangreiche Automationsfunktionen.",
-    "features:your-idea": "… vielleicht deine Idee? {link}",
-    "features:your-idea:link": "Beteilige dich auf GitHub!",
-    "features:roadmap": "Unsere aktuelle Roadmap findest du auf GitHub."
-  }
-}
-</i18n>

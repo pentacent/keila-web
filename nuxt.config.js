@@ -1,8 +1,6 @@
-export default {
-  // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+import { defineNuxtConfig } from 'nuxt/config'
 
-  // Global page headers: https://go.nuxtjs.dev/config-head
+export default defineNuxtConfig({
   head: {
     title: 'Keila - Open Source Email Newsletters',
     meta: [
@@ -19,76 +17,54 @@ export default {
       },
     ],
   },
-
-  // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [],
-
-  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
-
-  // Auto import components: https://go.nuxtjs.dev/config-components
-  components: true,
-
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
-    // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
-  ],
-
-  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    ['@nuxt/content', {}],
-    ['@nuxtjs/i18n', {}],
     [
-      'nuxt-matomo',
+      '@nuxtjs/i18n',
       {
-        matomoUrl: 'https://tracking.vanbittern.com/',
-        siteId: 33,
-        cookies: false,
+        strategy: 'prefix_except_default',
+        parsePages: true,
+        locales: [
+          { code: 'en', iso: 'en-US', name: 'English' },
+          { code: 'de', iso: 'de-DE', name: 'Deutsch' },
+        ],
+        defaultLocale: 'en',
+        vueI18n: {
+          fallbackLocale: 'en',
+        },
+        vueI18nLoader: true,
+        baseUrl: 'https://www.keila.io',
       },
     ],
-    ['@nuxtjs/sitemap', {}],
+    '@nuxt/content',
+    '@nuxtjs/tailwindcss',
+    // [
+    //   'nuxt-matomo',
+    //   {
+    //     matomoUrl: 'https://tracking.vanbittern.com/',
+    //     siteId: 33,
+    //     cookies: false,
+    //   },
+    // ],
+    // ['@nuxtjs/sitemap', {}],
   ],
 
-  // i18n configuration
-
-  i18n: {
-    strategy: 'prefix_except_default',
-    parsePages: true,
-    locales: [
-      { code: 'en', iso: 'en-US', name: 'English' },
-      { code: 'de', iso: 'de-DE', name: 'Deutsch' },
-    ],
-    defaultLocale: 'en',
-    vueI18n: {
-      fallbackLocale: 'en',
-    },
-    vueI18nLoader: true,
-    baseUrl: 'https://www.keila.io',
-  },
-
-  sitemap: {
-    hostname: 'https://www.keila.io',
-    // i18n: true,
-    i18n: {
-      locales: ['en', 'de'],
-      routesNameSeparator: '___',
-    },
-    routes: [
-      '/docs',
-      '/docs/api',
-      '/docs/campaigns',
-      '/docs/setup',
-      '/docs/contacts',
-      '/docs/forms',
-      '/docs/installation',
-      '/docs/segments',
-      '/docs/senders',
-    ],
-  },
-
-  // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {},
-}
+  // sitemap: {
+  //   hostname: 'https://www.keila.io',
+  //   // i18n: true,
+  //   i18n: {
+  //     locales: ['en', 'de'],
+  //     routesNameSeparator: '___',
+  //   },
+  //   routes: [
+  //     '/docs',
+  //     '/docs/api',
+  //     '/docs/campaigns',
+  //     '/docs/setup',
+  //     '/docs/contacts',
+  //     '/docs/forms',
+  //     '/docs/installation',
+  //     '/docs/segments',
+  //     '/docs/senders',
+  //   ],
+  // }
+})

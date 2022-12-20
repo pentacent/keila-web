@@ -25,7 +25,7 @@
               <nuxt-link
                 class="p-5 block"
                 :to="`/docs/${article.slug}`"
-                @click.native="clearSearch"
+                @click="clearSearch"
                 >{{ article.title }}</nuxt-link
               >
             </li>
@@ -57,16 +57,16 @@
       </div>
     </header>
     <main>
-      <Nuxt />
+      <NuxtPage />
     </main>
     <page-footer />
   </div>
 </template>
 
 <script>
-import ogImage from '@/static/og_image.png'
 import logo from '../components/logo.vue'
-const baseUrl = process.env.BASE_URL || ''
+import ogImage from '@/static/og_image.png'
+const baseUrl = ''
 
 export default {
   components: { logo },

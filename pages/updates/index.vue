@@ -204,15 +204,3 @@ nav a.nuxt-link-exact-active {
   @apply mt-10;
 }
 </style>
-
-<i18n>
-{"en": {
-  "h1": "Product updates",
-  "tagline": "On this page you find recent highlights from updates to Keila, the Open Source email newsletter tool. A full technical changelog can be found at {link}.",
-  "tagline:link": "GitHub",
-  "type:added": "Added",
-  "type:changed": "Changed",
-  "type:fixed": "Fixed",
-  "read-more": "Read more"
-}}
-</i18n>

@@ -8,7 +8,7 @@
         <h1 class="text-3xl md:text-5xl font-semibold">
           {{ article.title }}
         </h1>
-        <nuxt-content :document="article" />
+        <ContentDoc />
         <nuxt-link
           :to="localePath(`/updates`)"
           class="next block w-1/2 p-10 border-2 border-green-300 rounded bg-white hover:bg-gray-100"

@@ -92,24 +92,3 @@ export default {
   @apply block bg-white shadow animate-pulse h-10 w-10 m-4 rounded;
 }
 </style>
-
-<i18n>
-{
-  "en": {
-    "email": "Email",
-    "email:placeholder": "you.are@wonderful",
-    "first-name": "First name (optional)",
-    "submit": "Sign up to Keila updates!",
-    "privacy-hint": "We won’t spam you! {link}",
-    "privacy-hint:link": "Learn how we treat your data."
-  },
-  "de": {
-    "email": "E-Mail",
-    "email:placeholder": "du.bist@wunderbar",
-    "first-name": "Vorname (freiwillig)",
-    "submit": "Jetzt für Keila-Updates anmelden!",
-    "privacy-hint": "Wir schicken dir keinen Spam. Versprochen! {link}",
-    "privacy-hint:link": "Weitere Informationen zum Datenschutz."
-  }
-}
-</i18n>
