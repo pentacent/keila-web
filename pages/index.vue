@@ -340,6 +340,7 @@
       <lazy-hydrate never>
         <div class="my-16">
           <h2
+            id="features-roadmap"
             class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
           >
             <svg
