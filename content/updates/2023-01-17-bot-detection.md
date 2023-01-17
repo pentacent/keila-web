@@ -1,0 +1,18 @@
+---
+title: Bot Detection
+slug: bot-detection
+type: added
+language: en
+date: 2023-01-17
+version: 0.11.0
+description: "Keila now excludes bots from Gmail/Google from your campaign open counts."
+---
+Keila now excludes bots from Gmail/Google from your campaign open counts
+<!--more-->
+
+Some email providers automatically fetch images or links from your newsletter
+campaigns. This can lead to skewed statistics when these bots are counted like
+real "opens" or "clicks".
+
+Keila now excludes bots from Gmail/Google from the campaign statistics, making
+sure you get more accurate data in your analytics.
