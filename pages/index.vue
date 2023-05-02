@@ -369,6 +369,11 @@
           <ul>
             <li class="flex mt-5">
               <check-complete class="mr-2 flex-shrink-0" />
+              <i18n tag="p" path="features:block-editor"></i18n>
+            </li>
+
+            <li class="flex mt-5">
+              <check-complete class="mr-2 flex-shrink-0" />
               <i18n tag="p" path="features:markdown">
                 <template #link>
                   <a
@@ -436,12 +441,24 @@
               <i18n tag="p" path="features:api" />
             </li>
             <li class="flex mt-5">
+              <check-complete class="mr-2 flex-shrink-0" />
+              <i18n tag="p" path="features:images" />
+            </li>
+            <li class="flex mt-5">
               <check-in-progress class="mr-2 flex-shrink-0" />
               <i18n tag="p" path="features:ab" />
             </li>
             <li class="flex mt-5">
               <check-in-progress class="mr-2 flex-shrink-0" />
-              <i18n tag="p" path="features:images" />
+              <i18n tag="p" path="features:data-takeout" />
+            </li>
+            <li class="flex mt-5">
+              <check-in-progress class="mr-2 flex-shrink-0" />
+              <i18n tag="p" path="features:contact-privacy" />
+            </li>
+            <li class="flex mt-5">
+              <check-in-progress class="mr-2 flex-shrink-0" />
+              <i18n tag="p" path="features:files" />
             </li>
             <li class="flex mt-5">
               <check-in-progress class="mr-2 flex-shrink-0" />
@@ -615,6 +632,7 @@ export default {
     "features:h2": "Features & Roadmap",
     "features:tagline": "Keila is {highlight}. Here are some completed and planned features:",
     "features:tagline:highlight": "constantly evolving",
+    "features:block-editor": "Build multi-column layouts with Keila’s Block Editor.",
     "features:markdown": "Compose hybrid text & HTML emails with {link}.",
     "features:markdown:link": "Markdown",
     "features:plain-text": "Compose plain-text emails with style.",
@@ -630,9 +648,12 @@ export default {
     "features:segmentation": "Powerful segmentation and custom fields.",
     "features:api": "Fully-featured API for sending campaigns and syncing contacts ",
     "features:ab": "A/B tests.",
-    "features:images": "Upload images & file attachments.",
+    "features:images": "Upload images.",
+    "features:files": "Upload file attachments.",
     "features:html": "Create custom HTML templates with reusable blocks.",
     "features:automations": "Powerful email automations.",
+    "features:data-takeout": "Data takeout for users and contacts.",
+    "features:contact-privacy": "Transparent privacy settings for contacts.",
     "features:your-idea": "… maybe your idea? {link}",
     "features:your-idea:link": "Let us know on GitHub!",
     "features:roadmap": "Check out our development roadmap on GitHub.",
@@ -682,6 +703,7 @@ export default {
     "features:h2": "Funktionen & Roadmap",
     "features:tagline": "{highlight} Hier sind einige bereits verfügbare Funktionen sowie Features, die sich derzeit in Entwicklung befinden:",
     "features:tagline:highlight": "Keila wird ständig weiterentwickelt.",
+    "features:block-editor": "Mehrspaltige Layouts mit dem Block-Editor von Keila.",
     "features:markdown": "Erstellung von hybriden Text- und HTML-E-Mails mit {link}",
     "features:markdown:link": "Markdown.",
     "features:plain-text": "Erstellung von reinen Text-E-Mails.",
@@ -697,9 +719,12 @@ export default {
     "features:segmentation": "Mächtige Segmentierung und benutzerdefinierte Felder.",
     "features:api": "Umfangreiche API zur Verwaltung von Kontakten und zum Versenden von Kampagnen.",
     "features:ab": "A/B-Tests.",
-    "features:images": "Dateianhänge & Upload von Bildern.",
+    "features:images": "Upload von Bildern.",
+    "features:files": "Upload von Dateianhängen.",
     "features:html": "Erstellung eigener HTML-Templates mit wiederverwendbaren Blöcken.",
     "features:automations": "Umfangreiche Automationsfunktionen.",
+    "features:data-takeout": "Anfordern eigener Daten für Nutzer und Kontakte.",
+    "features:contact-privacy": "Transparente Privatsphären-Einstellungen für Kontakte.",
     "features:your-idea": "… vielleicht deine Idee? {link}",
     "features:your-idea:link": "Beteilige dich auf GitHub!",
     "features:roadmap": "Unsere aktuelle Roadmap findest du auf GitHub."
