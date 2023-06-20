@@ -10,7 +10,7 @@ next: contacts
 
 For larger projects it’s recommended to either use your own dedicated email
 infrastructure or rely on an externally managed email service. For smaller
-projects you could even use your personal email (via IMAP) to send your
+projects you could even use your personal email (via SMTP) to send your
 newsletters.
 
 You need to create a Sender before you can send your first campaign with Keila.
@@ -21,7 +21,7 @@ On your project overview page, click on `Manage Senders` and then on *Create new
 
 Currently, the following sender types are supported:
 
-- IMAP
+- SMTP
 - AWS SES
 - Sendgrid
 - Mailgun
