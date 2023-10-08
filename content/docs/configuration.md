@@ -15,8 +15,10 @@ Configure the PostgreSQL database used by Keila:
 
 | Variable        | Required | Default | Description                                                       |
 | --------------- | -------- | ------- | ----------------------------------------------------------------- |
-| `DB_URL`        | yes      | -       | URL following the schema `postgres://user:password@host/database` |
-| `DB_ENABLE_SSL` | no       | -       | Use SSL/TLS for the database connection                           |
+| `DB_URL`        | yes      | -       | URL following the schema `postgres://user:password@host/database`  |
+| `DB_ENABLE_SSL` | no       | false   | Use SSL/TLS for the database connection                           |
+| `DB_VERIFY_SSL_HOST` | no  | true    | Enable SSL hostname verification (disable if connecting to an IP directly) |
+| `DB_CA_CERT`     | no       | -       | SSL certificate (PEM) for connecting to the database |
 
 ## Root User
 
