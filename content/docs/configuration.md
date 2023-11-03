@@ -69,6 +69,7 @@ variables:
 | `MAILER_SMTP_PASSWORD`   | yes      | -                  | Password for the SMTP server       |
 | `MAILER_SMTP_FROM_EMAIL` |          | `MAILER_SMTP_USER` | FROM email address                 |
 | `MAILER_ENABLE_SSL`      |          | `false`            | Enable SSL/TLS by setting to `true`|
+| `MAILER_ENABLE_STARTTLS` |          | `false`            | Enable STARTTLS by setting to `true`|
 
 ## Captcha
 
