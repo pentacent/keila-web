@@ -422,6 +422,10 @@
             </li>
             <li class="flex mt-5">
               <check-complete class="mr-2 flex-shrink-0" />
+              <i18n tag="p" path="features:double-opt-in" />
+            </li>
+            <li class="flex mt-5">
+              <check-complete class="mr-2 flex-shrink-0" />
               <i18n tag="p" path="features:unsubscribe" />
             </li>
             <li class="flex mt-5">
@@ -642,11 +646,12 @@ export default {
     "features:forms": "Create & design your own signup forms.",
     "features:captcha": "Protect your forms against spammers with hCaptcha.",
     "features:import": "Import existing subscribers from CSV.",
+    "features:double-opt-in": "Double opt-in (confirmed opt-in).",
     "features:unsubscribe": "One-click unsubscriptions.",
     "features:tracking": "Click & open tracking of campaigns.",
     "features:bounces": "Automatic contact quality monitoring & bounce handling.",
     "features:segmentation": "Powerful segmentation and custom fields.",
-    "features:api": "Fully-featured API for sending campaigns and syncing contacts ",
+    "features:api": "Fully-featured API for sending campaigns and syncing contacts.",
     "features:ab": "A/B tests.",
     "features:images": "Upload images.",
     "features:files": "Upload file attachments.",
@@ -713,6 +718,7 @@ export default {
     "features:forms": "Erstellung & Gestaltung von Anmeldeformularen.",
     "features:captcha": "Schutz vor Spammern mit hCaptcha.",
     "features:import": "Importierung existierender Kontakte mit CSV.",
+    "features:double-opt-in": "Double-Opt-In-Verfahren.",
     "features:unsubscribe": "Ein-Klick-Abmeldung.",
     "features:tracking": "Statistiken mit Klick- und Öffnungsraten der Kampagnen.",
     "features:bounces": "Automatische Überwachung der Kontakt-Qualität und Handhabung von Rückläufern.",
