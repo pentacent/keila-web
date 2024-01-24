@@ -1,0 +1,30 @@
+---
+title: Double Opt-in
+slug: double-opt-in
+type: added 
+language: en
+date: 2023-12-11
+version: 0.13.0
+description: "Verify newsletter signups with double opt-in."
+---
+Verify newsletter signups with double opt-in.
+<!--more-->
+
+<docs-image src="updates/2023-12-11-double-opt-in.png" alt="Screenshot of a double opt-in confirmation email."></docs-image>
+
+When you create a newsletter signup form in Keila, you can now enable the Double
+Opt-In option. When you enable Double Opt-In, instead of being added directly to
+your list of contacts, new signups have to first confirm their email address.
+
+This is usually a good idea for several reasons:
+
+- Double Opt-In reduces the number of bots who sign up for your newsletter
+- Double Opt-In helps you make sure that all new signups actually want to
+  receive your newsletter, thus reducing unsubscribe rates and spam reports.
+- Double Opt-In may be required in some jurisdictions (e.g. in the EU with the
+  rules set forth in the GDPR).
+
+Keila makes it really easy to handle Double Opt-In messages. Simply enable the
+option for your signup form and you’re good to go. If you want, you can also
+customize the confirmation email’s subject line and main text.
+
