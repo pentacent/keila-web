@@ -62,8 +62,8 @@
 </template>
 
 <script>
-import ogImage from '@/static/og_image.png'
 import logo from '../components/logo.vue'
+import ogImage from '@/static/og_image.png'
 const baseUrl = process.env.BASE_URL || ''
 
 export default {

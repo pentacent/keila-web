@@ -29,6 +29,16 @@
           </ul>
         </li>
         <li class="with-sub">
+          <nuxt-link to="/docs/managed-dmarc">Managed&nbsp;Keila</nuxt-link>
+          <ul>
+            <li>
+              <nuxt-link to="/docs/managed-dmarc"
+                >Domain&nbsp;setup<br />(SPF,&nbsp;DKIM,&nbsp;DMARC)</nuxt-link
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="with-sub">
           <nuxt-link to="/docs/api">API</nuxt-link>
           <ul>
             <li>
@@ -137,73 +147,84 @@ nav a.nuxt-link-exact-active {
   @apply bg-green-700 text-white;
 }
 
->>> .nuxt-content > * + * {
+:deep() .link-button {
+  @apply border-2 border-green-700 p-5;
+
+  &:hover {
+    @apply bg-green-100 cursor-pointer underline;
+  }
+}
+
+:deep() .nuxt-content > * + * {
   @apply text-gray-800 mt-5;
 }
 
->>> article h1 {
+:deep() article h1 {
   @apply text-3xl mb-5 font-bold text-gray-800;
 }
 
->>> .nuxt-content > h2 {
+:deep() .nuxt-content > h2 {
   @apply text-xl font-semibold mt-10;
 }
 
->>> article h3 {
+:deep() article h3 {
   @apply text-xl italic;
 }
 
->>> .nuxt-content > * + h3 {
+:deep() .nuxt-content > * + h3 {
   @apply mt-10;
 }
 
->>> .nuxt-content > h2 + h3 {
+:deep() .nuxt-content > h2 + h3 {
   @apply mt-5;
 }
 
->>> article h4 {
+:deep() article h4 {
   @apply font-bold;
 }
 
->>> article * + p {
+:deep() article * + p {
   @apply mt-5;
 }
 
->>> h2 + p {
+:deep() h2 + p {
   @apply mt-0;
 }
 
->>> article table {
+:deep() article table {
   @apply block w-full shadow overflow-x-auto;
   white-space: nowrap;
 }
 
->>> article table th {
+:deep() article table th {
   @apply bg-gray-100 text-left;
 }
 
->>> article table th,
->>> article table td {
+:deep() article table th,
+:deep() article table td {
   @apply p-5;
 }
 
->>> article a {
+:deep() article a {
   @apply text-green-600;
 }
 
->>> article ul {
+:deep() article ul {
   @apply ml-5 list-disc;
 }
+:deep() article ol {
+  @apply ml-5 list-decimal;
+}
 
->>> article code {
+:deep() article code {
   @apply bg-gray-300 border-2 border-gray-300;
 }
 
->>> article pre code {
+:deep() article pre code {
   @apply bg-transparent border-0;
 }
 
->>> article .next {
+:deep() article .next {
   @apply mt-10;
 }
 </style>
