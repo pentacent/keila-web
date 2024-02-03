@@ -23,7 +23,7 @@ Add the following entries to your DNS settings:
 `CNAME` `*your-subdomain*.example.com` `public.keila.io`
 
 **Add the Keila DKIM key**:  
-`CNAME` `keila._domainkey.example.com`
+`CNAME` `keila._domainkey.example.com` `dkim.public.keila.io`
 
 **Enable DMARC for your main domain**:  
 `TXT` `example.com` `v=DMARC1; p=none`
