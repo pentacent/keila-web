@@ -11,7 +11,7 @@ implemented by more and more email providers, is easy with Keila!
 <managed-note></managed-note>
 
 ## 1. Create a *Send with Keila* Sender
-Create a [Sender](/docs/senders) in your Keila project and select the *Send with Keila* option.
+If you don’t yet have one, create a [Sender](/docs/senders) in your Keila project and select the *Send with Keila* option.
 Make sure you can receive emails at the *From address*
 (e.g. `newsletter@example.com`) so you can receive the confirmation email.
 
