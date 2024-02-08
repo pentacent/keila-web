@@ -37,7 +37,7 @@ Add the following entries to your DNS settings:
 `CNAME` `keila._domainkey.example.com` `dkim.public.keila.io`
 
 **Enable DMARC for your main domain**:  
-`TXT` `example.com` `v=DMARC1; p=none`
+`TXT` `_dmarc.example.com` `v=DMARC1; p=none`
 
 ## 4. Submit the Domain Connection Form
 
