@@ -3,10 +3,10 @@
     <div
       class="container max-w-6xl mx-auto p-5 md:p-10 text-gray-800 rounded shadow-lg"
     >
-      <h1 class="text-5xl font-semibold">{{ $t('h1') }}</h1>
+      <h1 class="text-5xl font-semibold">{{ t('h1') }}</h1>
       <i18n tag="p" path="tagline" class="text-3xl font-medium text-gray-700">
         <template #highlight
-          ><strong>{{ $t('tagline:highlight') }}</strong></template
+          ><strong>{{ t('tagline:highlight') }}</strong></template
         >
       </i18n>
       <div class="mt-12 -mx-5 md:-mx-10 p-5 md:p-10 bg-green-300 text-black">
@@ -25,13 +25,14 @@
               stroke-linejoin="round"
               stroke-width="2"
               d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
-            /></svg
-          >{{ $t('saas:h2') }}
+            />
+          </svg>
+          {{ t('saas:h2') }}
         </h2>
         <i18n tag="p" path="saas:tagline" class="text-xl mt-5">
-          <template #highlight
-            ><strong>{{ $t('saas:tagline:highlight') }}</strong></template
-          >
+          <template #highlight>
+            <strong>{{ t('saas:tagline:highlight') }}</strong>
+          </template>
         </i18n>
         <br />
         <p>
@@ -51,8 +52,9 @@
                 stroke-linejoin="round"
                 stroke-width="2"
                 d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"
-              /></svg
-            >{{ $t('saas:cta') }}
+              />
+            </svg>
+            {{ t('saas:cta') }}
           </a>
         </p>
       </div>
@@ -65,26 +67,27 @@
           >
             <h3 class="font-bold">
               <span class="text-2xl">{{ plan.name }}</span>
-              <span class="block -mt-2 text-sm">{{
-                $t('saas:price', { amount: plan.net })
-              }}</span>
+              <span class="block -mt-2 text-sm">
+                {{ t('saas:price', { amount: plan.net }) }}
+              </span>
               <span
                 v-if="plan.loaded"
                 class="block -mt-1 text-xs text-green-600"
-                >{{ $t('saas:price:gross', { amount: plan.gross }) }}</span
               >
-              <span v-else class="block -mt-1 text-xs text-green-600">{{
-                $t('saas:price:net', { amount: plan.gross })
-              }}</span>
+                {{ t('saas:price:gross', { amount: plan.gross }) }}
+              </span>
+              <span v-else class="block -mt-1 text-xs text-green-600">
+                {{ t('saas:price:net', { amount: plan.gross }) }}
+              </span>
             </h3>
             <ul>
               <li class="flex">
                 <check-complete class="mr-2 flex-shrink-0" />
-                {{ $t('saas:emails:limited', { limit: $n(plan.limit) }) }}
+                {{ t('saas:emails:limited', { limit: $n(plan.limit) }) }}
               </li>
               <li class="flex">
                 <check-complete class="mr-2 flex-shrink-0" />
-                {{ $t('saas:contacts:unlimited') }}
+                {{ t('saas:contacts:unlimited') }}
               </li>
             </ul>
           </div>
@@ -93,55 +96,51 @@
           <a
             href="https://app.keila.io/auth/register"
             class="font-semibold underline"
-            >{{ $t('saas:cta-link') }}</a
           >
+            {{ t('saas:cta-link') }}
+          </a>
         </p>
       </div>
 
-      <lazy-hydrate never>
-        <div class="my-16">
-          <h2
-            class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
+      <div class="my-16">
+        <h2
+          class="text-3xl font-semibold flex flex-col md:flex-row items-center gap-5"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-12 text-green-600"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-12 text-green-600"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
-              /></svg
-            >{{ $t('self:h2') }}
-          </h2>
-          <i18n tag="p" path="self:tagline" class="text-xl mt-5" />
-          <br /><br />
-          <p>
-            <nuxt-link class="p-5 bg-green-600 text-white" to="/docs">{{
-              $t('self:cta')
-            }}</nuxt-link>
-          </p>
-        </div>
-      </lazy-hydrate>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+            />
+          </svg>
+          {{ t('self:h2') }}
+        </h2>
+        <i18n tag="p" path="self:tagline" class="text-xl mt-5" />
+        <br /><br />
+        <p>
+          <nuxt-link class="p-5 bg-green-600 text-white" to="/docs">
+            {{ t('self:cta') }}
+          </nuxt-link>
+        </p>
+      </div>
+
       <participate-cta />
     </div>
   </div>
 </template>
 
 <script>
-import LazyHydrate from 'vue-lazy-hydration'
-
 const plan = (name, paddleId, limit, net, gross) => {
   return { name, paddleId, limit, net, gross, loaded: false }
 }
 export default {
-  components: {
-    'lazy-hydrate': LazyHydrate,
-  },
   data() {
     return {
       paddleReady: false,
@@ -154,6 +153,13 @@ export default {
         plan('XXL', 660931, 250000, '€256', '€256.00'),
       ],
     }
+  },
+  setup() {
+    const { t } = useI18n({
+      useScope: 'local',
+    })
+
+    return { t }
   },
   head() {
     return {
@@ -190,7 +196,7 @@ export default {
 }
 </script>
 
-<i18n>
+<i18n lang="json">
 {
   "en": {
     "meta:title": "Try for free or run on your own servers - Keila",

@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
+    "dev": "nuxi dev",
+    "build": "nuxi build",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
@@ -12,27 +12,13 @@
     "format": "eslint --fix --ext \".js,.vue\" --ignore-path .gitignore ."
   },
   "dependencies": {
-    "core-js": "^3.8.3",
-    "nuxt": "^2.15.3"
+    "@nuxt/content": "^2.12.1",
+    "@nuxtjs/i18n": "^8.3.1",
+    "@nuxtjs/tailwindcss": "^6.12.0",
+    "nuxt": "^3.11.2",
+    "nuxt-matomo": "^1.2.4"
   },
   "devDependencies": {
-    "@nuxt/content": "^1.12.0",
-    "@nuxt/postcss8": "^1.1.3",
-    "@nuxtjs/eslint-config": "^5.0.0",
-    "@nuxtjs/eslint-module": "^3.0.2",
-    "@nuxtjs/i18n": "^7.2.0",
-    "@nuxtjs/sitemap": "^2.4.0",
-    "@nuxtjs/tailwindcss": "^5.3.2",
-    "autoprefixer": "^9.8.6",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^7.18.0",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-nuxt": "^2.0.0",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-vue": "^7.5.0",
-    "install": "^0.13.0",
-    "npm": "^7.5.4",
-    "nuxt-matomo": "^1.2.4",
     "prettier": "^2.2.1",
     "vue-lazy-hydration": "^2.0.0-beta.4"
   }

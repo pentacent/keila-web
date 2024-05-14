@@ -14,40 +14,41 @@
             class="flex flex-wrap gap-2 align-center justify-end font-semibold text-black"
           >
             <li class="hidden md:block">
-              <nuxt-link :to="localePath('/')" class="px-3 py-5">{{
-                $t('menu:home')
-              }}</nuxt-link>
+              <nuxt-link :to="localePath('/')" class="px-3 py-5">
+                {{ t('menu:home') }}
+              </nuxt-link>
             </li>
             <li class="hidden md:block">
-              <nuxt-link to="/docs" class="px-3 py-5">{{
-                $t('menu:docs')
-              }}</nuxt-link>
+              <nuxt-link to="/docs" class="px-3 py-5">
+                {{ t('menu:docs') }}
+              </nuxt-link>
             </li>
             <li class="hidden md:block">
-              <nuxt-link :to="localePath('/try')" class="px-3 py-5">{{
-                $t('menu:pricing')
-              }}</nuxt-link>
+              <nuxt-link :to="localePath('/try')" class="px-3 py-5">
+                {{ t('menu:pricing') }}
+              </nuxt-link>
             </li>
             <li class="hidden md:block">
               <a
                 href="https://github.com/pentacent/keila"
                 target="_blank"
                 class="px-3 py-5"
-                >{{ $t('menu:github') }}</a
               >
+                {{ t('menu:github') }}
+              </a>
             </li>
             <div class="hidden md:block flex-grow"></div>
             <li class="block">
-              <a href="https://app.keila.io" class="px-3 py-5">{{
-                $t('menu:login')
-              }}</a>
+              <a href="https://app.keila.io" class="px-3 py-5">
+                {{ t('menu:login') }}
+              </a>
             </li>
             <li class="block">
               <a
                 href="https://app.keila.io/auth/register"
                 class="p-3 bg-green-600 font-semibold text-white rounded-md hover:bg-green-500"
               >
-                {{ $t('menu:try') }}
+                {{ t('menu:try') }}
               </a>
             </li>
           </ul>
@@ -55,19 +56,26 @@
       </div>
     </header>
     <main>
-      <Nuxt />
+      <slot />
     </main>
     <page-footer class="max-w-4xl" />
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import logo from '../components/logo.vue'
-import ogImage from '@/static/og_image.png'
+import ogImage from '@/public/og_image.png'
 const baseUrl = process.env.BASE_URL || ''
 
 export default {
   components: { logo },
+  setup() {
+    const { t } = useI18n({
+      useScope: 'local',
+    })
+
+    return { t }
+  },
   head() {
     const i18nHead = this.$nuxtI18nHead
       ? this.$nuxtI18nHead({ addSeoAttributes: true })
@@ -139,7 +147,7 @@ body {
 }
 </style>
 
-<i18n>
+<i18n lang="json">
 {
   "en": {
     "meta:description": "A reliable and easy-to-use email newsletter tool. Keila is an Open Source alternative to Mailchimp that you can host yourself.",

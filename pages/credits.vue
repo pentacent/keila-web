@@ -6,7 +6,7 @@
       <h1 class="text-5xl font-semibold">Credits<br /></h1>
       <p>
         This website is built with
-        <a class="underline" href="https://nuxtjs.org/">Nuxt</a>.
+        <a class="underline" href="https://nuxt.com/">Nuxt</a>.
       </p>
       <ul class="mt-5">
         <li>

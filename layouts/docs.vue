@@ -10,6 +10,7 @@
         </div>
         <div class="flex-grow"></div>
         <div class="relative flex-grow pr-4">
+          <!-- TODO: Localize placeholder? -->
           <input
             v-model="query"
             class="px-5 py-5 bg-gray-200 w-full"
@@ -26,8 +27,9 @@
                 class="p-5 block"
                 :to="`/docs/${article.slug}`"
                 @click.native="clearSearch"
-                >{{ article.title }}</nuxt-link
               >
+                {{ article.title }}
+              </nuxt-link>
             </li>
           </ul>
         </div>
@@ -57,7 +59,7 @@
       </div>
     </header>
     <main>
-      <Nuxt />
+      <slot />
     </main>
     <page-footer />
   </div>
@@ -90,7 +92,7 @@ export default {
           hid: 'og:description',
           property: 'og:description',
           content:
-            'We’re building a free alternative to Mailchimp that you can host yourself',
+            "We're building a free alternative to Mailchimp that you can host yourself",
         },
         {
           hid: 'twitter:card',

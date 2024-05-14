@@ -6,17 +6,17 @@
     target="_blank"
   >
     <div class="flex flex-col">
-      <label for="contact_email">{{ $t('email') }}</label
+      <label for="contact_email">{{ t('email') }}</label
       ><input
         id="contact_email"
         name="contact[email]"
-        :placeholder="$t('email:placeholder')"
+        :placeholder="t('email:placeholder')"
         class="bg-white-200 text-black shadow-sm p-2"
         type="email"
       />
     </div>
     <div class="flex flex-col">
-      <label for="contact_first_name">{{ $t('first-name') }}</label
+      <label for="contact_first_name">{{ t('first-name') }}</label
       ><input
         id="contact_first_name"
         class="bg-white-200 text-black shadow-sm p-2"
@@ -36,14 +36,14 @@
       <button
         class="inline-flex items-center gap-4 px-4 py-4 bg-green-600 text-white font-semibold rounded-lg shadow-sm hover:bg-green-500 hover:shadow-lg"
       >
-        {{ $t('submit') }}
+        {{ t('submit') }}
       </button>
     </div>
     <i18n tag="div" path="privacy-hint" class="text-xs">
       <template #link>
-        <a href="https://pentacent.com/privacy" class="underline">{{
-          $t('privacy-hint:link')
-        }}</a>
+        <a href="https://pentacent.com/privacy" class="underline">
+          {{ t('privacy-hint:link') }}
+        </a>
       </template>
     </i18n>
   </form>
@@ -53,6 +53,13 @@
 export default {
   data() {
     return { hCaptchaReady: false, captchaLoaded: false }
+  },
+  setup() {
+    const { t } = useI18n({
+      useScope: 'local',
+    })
+
+    return { t }
   },
   head() {
     return {
@@ -93,7 +100,7 @@ export default {
 }
 </style>
 
-<i18n>
+<i18n lang="json">
 {
   "en": {
     "email": "Email",

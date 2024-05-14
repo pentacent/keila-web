@@ -1,27 +1,28 @@
 <template>
-  <lazy-hydrate never>
-    <div
-      class="container max-w-6xl mx-auto p-5 md:p-10 text-gray-800 rounded shadow-lg"
+  <div
+    class="container max-w-6xl mx-auto p-5 md:p-10 text-gray-800 rounded shadow-lg"
+  >
+    <h1 class="text-3xl md:text-5xl font-semibold">{{ t('h1') }}</h1>
+    <!-- <i18n
+      tag="p"
+      path="tagline"
+      class="text-xl md:text-2xl font-medium text-gray-700"
     >
-      <h1 class="text-3xl md:text-5xl font-semibold">{{ $t('h1') }}</h1>
-      <i18n
-        tag="p"
-        path="tagline"
-        class="text-xl md:text-2xl font-medium text-gray-700"
-      >
-        <template #link>
-          <a
-            href="https://github.com/pentacent/keila/blob/main/CHANGELOG.md#changelog"
-            class="underline"
-            target="_blank"
-            >{{ $t('tagline:link') }}</a
-          >
-        </template>
-      </i18n>
-      <div class="-mx-5 md:-mx-10 px-5 md:px-10 mt-10">
-        <div class="grid rows-auto gap-10">
+      <template #link>
+        <a
+          href="https://github.com/pentacent/keila/blob/main/CHANGELOG.md#changelog"
+          class="underline"
+          target="_blank"
+        >
+          {{ t('tagline:link') }}
+        </a>
+      </template>
+    </i18n> -->
+    <div class="-mx-5 md:-mx-10 px-5 md:px-10 mt-10">
+      <div class="grid rows-auto gap-10">
+        <ContentList :query="query" v-slot="{ list }">
           <article
-            v-for="article in articles"
+            v-for="article in list"
             :key="article.slug"
             class="md:flex md:flex-row md:gap-5"
           >
@@ -37,7 +38,7 @@
                   'bg-yellow-200': article.type === 'fixed',
                 }"
               >
-                {{ $t(`type:${article.type}`) }}
+                {{ t(`type:${article.type}`) }}
               </div>
               <div class="text-sm mt-2 text-gray-800">
                 <formatted-date :date="article.date" />
@@ -47,48 +48,45 @@
             <div class="max-w-3xl">
               <h2 class="text-2xl font-semibold">
                 <nuxt-link
-                  :to="localePath(`/updates/${article.slug}`)"
+                  :to="`/updates/${article.slug}`"
                   class="text-black no-underline hover:underline"
-                  >{{ article.title }}</nuxt-link
                 >
+                  {{ article.title }}
+                </nuxt-link>
               </h2>
-
-              <nuxt-content :document="{ body: article.excerpt }" />
+              <ContentRenderer :value="article" excerpt />
               <nuxt-link
-                :to="localePath(`/updates/${article.slug}`)"
+                :to="`/updates/${article.slug}`"
                 class="text-green-600 hover:underline"
-                >{{ $t('read-more') }}</nuxt-link
               >
+                {{ t('read-more') }}
+              </nuxt-link>
             </div>
           </article>
-        </div>
+        </ContentList>
       </div>
     </div>
-  </lazy-hydrate>
+  </div>
 </template>
 
-<script>
-import LazyHydrate from 'vue-lazy-hydration'
+<script lang="ts">
+import type { QueryBuilderParams } from '@nuxt/content/dist/runtime/types'
+
 export default {
-  components: { LazyHydrate },
   nuxtI18n: {
     locales: ['en'],
   },
-  async asyncData({ $content, i18n, error }) {
-    const articles = await $content('updates')
-      .where({
-        language: i18n.locale,
-      })
-      .sortBy('date', 'desc')
-      .sortBy('type', 'asc')
-      .sortBy('title', 'asc')
-      .fetch()
+  setup() {
+    const { t } = useI18n({
+      useScope: 'local',
+    })
 
-    if (articles.length > 0) {
-      return { articles }
-    } else {
-      error({ statusCode: 404, message: 'Page not found' })
+    const query: QueryBuilderParams = {
+      path: '/updates',
+      sort: [{ title: 1 }, { date: -1 }],
     }
+
+    return { query, t }
   },
   head() {
     return {
@@ -205,14 +203,16 @@ nav a.nuxt-link-exact-active {
 }
 </style>
 
-<i18n>
-{"en": {
-  "h1": "Product updates",
-  "tagline": "On this page you find recent highlights from updates to Keila, the Open Source email newsletter tool. A full technical changelog can be found at {link}.",
-  "tagline:link": "GitHub",
-  "type:added": "Added",
-  "type:changed": "Changed",
-  "type:fixed": "Fixed",
-  "read-more": "Read more"
-}}
+<i18n lang="json">
+{
+  "en": {
+    "h1": "Product updates",
+    "tagline": "On this page you find recent highlights from updates to Keila, the Open Source email newsletter tool. A full technical changelog can be found at {link}.",
+    "tagline:link": "GitHub",
+    "type:added": "Added",
+    "type:changed": "Changed",
+    "type:fixed": "Fixed",
+    "read-more": "Read more"
+  }
+}
 </i18n>

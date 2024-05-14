@@ -6,15 +6,15 @@
       <p>Made in 🇩🇪 ❤️ 🇪🇺.</p>
       <p class="text-sm">
         <a class="underline" href="/credits">Credits</a>
-        <a class="underline ml-2" href="https://pentacent.com/legal"
-          >Legal notice</a
-        >
-        <nuxt-link class="underline ml-2" to="/privacy"
-          >Privacy policy</nuxt-link
-        >
-        <nuxt-link class="underline ml-2" to="/terms"
-          >Terms &amp; Conditions</nuxt-link
-        >
+        <a class="underline ml-2" href="https://pentacent.com/legal">
+          Legal notice
+        </a>
+        <nuxt-link class="underline ml-2" to="/privacy">
+          Privacy policy
+        </nuxt-link>
+        <nuxt-link class="underline ml-2" to="/terms">
+          Terms &amp; Conditions
+        </nuxt-link>
       </p>
     </div>
     <div
@@ -26,8 +26,9 @@
         :key="locale.code"
         :to="path"
         :class="[{ 'font-bold': $i18n.locale === locale.code }]"
-        >{{ locale.name }}</nuxt-link
       >
+        {{ locale.name }}
+      </nuxt-link>
     </div>
   </footer>
 </template>
