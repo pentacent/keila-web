@@ -1,0 +1,42 @@
+---
+import { getStaticCollectionPaths } from "../utils/i18n";
+import { languages } from "../utils/translations";
+import ArticleLayout from "../layouts/ArticleLayout.astro";
+import UpdateLayout from "../layouts/UpdateLayout.astro";
+import DocsLayout from "../layouts/DocsLayout.astro";
+import UpdatesLayout from "../layouts/UpdatesLayout.astro";
+
+// async import collection
+// use in curried path function (which is async)
+// use final curried path no await
+
+export async function getStaticPaths() {
+  const articlePaths = await getStaticCollectionPaths("articles");
+  const updatePaths = await getStaticCollectionPaths("updates");
+  const legalPaths = await getStaticCollectionPaths("legal");
+  const docsPaths = await getStaticCollectionPaths("docs");
+
+  const updateIndexPaths = languages.map(lang => ({
+    params: {slug: lang == "en" ? "updates" : `${lang}/updates`},
+    props: { specialType: "updateIndex" }
+  }))
+
+  return articlePaths.concat(updatePaths).concat(legalPaths).concat(docsPaths).concat(updateIndexPaths)
+}
+
+const { entry, specialType } = Astro.props;
+---
+{
+  specialType == "updateIndex" ? (
+    <UpdatesLayout />
+  ) :
+  entry.collection === "articles" || entry.collection === "legal" ? (
+    <ArticleLayout {...Astro.props} />
+  ) : entry.collection === "updates" ? (
+    <UpdateLayout {...Astro.props} />
+  ) : entry.collection === "docs" ? (
+    <DocsLayout {...Astro.props} />
+  ) : (
+    <span>Unknown collection</span>
+  )
+}

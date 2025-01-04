@@ -1,0 +1,52 @@
+---
+title: Einrichtung von SPF, DKIM & DMARC
+---
+
+# Konfiguration deiner Domain für SPF, DKIM & DMARC
+
+Damit deine E-Mails den Anforderungen der großen E-Mail-Anbieter entsprechen,
+ist es notwendig, diese mit SPF, DKIM und DMARC zu konfigurieren.
+Zum Glück geht das mit Keila ganz einfach!
+
+<ManagedNote />
+
+## 1. Erstelle einen _Send with Keila_-Sender
+
+Falls noch nicht geschehen, erstelle einen [Sender](/docs/senders) in deinem Keila-Projekt und wähle die Option _Send with Keila_.
+Stelle sicher, dass du E-Mails an der _From address_ (z. B. `newsletter@example.com`) erhalten kannst, damit du die Bestätigungsmail empfangen kannst.
+
+## 2. Wähle deine »Mail From«-Domain
+
+Wähle eine Subdomain, die du derzeit noch nicht für andere Zwecke nutzt.
+Das wird deine _Mail From Domain_. Das könnte zum Beispiel `mailings.example.com` oder `send.example.com` sein.
+
+**Hinweis:** Du kannst die _Mail From Domain_ nicht in deiner _From address_ verwenden.
+Das bedeutet, wenn du _send.example.com_ als _Mail From Domain_ konfigurierst, sollte
+die verwendete E-Mail dennoch die Hauptdomain verwenden (z. B.
+`newsletter@example.com`) und nicht deine _Mail From Domain_ (d. h. **verwende nicht** `newsletter@send.example.com`).
+
+## 3. Anpassen der DNS-Einstellungen
+
+Füge die folgenden Einträge zu deinen DNS-Einstellungen hinzu:
+
+**Verbinde Mail From Domain mit CNAME**:\
+`CNAME`: `*your-subdomain*.example.com` `public.keila.io`
+
+**Füge den DKIM-Schlüssel von Keila hinzu**:\
+`CNAME`: `keila._domainkey.example.com` `dkim.public.keila.io`
+
+**Aktiviere DMARC für deine Domain (falls noch nicht geschehen)**:\
+`TXT`: `_dmarc.example.com` `v=DMARC1; p=none`
+
+## 4. Fülle das Konfigurations-Formular aus
+
+Fast geschafft! Nun musst du nur noch unser Konfigurations-Formular ausfüllen und
+wir kümmern uns um den Rest. Wir melden uns bei dir, sobald wir deine Einstellungen
+überprüft haben.
+
+<a
+  href="https://forms.gle/c3SJV8TrLxxzwqZq5"
+  class="inline-block px-4 text-white bg-blue-600 hover:bg-blue-500 hover:shadow no-underline rounded"
+>
+  Konfiguration absenden
+</a>

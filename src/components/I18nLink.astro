@@ -1,0 +1,17 @@
+---
+import { type language } from '../utils/translations';
+import { useTranslateContentPath } from '../utils/i18n';
+interface Props {
+    collection: string;
+    i18nId: string;
+    lang: language;
+    class?: string;
+    target?: string
+}
+
+const {collection, i18nId, lang, class: linkClass, target} = Astro.props
+
+const path = await useTranslateContentPath(collection, lang)
+const href = path(i18nId)
+---
+<a href={href} class={linkClass} target={target}><slot /></a>

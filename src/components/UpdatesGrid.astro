@@ -1,0 +1,32 @@
+---
+import { type language } from "../utils/translations";
+import { type CollectionEntry } from "astro:content";
+interface Props {
+  updates: { date: Date; i18nId: string; title: string; description: string }[];
+}
+
+const lang = Astro.currentLocale as language;
+const { updates } = Astro.props;
+import { localDate } from "../utils/i18n";
+import I18NLink from "./I18nLink.astro";
+---
+
+<div class="grid grid-rows-auto md:grid-cols-2 gap-x-5">
+  {
+    updates.map(({ date, title, description, i18nId }) => (
+      <article>
+        <div>
+          <span class="text-gray-400 text-sm rounded -mb-5">
+            {localDate(date, lang)}
+          </span>
+        </div>
+        <h3 class="m-0">
+          <I18NLink collection="updates" i18nId={i18nId} lang={lang}>
+            {title}
+          </I18NLink>
+        </h3>
+        <p>{description}</p>
+      </article>
+    ))
+  }
+</div>

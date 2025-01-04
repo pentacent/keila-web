@@ -1,0 +1,24 @@
+---
+import Check from "./icons/Check.astro";
+import Cog from "./icons/Cog.astro"
+
+interface Props {
+  wip?: boolean;
+}
+const { wip } = Astro.props;
+---
+
+<li class="flex flex-row gap-2 items-start">
+  <div class="flex-grow-0 m-0 pt-2 -ml-6">
+    {
+      !wip ? (
+        <Check class="text-green-500 w-4 h-4" />
+      ) : (
+        <Cog class="text-gray-400 w-4 h-4" />
+      )
+    }
+  </div>
+  <div class="m-0">
+    <slot />
+  </div>
+</li>

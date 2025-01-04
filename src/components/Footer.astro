@@ -1,0 +1,172 @@
+---
+import { type language } from "../utils/translations";
+
+import { useTranslations } from "../utils/i18n";
+import Email from "./Email.astro";
+import I18NLink from "./I18nLink.astro";
+
+const lang = Astro.currentLocale as language;
+const t = useTranslations(lang);
+---
+
+<footer>
+  <section class="bg-green-100">
+    <div
+      class="max-w-6xl mx-auto p-5 py-10 md:px-10 md:py-20 flex flex-col md:flex-row gap-10"
+    >
+      <div class="flex flex-col gap-4 md:w-2/3">
+        <h2 class="text-4xl font-bold">{t("footer.cta.heading")}</h2>
+        <div>
+          <a
+            href="https://app.keila.io/auth/register"
+            class="inline-flex items-center gap-4 px-4 py-4 bg-green-600 text-white font-semibold rounded-lg shadow-sm hover:bg-green-500 hover:shadow-lg"
+          >
+            {t("footer.cta.try")}
+          </a>
+          <br />
+        </div>
+        <div>
+          <I18NLink
+            collection="docs"
+            i18nId="installation"
+            lang={lang}
+            class="inline-flex items-center gap-4 px-4 py-4 bg-white font-semibold rounded-lg shadow-sm hover:bg-green-50 hover:shadow-lg"
+          >
+            {t("footer.cta.self-hosting")}
+          </I18NLink>
+        </div>
+      </div>
+      <div class="flex flex-col gap-4 md:w-1/3">
+        <h2 class="text-4xl font-bold" set:html={t("footer.contact.heading")} />
+        <div>
+          <span
+            class="inline-flex items-center gap-4 px-4 py-4 bg-white font-semibold rounded-lg shadow-sm hover:bg-green-50 hover:shadow-lg"
+          >
+            <Email user="hello" domain="keila.io" />
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-gray-50">
+    <div class="max-w-6xl mx-auto p-5 py-10 md:px-10 md:py-20">
+      <h2 class="text-3xl font-bold mb-4">{t("footer.newsletter.heading")}</h2>
+      <div class="md:flex md:flex-row gap-10 items-end" x-data="{}">
+        <form
+          action="https://app.keila.io/forms/frm_GX8qGEZd"
+          method="post"
+          target="_blank"
+          class="grid grid-auto-rows gap-4 row-start-2 md:row-start-1 lg:w-1/3"
+          x-on:submit.prevent="maybeExecuteHCaptchaAndSubmit($el, $refs.captcha.id)"
+        >
+          <script
+            is:inline
+            src={`https://hcaptcha.com/1/api.js?render=onload&hl=${lang}`}
+            async
+            defer></script>
+          <script is:inline>
+            function maybeExecuteHCaptchaAndSubmit(form, captchaWidgetId) {
+              let captchaCompleted = false;
+              footerForm = form;
+              if (hcaptcha) {
+                hcaptcha
+                  .execute(captchaWidgetId, { async: true })
+                  .then(() => (captchaCompleted = true));
+
+                // This construct is necessary because using hCaptcha’s promise
+                // API wouldn't retain the trusted DOM event, thus preventing
+                // the form from being submitted opening a new tab
+                const interval = setInterval(() => {
+                  if (captchaCompleted) {
+                    clearInterval(interval);
+                    form.submit();
+                  }
+                }, 150);
+              } else {
+                form.submit();
+              }
+            }
+          </script>
+          <div class="flex flex-col">
+            <label for="contact_email" class="mb-1"
+              >{t("footer.newsletter.email.label")}</label
+            ><input
+              id="contact_email"
+              name="contact[email]"
+              placeholder={t("footer.newsletter.email.placeholder")}
+              type="email"
+              class="bg-white rounded text-black shadow-sm p-2"
+              required
+            />
+          </div>
+          <div class="flex flex-col">
+            <label for="contact_first_name" class="mb-1"
+              >{t("footer.newsletter.first_name.label")}</label
+            ><input
+              id="contact_first_name"
+              name="contact[first_name]"
+              class="bg-white rounded text-black shadow-sm p-2"
+            />
+          </div>
+          <div
+            x-ref="captcha"
+            class="h-captcha hidden"
+            data-sitekey="a1c5fab7-71df-4ea4-af75-87a3d07c61de"
+            data-size="invisible"
+          >
+          </div>
+          <div>
+            <button
+              class="inline-flex items-center gap-4 px-4 py-4 bg-gray-500 text-white font-semibold rounded-lg shadow-sm hover:bg-green-500 hover:shadow-lg"
+            >
+              {t("footer.newsletter.cta")}
+            </button>
+            <div class="text-xs mt-2">
+              {t("footer.newsletter.nospam")}
+              <a href="https://pentacent.com/privacy" class="underline"
+                >{t("footer.newsletter.privacy.label")}</a
+              >
+            </div>
+          </div>
+        </form>
+        <div class="flex-grow md:text-right">
+          <p class="text-sm md:text-sm font-bold text-green-600 mt-4">
+            {t("footer.newsletter.powered-by-keila")}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white ring-1 ring-gray-100">
+    <div class="max-w-6xl mx-auto p-5 md:p-10 flex flex-col gap-4 items-center">
+      <p>Made in 🇩🇪 🇪🇺 with ❤️.</p>
+      <nav>
+        <ul class="flex flex-wrap items-center justify-center gap-4">
+          <li>
+            <I18NLink collection="legal" i18nId="credits" lang={lang}>
+              {t("nav.credits")}
+            </I18NLink>
+          </li>
+          <li>
+            <I18NLink collection="legal" i18nId="privacy" lang={lang}>
+              {t("nav.privacy")}
+            </I18NLink>
+          </li>
+
+          <li>
+            <I18NLink collection="legal" i18nId="terms" lang={lang}>
+              {t("nav.tos")}
+            </I18NLink>
+          </li>
+          <li>
+            <a href="https://pentacent.com/legal" target="_blank" }
+              >{t("nav.legal")}</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+</footer>

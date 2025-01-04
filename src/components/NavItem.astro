@@ -1,0 +1,61 @@
+---
+interface Props {
+  href: string;
+  target?: string;
+  title: string;
+  icon: string;
+  description: string;
+}
+
+const { href, target, title, icon, description } = Astro.props;
+
+const svgClass = "h-5 w-5 mt-1 text-green-500 flex-shrink-0";
+
+import BookOpen from "./icons/BookOpen.astro";
+import CommandLine from "./icons/CommandLine.astro";
+import GitHub from "./icons/GitHub.astro";
+import Mastodon from "./icons/Mastodon.astro";
+import Pencil from "./icons/Pencil.astro";
+import PresentationChart from "./icons/PresentationChart.astro";
+import Rocket from "./icons/Rocket.astro";
+import Users from "./icons/Users.astro";
+---
+
+<li>
+  <a
+    class="px-8 py-4 flex gap-4 hover:bg-green-100"
+    href={href}
+    target={target}
+  >
+    {
+      () => {
+        switch (icon) {
+          case "book-open":
+            return <BookOpen class={svgClass} />;
+          case "command-line":
+            return <CommandLine class={svgClass} />;
+          case "github":
+            return <GitHub class={svgClass} />;
+          case "github":
+            return <GitHub class={svgClass} />;
+          case "mastodon":
+            return <Mastodon class={svgClass} />;
+          case "pencil":
+            return <Pencil class={svgClass} />;
+          case "presentation-chart":
+            return <PresentationChart class={svgClass} />;
+          case "rocket":
+            return <Rocket class={svgClass} />;
+          case "users":
+            return <Users class={svgClass} />;
+          default:
+            return;
+        }
+      }
+    }
+    <span class="flex flex-col gap-2">
+      <span>{title}</span>
+      <span class="text-sm text-gray-700 font-normal">{ description }</span>
+    </span>
+  </a>
+</li>

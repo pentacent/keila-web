@@ -1,0 +1,67 @@
+---
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/testimonials/*.{jpeg,jpg,png,gif}"
+);
+interface Props {
+  image: string;
+  attributionName: string;
+  attributionTitle?: string;
+  attributionOrg?: string;
+  attributionLink: string;
+}
+
+const {
+  image: imageName,
+  attributionName,
+  attributionOrg,
+  attributionTitle,
+  attributionLink,
+} = Astro.props;
+
+const image = images["/src/assets/testimonials/" + imageName]();
+---
+
+<blockquote class="bg-white rounded shadow-sm p-5">
+  <div class="flex flex-col sm:flex-row gap-5 sm:gap-10 items-center">
+    <Image
+      src={image}
+      alt={`${attributionName}`}
+      width="96"
+      densities={[1, 2]}
+      class="w-24 rounded-full ring-3 m-0 sm:-mt-1"
+    />
+    <div class="prose-p:my-0 sm:prose-p:mt-4 mb-16 sm:mb-0">
+      <slot />
+      {
+        attributionTitle && attributionOrg ? (
+          <cite>
+            {attributionName}, {attributionTitle}
+            <a href={attributionLink} target="_blank">
+              {attributionOrg}
+            </a>
+          </cite>
+        ) : (
+          <cite>
+            <a href={attributionLink} target="_blank">
+              {attributionName}
+            </a>
+          </cite>
+        )
+      }
+    </div>
+  </div>
+</blockquote>
+
+<style>
+  blockquote {
+    @apply border-none;
+  }
+  cite {
+    @apply block text-sm text-right mt-2;
+
+    a {
+    }
+  }
+</style>

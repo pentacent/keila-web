@@ -1,0 +1,73 @@
+---
+title: Track Your Newsletter Campaigns for Great Email Analytics (Or Don’t, It’s Your Choice!)
+description: Analytics
+---
+
+With Keila you have the choice: Track email opens and clicks for your campaigns
+or send your emails without any tracking at all.
+
+<KeilaImage
+  src="/src/assets/screenshots/analytics.png"
+  alt="Screenshot of the campaign analytics"
+/>
+
+## How Do Newsletter Analytics Work?
+
+To track your newsletter campaign, Keila, Keila does two things:
+
+1. Add a tracking pixel to your email.
+   The tracking pixel is an invisible tiny image that includes a personalized
+   tracking code. When the tracking pixel is loaded from the Keila server, we
+   know the email has been opened.
+2. Make all your links tracking-enabled
+   When you add a link to your email newsletter, Keila replaces it with a link
+   to the Keila server that includes a personalized tracking code and
+   immediately redirects to your original link when opened. Like this, we know
+   which links have been clicked by your newsletter recipients.
+
+Each time, a tracking pixel or link is activated, Keila stores this information
+and that’s how you get newsletter analytics.
+
+## Bounce and Complaint Handling
+
+When you send your email campaigns, it’s important to be aware of bounces (i. e.
+when an email can't be delivered) and spam complaints (i. e. when a user
+reports your email as spam to their ISP).
+
+If you’re using _Send with Keila_ on Keila Cloud, we take care of
+automatically handling bounces and spam complaints. Contacts are unsubscribed
+automatically after a hard bounce (e.g. when the server reports that an email
+address doesn't exist) or after three recent soft bounces (e.g. when the server
+reports an inbox is out of storage space).
+When we receive a complaint, we also unsubscribe that contact from your project.
+
+If you’re self-hosting Keila, you can enable automatic bounce and complaint
+handling for SES senders.
+
+## How Does Keila Respect User Privacy?
+
+Keila tries to avoid tracking information about contacts that is not strictly
+necessary while still providing useful campaign analytics insights.
+
+Keila doesn’t track IP address or cookies from tracking pixels and clicks and on
+Keila Cloud, we don’t cross-reference contacts between projects.
+
+We’re also planning to add more advanced privacy options for contacts such as
+disabling tracking entirely or storing only aggregate analytics for campaigns.
+
+<GitHubIssue number="150" />
+
+## Don’t Want Tracking?
+
+Tracking users has become the de-facto standard for all email newsletter tools
+and across the wider internet. If you don’t want to be part of that, Keila makes
+it easy for you: Just disable the _Enable click/open tracking_ checkbox and
+your subscribers can enjoy privacy-friendly and tracking-free newsletters.
+
+Only the number of emails sent, bounces, and spam complaints are reported on the
+campaign analytics page when tracking is disabled.
+
+<KeilaImage
+  src="/src/assets/screenshots/untracked-campaign.png"
+  alt="Screenshot of the analytics page of an untracked campaign."
+/>

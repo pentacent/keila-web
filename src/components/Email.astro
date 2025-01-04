@@ -1,0 +1,17 @@
+---
+interface Props {
+  user: string;
+  domain: string;
+  class?: string;
+}
+
+const { user, domain, class: linkClass } = Astro.props;
+const [subdomain, ...tld] = domain.split(".");
+---
+<script define:vars={{ user, domain, linkClass }}>
+  document.write(`<a href="mailto:${user}@${domain}" class="${linkClass}">${user}@${domain}</a>`)
+</script><noscript>
+    <span>
+        {user}&nbsp;[at]&nbsp;{subdomain}&nbsp;[dot]&nbsp;{tld}
+    </span>
+</noscript>

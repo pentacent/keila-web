@@ -1,0 +1,124 @@
+---
+import Layout from "./Layout.astro";
+import type { CollectionEntry } from "astro:content";
+import { useTranslations, useTranslateContentPath } from "../utils/i18n";
+import type { language } from "../utils/translations";
+import GitHubIssue from "../components/GitHubIssue.astro";
+import ManagedNote from "../components/ManagedNote.astro";
+import KeilaImage from "../components/KeilaImage.astro";
+import Email from "../components/Email.astro";
+
+
+const { entry,translations } = Astro.props;
+
+const lang = Astro.currentLocale as language;
+const t = useTranslations(lang as language);
+const docsPath = await useTranslateContentPath("docs", lang)
+const { Content, components } = await entry.render();
+
+---
+
+<Layout
+title={entry.data.title}
+description={entry.data.description}
+translations={translations}
+contentLanguage={entry.data.lang}
+>
+  <div class="grid grid-cols-[20rem,1fr] bg-gray-100 py-5 pb-20 min-h-screen">
+    <aside class="text-gray-900 p-5 z-10">
+      <nav>
+        <ul>
+          <li>
+            <span>{t("docs.nav.usage")}</span>
+            <ul>
+              <li>
+                <a href={docsPath("senders")}
+                  >{t("docs.nav.senders")}</a
+                >
+              </li>
+              <li>
+                <a href={docsPath("contacts")}
+                  >{t("docs.nav.contacts")}</a
+                >
+              </li>
+              <li>
+                <a href={docsPath("segments")}
+                  >{t("docs.nav.segments")}</a
+                >
+              </li>
+              <li>
+                <a href={docsPath("forms")}
+                  >{t("docs.nav.forms")}</a
+                >
+              </li>
+              <li>
+                <a href={docsPath("campaigns")}
+                  >{t("docs.nav.campaigns")}</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span>{t("docs.nav.managed")}</span>
+            <ul>
+              <li>
+                <a href={docsPath("managed-dmarc")}
+                  >{t("docs.nav.managed-dmarc")}</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span>{t("docs.nav.self-hosting")}</span>
+            <ul>
+              <li>
+                <a href={docsPath("installation")}
+                  >{t("docs.nav.installation")}</a
+                >
+              </li>
+              <li>
+                <a href={docsPath("configuration")}
+                  >{t("docs.nav.configuration")}</a
+                >
+              </li>
+              <li>
+                <a href={docsPath("setup")}
+                  >{t("docs.nav.setup")}</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <main class="3xl:-ml-80">
+      <div
+        class="max-w-5xl mx-auto p-5 md:p-10 text-gray-800 text-lg rounded-t bg-white md:pb-16">
+        <div id="markdown-content" class="prose prose-xl mx-auto">
+          <Content
+            id="content"
+            components={{ ...components, GitHubIssue, KeilaImage, Email, ManagedNote }}
+          />
+        </div>
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  nav {
+    li {
+      @apply py-2;
+    }
+    ul li > span {
+      @apply font-bold;
+    }
+    ul li ul {
+      @apply pl-5;
+    }
+
+    a {
+      @apply hover:underline
+    }
+  }
+</style>

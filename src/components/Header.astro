@@ -1,0 +1,287 @@
+---
+import { type CollectionEntry } from "astro:content";
+import { type language, languages } from "../utils/translations";
+
+interface Props {
+  translations: Map<language, String>;
+}
+const { translations } = Astro.props;
+
+import Logo from "./Logo.astro";
+import NavItem from "./NavItem.astro";
+import ChevronDown from "./icons/ChevronDown.astro";
+import BarsThree from "./icons/BarsThree.astro";
+import XMark from "./icons/XMark.astro";
+
+import { useTranslations, useTranslateContentPath } from "../utils/i18n";
+
+const lang = Astro.currentLocale as language;
+const t = useTranslations(lang);
+const articlePath = await useTranslateContentPath("articles", lang);
+const docsPath = await useTranslateContentPath("docs", lang);
+const indexPath = lang == "en" ? "/" : `/${lang}`;
+---
+
+<header class="">
+  <div class="container max-w-6xl mx-auto p-5 lg:p-10 flex items-center">
+    <div class="text-gray-900 text-3xl lg:text-5xl text-center">
+      <a href={indexPath}>
+        <Logo class="h-10 lg:h-16 -mr-3 inline-block w-auto" />
+        Keila
+      </a>
+    </div>
+    <div class="flex-grow"></div>
+    <nav class="text-l flex-grow text-right">
+      <ul
+        class="flex items-center flex-wrap md:gap-1 align-center justify-end font-semibold text-black"
+      >
+        <li class="relative hidden sm:block" x-data="{open: false}">
+          <span
+            class="px-2 md:px-3 py-3 cursor-pointer hover:text-green-900 flex items-center flex-row gap-1"
+            @click="open = true"
+          >
+            {t("nav.about")}
+            <ChevronDown class="w-4 h-4" />
+          </span>
+          <div
+            class="absolute left-1/2 transform -translate-x-1/2 mt-3 w-screen max-w-md"
+            style="display: none"
+            x-show="open"
+            x-on:click.away="open = false"
+          >
+            <ul
+              class="rounded-lg shadow-lg bg-white flex flex-col text-left overflow-hidden"
+            >
+              <NavItem
+                href={articlePath("email-editors")}
+                icon="pencil"
+                title={t("nav.about.editors")}
+                description={t("nav.about.editors.details")}
+              />
+              <NavItem
+                href={articlePath("analytics-and-privacy")}
+                icon="presentation-chart"
+                title={t("nav.about.analytics")}
+                description={t("nav.about.analytics.details")}
+              />
+              <NavItem
+                href={articlePath("segments-and-data")}
+                icon="users"
+                title={t("nav.about.segments")}
+                description={t("nav.about.segments.details")}
+              />
+              <NavItem
+                href={articlePath("open-source")}
+                icon="command-line"
+                title={t("nav.about.opensource")}
+                description={t("nav.about.opensource.details")}
+              />
+            </ul>
+          </div>
+        </li>
+        <li class="relative hidden sm:block" x-data="{open: false}">
+          <span
+            class="px-2 md:px-3 py-3 cursor-pointer hover:text-green-900 flex items-center flex-row gap-1"
+            x-on:click="open = true"
+          >
+            {t("nav.community")}
+            <ChevronDown class="w-4 h-4" />
+          </span>
+          <div
+            class="absolute left-1/2 transform -translate-x-1/2 mt-3 w-screen max-w-md"
+            style="display: none"
+            x-show="open"
+            x-on:click.away="open = false"
+          >
+            <ul
+              class="rounded-lg shadow-lg bg-white flex flex-col text-left overflow-hidden"
+            >
+              <NavItem
+                href="https://github.com/pentacent/keila/"
+                target="_blank"
+                icon="github"
+                title={t("nav.github")}
+                description={t("nav.github.details")}
+              />
+              <NavItem
+                href={docsPath("installation")}
+                icon="book-open"
+                title={t("nav.docs")}
+                description={t("nav.docs.details")}
+              />
+              <NavItem
+                href="https://github.com/pentacent/keila/projects/1"
+                target="_blank"
+                icon="rocket"
+                title={t("nav.roadmap")}
+                description={t("nav.roadmap.details")}
+              />
+              <NavItem
+                href="https://fosstodon.org/@keila"
+                target="_blank"
+                icon="mastodon"
+                title={t("nav.mastodon")}
+                description={t("nav.mastodon.details")}
+              />
+            </ul>
+          </div>
+        </li>
+        <li class="hidden lg:block">
+          <a
+            href={articlePath("pricing")}
+            class="block px-3 py-3 hover:text-green-900"
+          >
+            {t("nav.pricing")}
+          </a>
+        </li>
+        <li class="mr-5 sm:mr-0 relative" x-data="{open: false}">
+          <div
+            class="px-2 md:px-3 py-3 cursor-pointer hover:text-green-900 flex gap-1 items-center"
+            @click="open = true"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="h-5"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802"
+              ></path>
+            </svg>
+            <span class="hidden lg:inline text-xs">{t("lang", lang)}</span>
+            <ChevronDown class="w-4 h-4 sm:w-3 sm:h-3" />
+          </div>
+
+          <div
+            class="absolute left-1/2 transform -translate-x-1/2 mt-3 w-screen max-w-36"
+            style="display: none"
+            x-show="open"
+            @click.away="open = false"
+          >
+            <ul
+              class="rounded-lg shadow-lg bg-white flex flex-col text-left overflow-hidden"
+            >
+              {
+                languages.map(
+                  (lang: language) =>
+                    translations[lang] && (
+                      <li>
+                        <a
+                          class="px-8 py-4 flex flex-col gap-2 hover:bg-green-100"
+                          href={translations[lang]}
+                        >
+                          {t("lang", lang)}
+                        </a>
+                      </li>
+                    ),
+                )
+              }
+            </ul>
+          </div>
+        </li>
+
+        <li class="hidden sm:block lg:flex-grow">
+          <a href="https://app.keila.io" class="px-3 py-3">
+            {t("nav.login")}
+          </a>
+        </li>
+        <li class="hidden sm:block">
+          <a
+            href="https://app.keila.io/auth/register"
+            class="p-3 bg-green-600 font-semibold text-white rounded-md hover:bg-green-500"
+          >
+            {t("nav.try")}
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <nav aria-hidden="true" class="sm:hidden" x-data="{show: false}">
+      <div x-on:click="show = true" x-show="show === false">
+        <BarsThree class="h-8 cursor-pointer" />
+      </div>
+      <div x-on:click="show = true" x-show="show === true" style="display:none">
+        <XMark class="h-8 cursor-pointer" />
+      </div>
+      <div
+        style="display: none"
+        x-show="show"
+        x-on:click.away="show = false"
+        class="absolute top-20 right-5 left-5 pb-5 shadow-md rounded w-auto h-auto bg-white text-lg overflow-hidden"
+      >
+        <ul
+          class="flex flex-row gap-5 p-10 py-6 items-center justify-center bg-green-100"
+        >
+          <li>
+            <a
+              href="https://app.keila.io"
+              class="p-3 bg-white font-semibold rounded-md hover:bg-green-300 shadow"
+            >
+              {t("nav.login")}
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://app.keila.io/auth/register"
+              class="p-3 bg-green-600 font-semibold text-white rounded-md hover:bg-green-500 shadow"
+            >
+              {t("nav.try")}
+            </a>
+          </li>
+        </ul>
+        <h2 class="p-10 py-3 font-bold">{t("nav.about")}</h2>
+        <ul class="pl-2">
+          <li>
+            <a class="block p-10 py-3" href={articlePath("email-editors")}
+              >{t("nav.about.editors")}</a
+            >
+          </li>
+          <li>
+            <a
+              class="block p-10 py-3"
+              href={articlePath("analytics-and-privacy")}
+              >{t("nav.about.analytics")}</a
+            >
+          </li>
+          <li>
+            <a
+              class="block p-10 py-3"
+              href={articlePath("segmentation-and-data")}
+              >{t("nav.about.segments")}</a
+            >
+          </li>
+          <li>
+            <a class="block p-10 py-3" href={articlePath("open-source")}
+              >{t("nav.about.opensource")}</a
+            >
+          </li>
+        </ul>
+        <h2 class="p-10 py-3 font-bold">{t("nav.community")}</h2>
+        <ul class="pl-2">
+          <li>
+            <a
+              class="block p-10 py-3"
+              href="https://github.com/pentacent/keila/">{t("nav.github")}</a
+            >
+          </li>
+          <li>
+            <a
+              class="block p-10 py-3"
+              href="https://github.com/pentacent/keila/projects/1"
+              >{t("nav.roadmap")}</a
+            >
+          </li>
+          <li>
+            <a class="block p-10 py-3" href="https://fosstodon.org/@keila"
+              >{t("nav.mastodon")}</a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>

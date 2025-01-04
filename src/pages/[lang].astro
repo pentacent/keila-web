@@ -1,0 +1,12 @@
+---
+import { languages, defaultLang } from "../utils/translations";
+
+export const getStaticPaths = (() => {
+  return languages.filter(lang => lang != defaultLang).map((lang) => {
+    return { params: { lang }, props: { lang: lang } };
+  })
+})
+
+import Index from "./index.astro";
+---
+<Index />

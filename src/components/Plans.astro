@@ -1,0 +1,64 @@
+---
+import { useTranslations } from "../utils/i18n";
+
+const plan = (name, paddleId, limit, net, gross) => {
+  return { name, paddleId, limit, net, gross };
+};
+
+const plans = [
+  plan("XS", 660926, 2000, "€8", "€8.00"),
+  plan("S", 660927, 5000, "€16", "€16.00"),
+  plan("M", 660928, 15000, "€32", "€32.00"),
+  plan("L", 660929, 50000, "€64", "€64.00"),
+  plan("XL", 660930, 100000, "€128", "€128.00"),
+  plan("XXL", 660931, 250000, "€256", "€256.00"),
+];
+
+const lang = Astro.currentLocale
+const t = useTranslations(lang)
+---
+<div class="grid sm:grid-cols-3 gap-5">
+  {plans.map((plan) => <div class="plan" data-plan={plan.paddleId}>
+    <section class="text-center p-3 shadow rounded-lg">
+        <div class="text-3xl mt-2">
+            <span class="font-light">Keila {plan.name}</span> 
+        </div>
+        <div class="mt-2">
+            <span class="text-2xl font-bold"><span class="plan-net">{plan.net}</span></span><span class="text-xs">/{t("plans.month")}</span>
+        </div>
+        <div class="-mt-5">
+            <span class="text-xs"><span class="plan-gross">({plan.gross}</span> {t("plans.gross")})</span>
+        </div>
+        <a href="https://app.keila.io/auth/register" class="inline-block text-sm no-underline p-3 py-2 my-3 bg-green-600 font-semibold text-white rounded-md hover:bg-green-500">{t("plans.sign-up")}</a>
+        <hr class="my-2">
+        <div>
+            <ul class="text-sm text-left">
+            <li class="font-bold">{new Intl.NumberFormat(lang).format(plan.limit)} {t("plans.emails.limit")}</li>
+            <li>{t("plans.contacts.unlimited")}</li>
+            <li>{t("plans.projects.unlimited")}</li>
+            <li>{t("plans.send-with-keila")}</li>
+            </ul>
+        </div>
+    </section>
+</div>)}
+</div>
+
+<script src="https://cdn.paddle.com/paddle/paddle.js" defer async></script>
+<div id="plans-data" data-plans={JSON.stringify(plans)}></div>
+<script>
+  const interval = setInterval(() => {
+    if (!window["Paddle"]) return;
+
+    const Paddle = window["Paddle"];
+    Paddle.Setup({ vendor: 2518 });
+    const plans = JSON.parse(document.getElementById("plans-data").dataset.plans)
+    plans.forEach(({ paddleId }) => {
+      Paddle.Product.Prices(paddleId, ({ price }) => {
+        const el = document.querySelector(`[data-plan="${paddleId}"]`)
+        el.querySelector(".plan-net").innerHTML = price.net.replace(".00", "");
+        el.querySelector(".plan-gross").innerHTML = price.gross.replace(".00", "");
+      });
+    });
+    clearInterval(interval)
+  }, 100);
+</script>

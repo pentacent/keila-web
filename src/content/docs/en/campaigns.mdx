@@ -1,0 +1,60 @@
+---
+title: Campaigns
+slug: campaigns
+---
+
+# Campaigns: Create, Schedule, and Send Your Newsletters
+
+_Campaigns_ are the emails you send to your contacts.
+
+In order to create a new campaign, navigate to the _Campaigns_ page from the
+main menu and click on _Create new Campaign_.
+
+You can then choose a subject for your campaign and a your preferred editor.
+Currently, you can choose between the _Block Editor_, the _Markdown editor_, and
+the _plain text editor_.
+
+<KeilaImage
+  src="/src/assets/docs/block-editor.png"
+  alt="Screenshot of the Block Editor in Keila"
+/>
+
+## Liquid Templating
+
+Keila supports the [Liquid template language](https://shopify.github.io/liquid/)
+in campaigns. The following Liquid assigns are available in every campaign:
+
+- `{{ contact }}` - Object with data about the contact receiving the email with
+  the following properties:
+  - `{{ contact.email }}`
+  - `{{ contact.first_name }}`
+  - `{{ contact.last_name }}`
+- `{{ unsubscribe_link }}` - URL of the one-click unsubscription link
+
+If not all contacts in your database have given their first name, Liquid’s `default`
+tag is very useful.
+
+`Hey {{ contact.first_name | default: "there" }}` will render as `Hey Jane` for
+a contact with the first name `Jane` and as `Hey there` for a contact with no
+first name set.
+
+## Markdown
+
+Markdown campaigns support Liquid templating just like plain-text campaigns do.
+In addition, text you enter is processed as [GitHub-flavored Markdown](https://github.github.com/gfm/).
+
+<KeilaImage
+  src="/src/assets/docs/campaign.png"
+  alt="Screenshot of the Markdown editor in Keila"
+/>
+
+Since Markdown doesn’t natively support the creation of buttons, here’s a little
+trick you can use with Keila:
+
+`#### [Your text](https://example.com) ####` is automatically turned into a
+call-to-action button.
+
+## Scheduling Campaigns
+
+You can schedule your newsletters to be sent at a later date. In order to do
+that, click on _Schedule_ on the top right and select the desired date and time.

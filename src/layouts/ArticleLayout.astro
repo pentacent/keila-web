@@ -1,0 +1,50 @@
+---
+import Layout from "./Layout.astro";
+import type { language } from "../utils/translations";
+
+import KeilaImage from "../components/KeilaImage.astro";
+import Email from "../components/Email.astro";
+import Plans from "../components/Plans.astro";
+import GitHubIssue from "../components/GitHubIssue.astro";
+import LibreFriends from "../components/LibreFriends.astro";
+import I18NLink from "../components/I18nLink.astro";
+
+const lang = Astro.currentLocale as language;
+const { entry, translations } = Astro.props;
+const { slug } = Astro.params;
+const { Content, components } = await entry.render();
+---
+
+<Layout
+  title={entry.data.title}
+  description={entry.data.description}
+  ogImage={`${slug}.png`}
+  translations={translations}
+  contentLanguage={entry.data.lang}
+>
+  <main
+    class="max-w-6xl mx-auto p-5 md:p-10 text-gray-800 text-lg rounded-t bg-white md:pb-16"
+  >
+    <div id="markdown-content" class="prose prose-xl mx-auto">
+      <h1>{entry.data.title}</h1>
+      <Content
+        id="content"
+        components={{
+          ...components,
+          GitHubIssue,
+          I18NLink,
+          KeilaImage,
+          LibreFriends,
+          Plans,
+          Email,
+        }}
+      />
+    </div>
+  </main>
+</Layout>
+
+<style>
+  h1 {
+    @apply text-5xl font-bold mb-10;
+  }
+</style>

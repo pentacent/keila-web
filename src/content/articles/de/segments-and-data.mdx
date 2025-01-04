@@ -1,0 +1,119 @@
+---
+title: Segmente und Datenfelder
+description: Personalisiere E-Mails mit Keilas umfangreichen Segmentierungs- und Datenfunktionen.
+---
+
+Mit Keila ist es einfach, zusätzliche Datenfelder zu Anmeldeformularen
+hinzuzufügen, gezielt Newsletter-Kampagnen an bestimmte Teil-Gruppen (Segmente)
+zu versenden und dynamische Kampagnen mit der Liquid-Template-Sprache zu
+erstellen.
+
+<KeilaImage
+  src="/src/assets/screenshots/form-builder.png"
+  alt="Screenshot des Formular-Builders in Keila mit einem benutzerdefinierten Tags-Feld"
+/>
+
+## Wozu dienen Datenfelder und Segmente in Newslettern?
+
+Möglicherweise interessieren sich nicht alle Abonnenten deines Newsletters für
+die gleichen Themen. Wenn du beispielsweise den Newsletter einer Weltraum-Firma
+betreibst, interessieren sich einige Abonnenten (die Rakentenwissenschaftler)
+eher für deine Job-Angebote. Andere Abonnenten (die Bücherwürmer) interessieren
+sich dagegen dafür, wenn dein neuestes Weltraum-Buch erscheint.
+
+Die Lösung: Ein benutzerdefiniertes Datenfeld für jeden Kontakt, in dem
+gespeichert wird ob er ein Rakentenwissenschaftler oder ein Bücherwurm ist.
+
+Das erlaubt es dir, Segmente deiner Kontaktliste zu erstellen, die automatisch
+nur Kontakte einer der beiden Gruppen beinhalten. Du kanst Job-Angebote an
+Rakentenwissenschaftler senden und Neuigkeiten zu deinen Büchern an die
+Bücherwürmer. Alle sind zufrieden.
+
+## Datenfelder mit dem Formular-Werkzeug zu Anmeldeformularen hinzufügen
+
+Der einfachste Weg um Datenfelder zu deinen Kontakten hinzuzufügen ist es, diese
+gleich bei der Anmeldung zu erfassen. Mit dem Form Builder von Keila ist das ein
+Kinderspiel, du kannst zusätzliche Textfelder, Checkboxen, Dropdowns und Tags
+zu deinen Anmeldeformularen hinzufügen.
+
+## Erstellen von Segmenten
+
+Basierend auf den Datenfeldern deiner Kontakte kannst du Segmente erstellen.
+Keila bietet einen visuellen Segment-Editor, mit dem du verschiedene Bedingungen
+leicht kombinieren kannst.
+
+<KeilaImage
+  src="/src/assets/screenshots/segment-editor.png"
+  alt="Screenshot des Segment-Editors von Keila"
+/>
+
+Für erfahrenere Nutzer bietet Keila außerdem eine Abfragesprache, die auf den
+Query Documents von MongoDB basiert. Eine Abfrage für alle Kontakte, die _nicht_
+den "rocket-scientist" Tag haben, würde z. B. so aussehen.
+
+```json
+{
+  "$not": { "data.tags": "rocket-scientist" }
+}
+```
+
+<I18NLink collection="docs" i18nid="segments" lang="de">
+  Mehr zur Abfrage-Sprache in der Dokumentation erfahren..
+</I18NLink>
+
+## Kontakt-Daten als JSON
+
+Mit Keila fällt das Verwalten und Importieren von benutzerdefinierten
+Datenfeldern leicht. Die Datenfelder jedes Kontakts sind Teil eines einzigen
+JSON-Objekts. Du kannst es im Kontakt-Editor inspizieren.
+
+<KeilaImage
+  src="/src/assets/screenshots/contact-data.png"
+  alt="Screenshot des Kontakt-Editors mit Datenfeldern"
+/>
+
+## Verwendung von Liquid-Templates in Kampagnen
+
+Keila bietet eine vollständige Unterstützung der Liquid-Template-Sprache von
+Shopify im Kampagnen-Text und -Betreff.
+
+So kannst du einen Kontakt mit seinem Vornamen anschreiben:
+
+```
+Hallo {{ contact.first_name }}!
+```
+
+Beim Versenden der Kampagne wird `{{ contact.first_name }}` mit dem Vornamen
+des Kontakts ersetzt.
+
+Wenn einige Kontakte keinen Vornamen hinterlegt haben, kannst du den
+_default_-Filter verwenden:
+
+```
+Hallo {{ contact.first_name | default: "du"}}!
+```
+
+So wird der Text im Newsletter "Hallo du!" lauten, wenn kein Vorname für den
+Kontakt hinterlegt ist.
+
+Auch die Verwendung von komplexeren Ausdrücken ist möglich. Beispielsweise
+könntest du ein "gender"-Datenfeld haben und dann die korrekte Anrede erstellen:
+
+```
+{% if contact.data.gender == "female" %}
+  Sehr geehrte Frau {{ contact.last_name }}!
+{% elsif contact.data.gender == "male" %}
+  Sehr geehrter Herr {{ contact.last_name }}!
+{% else %}
+  Guten Tag {{ contact.first_name }} {{ contact.last_name }}!
+{% endif %}
+```
+
+So wird der Kontakt mit "Sehr geehrter Herr" oder "Sehr geehrte Frau"
+ansprochen, wenn im "gender"-Feld die Werte "female" oder "male" hinterlegt
+sind. Wenn das Feld einen anderen Wert einhält oder nicht gesetzt ist, wird die
+geschlechtsneutrale "Guten Tag" mit dem vollständigen Namen verwendet.
+
+<I18NLink collection="docs" i18nid="campaigns" lang="de">
+  Mehr über Liquid in Keila erfahren.
+</I18NLink>

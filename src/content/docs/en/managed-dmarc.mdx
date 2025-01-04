@@ -1,0 +1,53 @@
+---
+title: Setting up SPF, DKIM & DMARC
+slug: managed-dmarc
+---
+
+# Setting up your domain for SPF, DKIM & DMARC
+
+Setting up your domain to comply with SPF, DKIM and DMARC requirements that are being
+implemented by more and more email providers, is easy with Keila!
+
+<ManagedNote />
+
+## 1. Create a _Send with Keila_ Sender
+
+If you don’t yet have one, create a [Sender](/docs/senders) in your Keila project and select the _Send with Keila_ option.
+Make sure you can receive emails at the _From address_
+(e.g. `newsletter@example.com`) so you can receive the confirmation email.
+
+## 2. Pick your Mail From Domain
+
+Choose a subdomain that is not currently used for anything else. This
+subdomain will become your _Mail From Domain_. Common choices include `mailings.example.com` or `send.example.com`.
+
+**Note:** You can’t use the _Mail From Domain_ in your _From address_. This
+means if you configure _send.example.com_ as your _Mail From Domain_, you should
+still use an email address on your principal domain (e.g.
+*newsletter@example.com*) as your _From address_ and not an email address on
+your _Mail From Domain_ (i.e. **don’t use** *newsletter@send.example.com*).
+
+## 3. Update your DNS
+
+Add the following entries to your DNS settings:
+
+**Connect your Mail From Domain with CNAME**:  
+`CNAME` `*your-subdomain*.example.com` `public.keila.io`
+
+**Add the Keila DKIM key**:  
+`CNAME` `keila._domainkey.example.com` `dkim.public.keila.io`
+
+**Enable DMARC for your main domain**:  
+`TXT` `_dmarc.example.com` `v=DMARC1; p=none`
+
+## 4. Submit the Domain Connection Form
+
+Now you’re almost done! Just submit our domain configuration form and we’ll take
+care of the rest and get in touch with you.
+
+<a
+  href="https://forms.gle/c3SJV8TrLxxzwqZq5"
+  class="inline-block px-4 text-white bg-blue-600 hover:bg-blue-500 hover:shadow no-underline rounded"
+>
+  Submit your configuration
+</a>

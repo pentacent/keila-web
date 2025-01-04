@@ -1,0 +1,103 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { useTranslations } from "../utils/i18n";
+import type { language } from "../utils/translations";
+
+interface Props {
+  title: string;
+  description?: string;
+  translations: Map<language, String>;
+  contentLanguage: string;
+  ogImage?: string;
+}
+
+const { title, description, translations, contentLanguage, ogImage } =
+  Astro.props;
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const lang = Astro.currentLocale;
+const t = useTranslations(lang as language);
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title.includes("Keila") ? title : title + " - Keila "}</title>
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    <meta name="twitter:site" content="@keila_io" />
+    {
+      ogImage ? (
+        <meta name="twitter:card" content="summary_large_image" />
+      ) : (
+        <meta name="twitter:card" content="summary" />
+      )
+    }
+    {
+      ogImage && (
+        <meta
+          property="og:image"
+          content={Astro.site + "og-images/" + ogImage}
+        />
+      )
+    }
+    <meta
+      property="og:title"
+      content={title.includes("Keila") ? title : title + " - Keila "}
+    />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    {lang != contentLanguage && <meta name="robots" content="noindex" />}
+    <!-- Matomo -->
+  </head>
+  <body>
+    <Header translations={translations} />
+    {
+      lang != contentLanguage && (
+        <div class="bg-purple-200 p-5 mb-5">
+          <div class="max-w-6xl mx-auto text-center">
+            {t("missing-translation")}
+          </div>
+        </div>
+      )
+    }
+    <slot />
+    <Footer />
+  </body>
+  <script type="text/javascript">
+    var _paq = (window._paq = window._paq || []);
+    /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+    _paq.push(["trackPageView"]);
+    _paq.push(["enableLinkTracking"]);
+    (function () {
+      var u = "https://tracking.vanbittern.com/";
+      _paq.push(["setTrackerUrl", u + "matomo.php"]);
+      _paq.push(["setSiteId", "33"]);
+      var d = document,
+        g = d.createElement("script"),
+        s = d.getElementsByTagName("script")[0];
+      g.async = true;
+      g.src = u + "matomo.js";
+      s.parentNode.insertBefore(g, s);
+    })();
+  </script>
+  <noscript
+    ><p>
+      <img
+        src="https://tracking.vanbittern.com/matomo.php?idsite=33&rec=1"
+        style="border:0;"
+        alt=""
+      />
+    </p></noscript
+  >
+  <!-- End Matomo Code -->
+</html>
+
+<style is:global>
+  body {
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    @apply bg-gradient-to-b from-white to-gray-50 to-20% min-h-screen;
+  }
+</style>

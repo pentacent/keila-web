@@ -1,0 +1,36 @@
+---
+title: Senders
+slug: senders
+next: contacts
+---
+
+# Senders: Bring Your Own Email Service
+
+_Senders_ are how Keila manages methods of sending out your emails.
+
+On Keila Cloud, you can use the _Send with Keila_ option to send your emails
+without having to worry about the technical side of it.
+
+If you’re self-hosting a small newsletter, you can use your personal email
+(via SMTP). For larger projects it’s recommended to either use dedicated email
+infrastructure or rely on an externally managed email service.
+
+<KeilaImage
+  src="/src/assets/docs/sender.png"
+  alt="Screenshot of the sender form in Keila"
+/>
+
+You need to create a Sender before you can send a campaign with Keila.
+
+On your project overview page, click on `Manage Senders` and then on _Create new Sender_.
+
+Currently, the following sender types are supported:
+
+- SMTP
+- AWS SES
+- Sendgrid
+- Mailgun
+- Postmark
+
+Additionally, if you’re using our [managed newsletter solution at keila.io](https://www.keila.io/pricing),
+you can select _Send with Keila_.

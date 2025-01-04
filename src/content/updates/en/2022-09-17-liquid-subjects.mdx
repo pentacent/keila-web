@@ -1,0 +1,33 @@
+---
+title: Dynamic Campaign Subjects
+slug: liquid-subjects
+type: added
+language: en
+date: 2022-09-17
+version: 0.10.0
+description: "Use variables in subject lines for more personalized campaigns."
+ogImage: 2022-09-17-liquid-email-subjects.png
+---
+
+**Keila now allows you to use variables in subject lines for more personalized campaigns.**
+
+The use of the Liquid templating language is now fully supported in campaign
+subjects. This means, you can now fully personalize an email subject for a
+recipient, just like you can already personalize email contents with Keila.
+
+<KeilaImage
+  src="/src/assets/updates/2022-09-17-liquid-email-subjects.png"
+  alt="Screenshot showing the use of a liquid tag in an email campaign subject"
+></KeilaImage>
+
+This example illustrates how you can use dynamic email subjects:
+
+If you wanted to send an email announcing the dynamic email subject features,
+you could now use the following subject line:
+
+`{{ contact.first_name | default: "Hey" }}, Do You Want Dynamic Email Subjects?`
+
+A contact named `Jane` would receive an email with the following subject:
+`Jane, Do You Want Dynamic Email Subjects?`. A contact that hasn’t provided
+their name when signing up, would instead receive the subject
+`Hey, Do You Want Dynamic Email Subjects?`.

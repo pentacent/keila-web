@@ -1,0 +1,47 @@
+---
+import axios from "axios";
+import GitHub from "./icons/GitHub.astro";
+import ChatBubble from "./icons/ChatBubble.astro";
+
+interface Props {
+  number: number;
+}
+
+const { number } = Astro.props;
+
+let issue;
+
+try {
+  issue = await axios.get(
+    `https://api.github.com/repos/pentacent/keila/issues/${number}`,
+    {
+      headers: {
+        Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}`,
+      },
+    },
+  );
+} catch (error) {
+  console.warn(`Unable to fetch GitHub issue ${number}`, error);
+}
+---
+
+{
+  issue && (
+    <a
+      class="bg-gray-50 hover:bg-gray-100 shadow-sm rounded p-4 flex flex-row gap-4 no-underline ring-1 ring-gray-100"
+      href={issue.data.html_url}
+      target="_blank"
+    >
+      <GitHub class="w-8 flex-shrink-0" />
+      <span class="flex flex-col">
+        <span>
+          # {issue.data.number}: {issue.data.title}
+        </span>
+        <span class="text-sm flex flex-row gap-2">
+          <ChatBubble class="w-4" />
+          {issue.data.comments}
+        </span>
+      </span>
+    </a>
+  )
+}

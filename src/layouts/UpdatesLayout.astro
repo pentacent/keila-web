@@ -1,0 +1,46 @@
+---
+import { getCollectionTranslations } from "../utils/i18n";
+const lang = Astro.currentLocale as keyof typeof ui;
+
+const updatesCollection = await getCollectionTranslations("updates");
+let updates = [];
+for (const [i18nId, entryTranslations] of Object.entries(updatesCollection)) {
+  const entry = entryTranslations[lang];
+  const { title, description, date } = entry.data;
+  updates.push({ i18nId, title, description, date });
+}
+updates.sort(({ date: dateA }, { date: dateB }) => {
+  return dateA < dateB ? 1 : -1;
+});
+
+import type { language } from "../utils/translations";
+import { languages } from "../utils/translations";
+import { useTranslations } from "../utils/i18n";
+const t = useTranslations(lang);
+import Layout from "./Layout.astro";
+import UpdatesGrid from "../components/UpdatesGrid.astro";
+
+const translations = languages.reduce((translations, lang) => {
+  translations[lang] = lang == "en" ? "/updates" : `/${lang}/updates`;
+  return translations;
+}, {}) as Map<language, String>;
+---
+
+<Layout
+  title={t("updates.title")}
+  description={t("updates.description")}
+  translations={translations}
+  contentLanguage={lang}
+>
+  <main
+    class="max-w-6xl mx-auto p-5 md:p-10 text-gray-800 text-lg rounded-t bg-white md:pb-16"
+  >
+    <div class="max-w-6xl mx-auto p-5 md:p-10">
+      <div class="prose prose-xl mx-auto">
+        <h1>{t("updates.title")}</h1>
+        <p class="text-2xl">{t("updates.intro")}</p>
+        <UpdatesGrid updates={updates} />
+      </div>
+    </div>
+  </main>
+</Layout>

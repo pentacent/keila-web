@@ -1,0 +1,48 @@
+---
+import Layout from "./Layout.astro";
+import { useTranslations, localDate } from "../utils/i18n";
+import type { language } from "../utils/translations";
+
+import KeilaImage from "../components/KeilaImage.astro";
+import Email from "../components/Email.astro";
+import Plans from "../components/Plans.astro";
+import GitHubIssue from "../components/GitHubIssue.astro";
+
+const lang = Astro.currentLocale as language;
+const t = useTranslations(lang as language);
+const { entry, translations } = Astro.props;
+const {slug} = Astro.params
+const { Content, components } = await entry.render();
+---
+
+<Layout
+  title={entry.data.title}
+  description={entry.data.description}
+  translations={translations}
+  contentLanguage={entry.data.lang}
+  ogImage={`${slug}.png`}
+>
+  <main
+    class="max-w-6xl mx-auto p-5 md:p-10 text-gray-800 text-lg rounded-t bg-white md:pb-16"
+  >
+    <div id="markdown-content" class="prose prose-xl mx-auto">
+      <p class="flex gap-5">
+        <span class="text-sm  inline-block">Version {entry.data.version}</span>
+        <span class="text-sm text-gray-500 inline-block"
+          >{localDate(entry.data.date, lang)}</span
+        >
+      </p>
+      <h1>{entry.data.title}</h1>
+      <Content
+        id="content"
+        components={{ ...components, GitHubIssue, KeilaImage, Plans, Email }}
+      />
+    </div>
+  </main>
+</Layout>
+
+<style>
+  h1 {
+    @apply text-5xl font-bold mb-10;
+  }
+</style>

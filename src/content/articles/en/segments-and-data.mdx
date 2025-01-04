@@ -1,0 +1,115 @@
+---
+title: Segments and Custom Data
+description: Personalize emails with Keila’s advanced segmentation and custom data features
+---
+
+With Keila, it’s easy to collect custom data from signup forms, send targeted
+newsletter campaigns using segments, and build dynamic campaigns with the Liquid
+templating language.
+
+<KeilaImage
+  src="/src/assets/screenshots/form-builder.png"
+  alt="Screenshot of the Keila form builder with a custom tags field"
+/>
+
+## What’s the Purpose of Custom Data and Segmentation in Newsletters?
+
+When you run a newsletter, not all subscribers might be interested in
+the same topics. For example, if your newsletter is for a space company, some
+subscribers (the rocket scientists) will be very interested in your job offers.
+Other subscribers (the book lovers) will be more keen to read your emails about
+your latest space book.
+
+The solution: Add a custom data field for each contact to save whether they’re
+a rocket scientist or a book lover (or both).
+
+This allows you to create segments of your contact list that automatically
+include only contacts that belong to one of the two groups. You send job offers
+to rocket scientists and book-related news to book lovers. Everybody’s happy.
+
+## Adding Custom Fields with the Form Builder
+
+The easiest way to add custom fields to your newsletter contacts is by using the
+Keila Form Builder. It allows you to add text fields, checkboxes, and
+multiple-choice options (dropdowns and tags) to your forms.
+
+## Creating Segments
+
+Based on the data fields of your contacts, you can build segments. Keila comes
+with a visual segment editor that allows you to easily combine various
+conditions and fine-tune which contacts you want to include.
+
+<KeilaImage
+  src="/src/assets/screenshots/segment-editor.png"
+  alt="Screenshot of the Keila segment editor"
+/>
+
+For more advanced users, Keila comes with a querying language
+based on MongoDB’s Query Documents. A query to include all contacts that
+_don't_ have the "rocket-scientist" tag would look like this:
+
+```json
+{
+  "$not": { "data.tags": "rocket-scientist" }
+}
+```
+
+You can read more about Keila’s contact query language in the docs.
+
+## Contact Data as JSON
+
+Keila makes it easy to manage and import custom contact data.
+All custom data is represented as a single JSON object. You can inspect
+and edit it in the contact editor.
+
+<KeilaImage
+  src="/src/assets/screenshots/contact-data.png"
+  alt="Screenshot of the contact editor showing custom JSON data"
+/>
+
+## Using Liquid Templating in Campaigns
+
+Keila fully supports Shopify’s Liquid templating language in campaigns and email
+subjects.
+
+To address your contacts with their first names, just write the following
+
+```
+Hey {{ contact.first_name }}!
+```
+
+When sending out your campaign, `{{ contact.first_name }}` is replaced with the
+actual first name of each contact.
+
+If you’re not sure if every contact has their first name field filled in, you
+can use the _default_ filter:
+
+```
+Hey {{ contact.first_name | default: "there"}}!
+```
+
+Like this, if the first name hasn’t been set for a given contact, the text that’s sent
+out in your newsletter will read "Hey there".
+
+You can even use more complex expressions. For example, if you have a custom
+"gender" field for your contacts, you could use the following snippet to include
+a appropriate greeting:
+
+```
+{% if contact.data.gender == "female" %}
+  Dear Ms. {{ contact.last_name }}
+{% elsif contact.data.gender == "male" %}
+  Dear Mr. {{ contact.last_name }}
+{% else %}
+  Dear {{ contact.first_name }} {{ contact.last_name }}
+{% endif %}
+```
+
+This will address the contact as "Dear Mr." or "Dear Ms." if the gender
+field is set to "female" or "male". If the field is set to something else or if
+it isn't set, it will address the contact simply with their full name.
+
+<I18NLink collection="docs" i18nid="campaigns" lang="en">
+  You can read more about using Liquid in Keila in the docs, including how to
+  add JSON to your campaign and create dynamically generated emails.
+</I18NLink>
