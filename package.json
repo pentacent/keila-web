@@ -25,6 +25,7 @@
     "@fontsource/inter": "^5.0.18",
     "@resvg/resvg-js": "^2.6.2",
     "axios": "^1.6.8",
+    "country-flag-emoji-polyfill": "^0.1.8",
     "install": "^0.13.0",
     "npm": "^10.8.0",
     "prettier": "^3.2.5",

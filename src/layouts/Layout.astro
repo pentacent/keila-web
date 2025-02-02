@@ -50,7 +50,13 @@ const t = useTranslations(lang as language);
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     {lang != contentLanguage && <meta name="robots" content="noindex" />}
-    <!-- Matomo -->
+    <script>
+      import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
+      polyfillCountryFlagEmojis(
+        "Twemoji Country Flags",
+        "/vendor/twemoji-country-flags/TwemojiCountryFlags.woff2",
+      );
+    </script>
   </head>
   <body>
     <Header translations={translations} />
@@ -66,6 +72,7 @@ const t = useTranslations(lang as language);
     <slot />
     <Footer />
   </body>
+  <!-- Matomo -->
   <script type="text/javascript">
     var _paq = (window._paq = window._paq || []);
     /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
@@ -97,7 +104,7 @@ const t = useTranslations(lang as language);
 
 <style is:global>
   body {
-    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-family: "Twemoji Country Flags", Inter, Arial, Helvetica, sans-serif;
     @apply bg-gradient-to-b from-white to-gray-50 to-20% min-h-screen;
   }
 </style>
