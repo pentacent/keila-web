@@ -149,7 +149,7 @@ export const strings = {
     "landing.h1": "Einfache und zuverlässige E-Mail-Newsletter",
     "landing.h1.highlight": "Open Source & Made in Germany",
     "landing.intro":
-      " Gewinne neue Abonnenten und sende datengetriebene Newsletter einfacher als je zuvor. Keila ist Freie Software, entwickelt in Deutschland und gehosted in der EU 🇩🇪 🇪🇺",
+      "Finde neue Abonnenten und sende datengetriebene Newsletter einfacher als je zuvor. Keila ist Freie Software, entwickelt in Deutschland und gehosted in der EU 🇩🇪 🇪🇺",
     "landing.cta": "Los geht’s",
     "landing.cta.self-hosting": "Selber hosten",
     "landing.updates.heading": "Neuste Updates",
