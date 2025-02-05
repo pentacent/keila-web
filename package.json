@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "deploy": "rsync -avz ./dist/ $DEPLOY_TARGET"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.0",

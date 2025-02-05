@@ -1,0 +1,35 @@
+name: Web Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    env:
+      BASE_URL: https://keila.io
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      - run: |
+          # Install Node
+          sudo apt update && sudo apt install nodejs
+
+          # Install packages and build
+          npm ci
+          npm run build
+
+          # Add SSH key
+          mkdir ~/.ssh
+          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          chmod 600 ~/.ssh/*
+
+          # Deploy
+          DEPLOY_TARGET=${{ secrets.DEPLOY_TARGET }} npm run deploy
