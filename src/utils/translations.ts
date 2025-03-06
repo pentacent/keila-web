@@ -221,6 +221,9 @@ export const strings = {
     "footer.cta.try": "S’inscrire maintenant",
     "footer.cta.self-hosting": "Essayer l'auto-hébergement",
     "footer.contact.heading": "Des questions ?<br>Parlons-en !",
+    "landing.title": "Keila - Infolettres faciles et fiables",
+    "landing.description":
+      "Un outil de newsletter par e-mail fiable et facile à utiliser. Keila est l’alternative libre et européenne à Mailchimp.",
     "landing.h1": "Infolettres simples et fiables",
     "landing.h1.highlight": "Logiciel libre & créé en Europe",
     "landing.intro":

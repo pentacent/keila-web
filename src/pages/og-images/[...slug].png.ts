@@ -24,6 +24,15 @@ export async function getStaticPaths() {
         },
       },
     },
+    {
+      params: { slug: "index_fr" },
+      props: {
+        entry: {
+          collection: "landing",
+          data: { title: "Infolettres libres", subtitle: "100% Open Source" },
+        },
+      },
+    },
   ];
 
   return articlePaths
