@@ -168,6 +168,100 @@ export const strings = {
     "managed-note.body":
       "Diese Anleitung gilt nur, wenn du Keila Cloud verwemdest.<br />Wenn du eine eigene Instanz betreibst, werden die hier gezeigten Schritte nicht funktionieren.",
   },
+  fr: {
+    lang: "Français",
+    "missing-translation":
+      "Désolé, mais cette page n'est pas encore disponible en français.",
+    "nav.about": "Fonctionnalités",
+    "nav.about.editors": "Créez des newsletters avec style",
+    "nav.about.editors.details":
+      "Créez de belles newsletters avec l'éditeur visuel, Markdown ou simplement du texte brut",
+    "nav.about.analytics":
+      "Excellentes options d'analyse et de confidentialité",
+    "nav.about.analytics.details":
+      "Collectez des analyses précises tout en respectant la vie privée des utilisateurs. Ou désactivez le suivi en un clic.",
+    "nav.about.segments":
+      "Fonctionnalités puissantes de données et de segmentation",
+    "nav.about.segments.details":
+      "Créez des segments basés sur les données et le comportement des utilisateurs pour cibler parfaitement vos campagnes.",
+    "nav.about.opensource": "100% Open Source",
+    "nav.about.opensource.details":
+      "Keila est disponible comme logiciel libre. Et vous pouvez l'héberger vous-même !",
+    "nav.pricing": "Tarifs",
+    "nav.community": "Communauté",
+    "nav.github": "GitHub",
+    "nav.github.details":
+      "Participez au processus de développement ouvert de Keila avec des contributions de code ou des traductions.",
+    "nav.docs": "Documentation",
+    "nav.docs.details":
+      "En savoir plus sur l'utilisation de Keila, le fonctionnement de l'auto-hébergement et découvrez notre API.",
+    "nav.roadmap": "Feuille de route",
+    "nav.roadmap.details":
+      "Découvrez les prochaines fonctionnalités que nous avons prévues pour Keila.",
+    "nav.mastodon": "Mastodon",
+    "nav.mastodon.details": "Rejoignez la conversation dans le Fediverse !",
+    "nav.twitter": "Twitter",
+    "nav.login": "Connexion",
+    "nav.try": "Essai gratuit",
+    "nav.credits": "Crédits",
+    "nav.privacy": "Politique de confidentialité",
+    "nav.tos": "Conditions générales",
+    "nav.legal": "Mentions légales",
+    "footer.newsletter.heading": "Suivez le développement de Keila !",
+    "footer.newsletter.email.label": "E-mail",
+    "footer.newsletter.email.placeholder": "vous.êtes@génial.fr",
+    "footer.newsletter.first_name.label": "Prénom (facultatif)",
+    "footer.newsletter.cta": "Je veux recevoir les nouvelles de Keila !",
+    "footer.newsletter.nospam": "Nous ne vous spammerons pas !",
+    "footer.newsletter.privacy.label":
+      "Lire comment nous traitons vos données.",
+    "footer.newsletter.powered-by-keila":
+      "Ce formulaire de newsletter est réalisé avec Keila. Évidemment.",
+    "footer.cta.heading": "Prêt à lancer votre projet Keila ?",
+    "footer.cta.try": "S’inscrire maintenant",
+    "footer.cta.self-hosting": "Essayer l'auto-hébergement",
+    "footer.contact.heading": "Des questions ?<br>Parlons-en !",
+    "landing.h1": "Infolettres simples et fiables",
+    "landing.h1.highlight": "Logiciel libre & créé en Europe",
+    "landing.intro":
+      "Trouvez de nouveaux abonnés et envoyez vos infolettres plus facilement que jamais. Keila est un logiciel libre, créé et hébergé en 🇩🇪 🇫🇷 🇪🇺",
+    "landing.cta": "Commencer",
+    "landing.cta.self-hosting": "Documentation technique",
+    "landing.updates.heading": "Mises à jour récentes",
+    "landing.updates.more": "Voir plus de mises à jour",
+    "updates.title": "Mises à jour",
+    "updates.description":
+      "Keila est mis à jour régulièrement et vous pouvez trouver ici les dernières mises à jour.",
+    "updates.intro": "Voici quelques points forts des mises à jour récentes.",
+    "plans.sign-up": "Commencer",
+    "plans.month": "mois",
+    "plans.gross": "TTC",
+    "plans.emails.limit": "e-mails/mois",
+    "plans.contacts.unlimited": "contacts illimités",
+    "plans.projects.unlimited": "projets illimités",
+    "plans.send-with-keila":
+      "Envoyez avec Keila ou utilisez votre propre serveur de messagerie",
+    "docs.nav.usage": "Usage",
+    "docs.nav.senders": "Expéditeurs",
+    "docs.nav.contacts": "Contacts",
+    "docs.nav.segments": "Segments",
+    "docs.nav.forms": "Formulaires",
+    "docs.nav.campaigns": "Campagnes",
+    "docs.nav.managed": "Keila Cloud",
+    "docs.nav.managed-dmarc": "Configuration du domaine (SPF, DKIM, DMARC)",
+    "docs.nav.self-hosting": "Auto-hébergement",
+    "docs.nav.installation": "Installation",
+    "docs.nav.requirements": "Prérequis",
+    "docs.nav.configuration": "Configuration",
+    "docs.nav.setup": "Premiers pas",
+    "docs.nav.api": "API",
+    "docs.nav.api.contacts": "Contacts",
+    "docs.nav.api.segments": "Segments",
+    "docs.nav.api.campaigns": "Campagnes",
+    "managed-note.heading": "Note :",
+    "managed-note.body":
+      "Ce document s'applique uniquement si vous utilisez Keila Cloud.<br />Si vous utilisez une instance auto-hébergée, ces instructions ne fonctionneront pas.",
+  },
 } as const;
 export type language = keyof typeof strings;
 export type key = keyof typeof strings.en;

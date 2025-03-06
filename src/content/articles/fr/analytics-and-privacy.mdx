@@ -1,0 +1,52 @@
+---
+title: Analyses e-mail exceptionnelles (ou pas, c'est vous qui décidez !)
+description: Keila offre des analyses e-mail complètes pour les newsletters et une protection avancée de la vie privée pour les utilisateurs.
+---
+
+Avec Keila, vous avez le choix : suivre les ouvertures et les clics sur vos e-mails ou envoyer vos e-mails sans aucun suivi.
+
+<KeilaImage
+  src="/src/assets/screenshots/analytics.png"
+  alt="Capture d'écran des analyses de campagne"
+/>
+
+## Comment fonctionnent les analyses de newsletters ?
+
+Pour suivre votre campagne de newsletters, Keila fait deux choses :
+
+1. Ajouter un pixel de suivi à votre e-mail.
+   Le pixel de suivi est une image invisible minuscule qui inclut un code de suivi personnalisé. Lorsque le pixel de suivi est chargé depuis le serveur Keila, nous savons que l'e-mail a été ouvert.
+2. Rendre tous vos liens traçables.
+   Lorsque vous ajoutez un lien à votre newsletter, Keila le remplace par un lien vers le serveur Keila qui inclut un code de suivi personnalisé et redirige immédiatement vers votre lien original lorsqu'il est ouvert. Ainsi, nous savons quels liens ont été cliqués par les destinataires de votre newsletter.
+
+Chaque fois qu'un pixel de suivi ou un lien est activé, Keila enregistre cette information, et c'est ainsi que vous obtenez les analyses de votre newsletter.
+
+## Gestion des rebonds et des plaintes
+
+Lorsque vous envoyez vos campagnes d'e-mails, il est important de prendre en compte les rebonds (c'est-à-dire lorsqu'un e-mail ne peut pas être livré) et les plaintes pour spam (c'est-à-dire lorsqu'un utilisateur signale votre e-mail comme spam à son fournisseur d'accès Internet).
+
+Si vous utilisez *Send with Keila* sur Keila Cloud, nous nous occupons automatiquement de la gestion des rebonds et des plaintes pour spam. Les contacts sont désabonnés automatiquement après un rebond définitif (par exemple, lorsque le serveur signale qu'une adresse e-mail n'existe pas) ou après trois rebonds temporaires récents (par exemple, lorsque le serveur signale qu'une boîte de réception est saturée).
+Lorsque nous recevons une plainte, nous désabonnons également ce contact de votre projet.
+
+Si vous hébergez Keila vous-même, vous pouvez activer la gestion automatique des rebonds et des plaintes pour les expéditeurs SES.
+
+## Comment Keila respecte-t-il la vie privée des utilisateurs ?
+
+Keila essaie d'éviter de suivre des informations sur les contacts qui ne sont pas strictement nécessaires tout en fournissant des insights analytiques utiles pour les campagnes.
+
+Keila ne suit pas les adresses IP ou les cookies provenant des pixels de suivi et des clics, et sur Keila Cloud, nous ne croisons pas les contacts entre les projets.
+
+Nous prévoyons également d'ajouter des options de confidentialité plus avancées pour les contacts, telles que la désactivation complète du suivi ou le stockage uniquement des analyses agrégées pour les campagnes.
+
+<GitHubIssue number="150" />
+
+## Vous ne voulez pas de suivi ?
+
+Le suivi des utilisateurs est devenu la norme de facto pour tous les outils de newsletters et sur l'ensemble du web. Si vous ne souhaitez pas en faire partie, Keila vous facilite la tâche : il vous suffit de désactiver la case à cocher _Activer le suivi des clics/ouvertures_ et vos abonnés pourront profiter de newsletters respectueuses de la vie privée et sans suivi.
+
+Seuls le nombre d'e-mails envoyés, les rebonds et les plaintes pour spam sont rapportés sur la page des analyses de campagne lorsque le suivi est désactivé.
+
+<KeilaImage
+  src="/src/assets/screenshots/untracked-campaign.png"
+  alt="Capture d'écran de la page des analyses d'une campagne sans suivi."
+/>
