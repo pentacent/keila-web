@@ -15,7 +15,7 @@ export const strings = {
       "Create segments based on user data and behavior to perfectly target your campaigns.",
     "nav.about.opensource": "100% Open Source",
     "nav.about.opensource.details":
-      "Keila is AGPLv3-licensed and committed to OpenSource. And you can self-host!s",
+      "Keila is AGPLv3-licensed and committed to OpenSource. And you can self-host!",
     "nav.pricing": "Pricing",
     "nav.community": "Community",
     "nav.github": "GitHub",
