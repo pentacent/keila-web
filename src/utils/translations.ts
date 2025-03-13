@@ -91,6 +91,10 @@ export const strings = {
     "managed-note.heading": "Note:",
     "managed-note.body":
       "This document only applies if you are using Keila Cloud.<br />If you are using a self-hosted instance, these instructions won’t work.",
+    "roadmap.planned": "Planned",
+    "roadmap.inProgress": "In Progress",
+    "roadmap.backlog": "Further Ideas",
+    "roadmap.completed": "Completed",
   },
   de: {
     lang: "Deutsch",
@@ -167,6 +171,10 @@ export const strings = {
     "managed-note.heading": "Hinweis:",
     "managed-note.body":
       "Diese Anleitung gilt nur, wenn du Keila Cloud verwemdest.<br />Wenn du eine eigene Instanz betreibst, werden die hier gezeigten Schritte nicht funktionieren.",
+    "roadmap.planned": "Geplant",
+    "roadmap.inProgress": "In Arbeit",
+    "roadmap.backlog": "Weitere Ideen",
+    "roadmap.completed": "Abgeschlossen",
   },
   fr: {
     lang: "Français",

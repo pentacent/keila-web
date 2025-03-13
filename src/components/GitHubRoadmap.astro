@@ -1,0 +1,89 @@
+---
+import axios from "axios";
+import GitHubIssueList from "./GitHubIssueList.astro";
+import { useTranslations } from "../utils/i18n";
+
+const lang = Astro.currentLocale as language;
+const t = useTranslations(lang);
+
+const issues = { backlog: [], inProgress: [], done: [], planned: [] };
+
+const query = `
+    query {
+      organization(login: "pentacent") {
+        projectV2(number: 2) {
+          items(first: 100) {
+            nodes {
+              status: fieldValueByName(name: "Status") {
+                  ... on ProjectV2ItemFieldSingleSelectValue {
+                    name
+                  }
+              }
+              content {
+                ... on Issue {
+                  title
+                  number
+                  html_url: url
+                  closed
+                  closedAt
+                  comments {
+                    total_count: totalCount
+                  }
+                  reactions {total_count: totalCount}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+try {
+  const response = await axios.post(
+    "https://api.github.com/graphql",
+    { query: query },
+    {
+      headers: {
+        Authorization: `Bearer ${import.meta.env.GITHUB_PROJECT_TOKEN}`,
+        "Content-Type": "application/json",
+      },
+    },
+  );
+
+  const nodes = response.data.data.organization.projectV2.items.nodes;
+
+  nodes.forEach((node) => {
+    switch (node.status.name) {
+      case "Planned":
+        return issues.planned.push(node.content);
+      case "In Progress":
+        return issues.inProgress.push(node.content);
+      case "Done":
+        return issues.done.push(node.content);
+      case "Contributions Welcome":
+        return issues.planned.push(node.content);
+      case "Backlog":
+        return issues.backlog.push(node.content);
+    }
+  });
+} catch (error) {
+  console.warn(`Unable to fetch GitHub project information`, error);
+}
+---
+
+<GitHubIssueList open="true" elClass="bg-emerald-200" issues={issues.inProgress}
+  >{t("roadmap.inProgress")}</GitHubIssueList
+>
+
+<GitHubIssueList open={true} elClass="bg-blue-200" issues={issues.planned}
+  >{t("roadmap.planned")}</GitHubIssueList
+>
+
+<GitHubIssueList elClass="bg-purple-100" issues={issues.backlog}
+  >{t("roadmap.backlog")}</GitHubIssueList
+>
+
+<GitHubIssueList elClass="bg-emerald-100" issues={issues.done} open
+  >{t("roadmap.completed")}</GitHubIssueList
+>

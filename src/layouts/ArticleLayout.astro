@@ -6,6 +6,7 @@ import KeilaImage from "../components/KeilaImage.astro";
 import Email from "../components/Email.astro";
 import Plans from "../components/Plans.astro";
 import GitHubIssue from "../components/GitHubIssue.astro";
+import GitHubRoadmap from "../components/GitHubRoadmap.astro";
 import LibreFriends from "../components/LibreFriends.astro";
 import I18NLink from "../components/I18nLink.astro";
 
@@ -32,6 +33,7 @@ const { Content, components } = await entry.render();
         components={{
           ...components,
           GitHubIssue,
+          GitHubRoadmap,
           I18NLink,
           KeilaImage,
           LibreFriends,
