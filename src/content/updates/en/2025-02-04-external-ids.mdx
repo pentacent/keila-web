@@ -1,0 +1,31 @@
+---
+title: External IDs for Contacts
+slug: external-ids
+type: added
+language: en
+date: 2025-03-14
+version: 0.17.0
+description: "Synchronize your newsletter contacts list with external CRM systems using the new external_id field."
+ogImage: 2025-03-14-external-ids.png
+---
+
+*Synchronizing your CRM contacts with your email contact list just got a lot easier.*
+
+<KeilaImage
+  src="/src/assets/updates/2025-03-14-external-ids.png"
+  alt="Screenshot showing the external ID field in the Keila user interface."
+></KeilaImage>
+
+We’ve recently added an `external_id` field for your contacts in Keila.
+This makes syncing your newsletter list with external systems (like CRMs) a breeze.
+
+Previously, updating contacts in Keila required matching email addresses.
+If an email had changed in your external system, a new contact was created when running the next import.
+
+Imagine you have a contact, Mario Rossi, with the email address *mario.rossi&#8239;@&#8239;example.com*. In your CRM, Mario has the ID `12345`
+and you’ve included this information in the `external_id` field in Keila.
+When Mario gets married and changes his last name, you update his entry in your CRM to include his new email address, *mario.bianco&#8239;@&#8239;example.com*.
+If you provide his external ID when you do your next import, Keila will recognize Mario as the same contact and update his email address without creating a new entry.
+No more duplicates, yay!
+
+The `external_id` field is supported both for imports from spreadsheets and for API calls. You can also set it manually in the Keila user interface.
