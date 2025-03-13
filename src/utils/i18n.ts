@@ -87,13 +87,8 @@ export function getTranslatedContentLink(collection, i18nId, lang, entries) {
   const langPrefix = lang == defaultLang ? "/" : "/" + lang + "/";
   const collectionPrefix = collection === "articles" ? "" : `${collection}/`;
   const prefix = langPrefix + collectionPrefix;
-  console.log(
-    i18nId,
-    collection,
-    i18nId === "index" ? prefix : prefix + entry.data.localSlug,
-  );
+
   if (entry) {
-    console.log(i18nId === "index" ? prefix : prefix + entry.data.localSlug);
     return i18nId === "index" ? prefix : prefix + entry.data.localSlug;
   }
 }

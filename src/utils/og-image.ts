@@ -92,6 +92,6 @@ export async function generateOgImage(collection, assigns, lang) {
   const t = await template(collection, assigns, lang);
 
   return satori(t, opts).catch((error) => {
-    console.log(error, "Creating OG Image failed");
+    console.warn(error, "Creating OG Image failed");
   });
 }
