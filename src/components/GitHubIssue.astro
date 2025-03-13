@@ -6,6 +6,7 @@ import Heart from "./icons/Heart.astro";
 
 interface Props {
   number: number;
+  issue: object;
 }
 
 const { number } = Astro.props;
@@ -13,21 +14,23 @@ const { number } = Astro.props;
 let issue;
 
 try {
-  issue = await axios.get(
-    `https://api.github.com/repos/pentacent/keila/issues/${number}`,
-    {
-      headers: {
-        Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}`,
-      },
-    },
-  );
+  issue = Astro.props.issue
+    ? { data: Astro.props.issue }
+    : await axios.get(
+        `https://api.github.com/repos/pentacent/keila/issues/${number}`,
+        {
+          headers: {
+            Authorization: `Bearer ${import.meta.env.GITHUB_TOKEN}`,
+          },
+        },
+      );
 } catch (error) {
   console.warn(`Unable to fetch GitHub issue ${number}`, error);
 }
 ---
 
 {
-  issue && (
+  issue && issue.data && (
     <a
       class="bg-gray-50 hover:bg-gray-100 shadow-sm rounded p-4 flex flex-row gap-4 no-underline ring-1 ring-gray-100"
       href={issue.data.html_url}
