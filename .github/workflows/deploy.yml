@@ -24,7 +24,7 @@ jobs:
 
           # Install packages and build
           npm ci
-          npm run build
+          GITHUB_TOKEN=${{ secrets.GH_TOKEN }} GITHUB_PROJECT_TOKEN=${{ secrets.GH_PROJECT_TOKEN }} npm run build
 
           # Add SSH key
           mkdir ~/.ssh
