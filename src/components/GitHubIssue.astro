@@ -2,6 +2,7 @@
 import axios from "axios";
 import GitHub from "./icons/GitHub.astro";
 import ChatBubble from "./icons/ChatBubble.astro";
+import Heart from "./icons/Heart.astro";
 
 interface Props {
   number: number;
@@ -35,11 +36,22 @@ try {
       <GitHub class="w-8 flex-shrink-0" />
       <span class="flex flex-col">
         <span>
-          # {issue.data.number}: {issue.data.title}
+          #{issue.data.number}: {issue.data.title}
         </span>
-        <span class="text-sm flex flex-row gap-2">
-          <ChatBubble class="w-4" />
-          {issue.data.comments}
+
+        <span class="flex flex-row gap-2">
+          {issue.data.comments.total_count > 0 && (
+            <span class="text-sm flex flex-row gap-1">
+              <ChatBubble class="w-5" />
+              {issue.data.comments.total_count}
+            </span>
+          )}
+          {issue.data.reactions.total_count > 0 && (
+            <span class="text-sm flex flex-row gap-1">
+              <Heart class="w-5" />
+              {issue.data.reactions.total_count}
+            </span>
+          )}
         </span>
       </span>
     </a>
