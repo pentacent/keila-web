@@ -124,8 +124,8 @@ const t = useTranslations(lang);
             </button>
             <div class="text-xs mt-2">
               {t("footer.newsletter.nospam")}
-              <a href="https://pentacent.com/privacy" class="underline"
-                >{t("footer.newsletter.privacy.label")}</a
+              <I18NLink collection="legal" i18nId="privacy" lang={lang}
+                >{t("footer.newsletter.privacy.label")}</I18NLink
               >
             </div>
           </div>
