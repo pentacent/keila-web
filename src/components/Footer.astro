@@ -5,6 +5,10 @@ import { useTranslations } from "../utils/i18n";
 import Email from "./Email.astro";
 import I18NLink from "./I18nLink.astro";
 
+import Bluesky from "./icons/Bluesky.astro";
+import GitHub from "./icons/GitHub.astro";
+import Mastodon from "./icons/Mastodon.astro";
+
 const lang = Astro.currentLocale as language;
 const t = useTranslations(lang);
 ---
@@ -143,6 +147,38 @@ const t = useTranslations(lang);
     <div class="max-w-6xl mx-auto p-5 md:p-10 flex flex-col gap-4 items-center">
       <p>Made in 🇩🇪 🇪🇺 with ❤️.</p>
       <nav>
+        <ul class="flex flex-wrap items-center justify-center gap-4">
+          <li>
+            <a
+              href="https://github.com/pentacent/keila"
+              target="_blank"
+              class="flex flex-row gap-1 items-center"
+            >
+              <GitHub class="h-4" />
+              GitHub</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://fosstodon.org/@keila"
+              target="_blank"
+              class="flex flex-row gap-1 items-center"
+              ><Mastodon class="h-4" />Mastodon</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://bsky.app/profile/pentacent.bsky.social"
+              target="_blank"
+              class="flex flex-row gap-1 items-center"
+            >
+              <Bluesky class="h-4" />
+              Bluesky</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <nav class="text-gray-700">
         <ul class="flex flex-wrap items-center justify-center gap-4">
           <li>
             <I18NLink collection="legal" i18nId="credits" lang={lang}>
