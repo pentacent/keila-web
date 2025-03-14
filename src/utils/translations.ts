@@ -159,7 +159,9 @@ export const strings = {
     "landing.updates.heading": "Neuste Updates",
     "landing.updates.more": "Mehr neue Features sehen",
     "updates.title": "Updates",
-    "updates.intro": "Here you can find some recent update highlights.",
+    "updates.description":
+      "Keila wird regelmäßig aktualisiert. Hier sind einige aktuelle Neuerungen.",
+    "updates.intro": "Hier sind einige aktuelle Neuerungen.",
     "plans.sign-up": "Anmelden",
     "plans.month": "Monat",
     "plans.gross": "inkl. MwSt",
