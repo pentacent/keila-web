@@ -31,6 +31,9 @@ in campaigns. The following Liquid assigns are available in every campaign:
   - `{{ contact.last_name }}`
 - `{{ unsubscribe_link }}` - URL of the one-click unsubscription link
 
+**Custom data fields** can be accessed through the `contact.data` property, for
+example like this: `{{ contact.data.my_field }}`.
+
 If not all contacts in your database have given their first name, Liquid’s `default`
 tag is very useful.
 
