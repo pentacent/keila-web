@@ -56,6 +56,23 @@ const t = useTranslations(lang as language);
         "Twemoji Country Flags",
         "/vendor/twemoji-country-flags/TwemojiCountryFlags.woff2",
       );
+
+      // Hey, you've found the code that shows the coupon code banner!
+      // Treat yourself to a Keila Cloud subscription with 10% off :-)
+      const acceptedCouponCodes = ["OPENALTERNATIVE25"];
+      const hash = window.location.hash;
+      if (hash && hash.startsWith("#cpn-")) {
+        const couponCode = hash.substring(5).toUpperCase();
+        if (acceptedCouponCodes.includes(couponCode)) {
+          window.couponCode = couponCode;
+          window.couponAmount = "10";
+        }
+        history.pushState(
+          "",
+          document.title,
+          window.location.pathname + window.location.search,
+        );
+      }
     </script>
   </head>
   <body>
@@ -69,6 +86,15 @@ const t = useTranslations(lang as language);
         </div>
       )
     }
+    <template x-data={`{text: '${t("nav.coupon")}'}`} x-if="window.couponCode">
+      <div class="bg-emerald-200 p-5 mb-5">
+        <div
+          class="max-w-6xl mx-auto text-center"
+          x-text="text.replace('%{code}', window.couponCode).replace('%{amount}', window.couponAmount)"
+        >
+        </div>
+      </div></template
+    >
     <slot />
     <Footer />
   </body>

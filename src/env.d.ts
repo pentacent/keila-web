@@ -3,6 +3,8 @@
 
 interface Window {
   Alpine: import("alpinejs").Alpine;
+  couponCode?: string;
+  couponAmount?: string;
 }
 
 interface ImportMetaEnv {

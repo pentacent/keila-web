@@ -36,6 +36,8 @@ export const strings = {
     "nav.privacy": "Privacy policy",
     "nav.tos": "Terms & Conditions",
     "nav.legal": "Legal notice",
+    "nav.coupon":
+      "Save %{amount}%  on your Keila Cloud subscription with code %{code}!",
     "footer.newsletter.heading": "Follow the development of Keila!",
     "footer.newsletter.email.label": "Email",
     "footer.newsletter.email.placeholder": "you.are@wonderful",
