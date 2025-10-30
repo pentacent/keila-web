@@ -59,19 +59,30 @@ const t = useTranslations(lang as language);
 
       // Hey, you've found the code that shows the coupon code banner!
       // Treat yourself to a Keila Cloud subscription with 10% off :-)
-      const acceptedCouponCodes = ["OPENALTERNATIVE25"];
+      const acceptedCouponCodes = {
+        OPENALTERNATIVE10: "10",
+      };
+
       const hash = window.location.hash;
       if (hash && hash.startsWith("#cpn-")) {
         const couponCode = hash.substring(5).toUpperCase();
-        if (acceptedCouponCodes.includes(couponCode)) {
+        if (Object.keys(acceptedCouponCodes).includes(couponCode)) {
           window.couponCode = couponCode;
-          window.couponAmount = "10";
         }
         history.pushState(
           "",
           document.title,
           window.location.pathname + window.location.search,
         );
+      }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get("utm_source") === "openalternative.co") {
+        window.couponCode = "OPENALTERNATIVE10";
+      }
+
+      if (window.couponCode) {
+        window.couponAmount = acceptedCouponCodes[window.couponCode];
       }
     </script>
   </head>
