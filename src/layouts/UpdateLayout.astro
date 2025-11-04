@@ -7,11 +7,12 @@ import KeilaImage from "../components/KeilaImage.astro";
 import Email from "../components/Email.astro";
 import Plans from "../components/Plans.astro";
 import GitHubIssue from "../components/GitHubIssue.astro";
+import I18NLink from "../components/I18nLink.astro";
 
 const lang = Astro.currentLocale as language;
 const t = useTranslations(lang as language);
 const { entry, translations } = Astro.props;
-const {slug} = Astro.params
+const { slug } = Astro.params;
 const { Content, components } = await entry.render();
 ---
 
@@ -27,7 +28,7 @@ const { Content, components } = await entry.render();
   >
     <div id="markdown-content" class="prose prose-xl mx-auto">
       <p class="flex gap-5">
-        <span class="text-sm  inline-block">Version {entry.data.version}</span>
+        <span class="text-sm inline-block">Version {entry.data.version}</span>
         <span class="text-sm text-gray-500 inline-block"
           >{localDate(entry.data.date, lang)}</span
         >
@@ -35,7 +36,14 @@ const { Content, components } = await entry.render();
       <h1>{entry.data.title}</h1>
       <Content
         id="content"
-        components={{ ...components, GitHubIssue, KeilaImage, Plans, Email }}
+        components={{
+          ...components,
+          GitHubIssue,
+          KeilaImage,
+          Plans,
+          Email,
+          I18NLink,
+        }}
       />
     </div>
   </main>
