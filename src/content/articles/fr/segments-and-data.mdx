@@ -39,6 +39,17 @@ Pour les utilisateurs plus avancés, Keila propose un langage de requête basé 
 }
 ```
 
+Vous pouvez également créer des segments basés sur les interactions avec les campagnes. Par exemple, pour cibler tous les contacts qui ont reçu mais n'ont pas ouvert une campagne spécifique :
+
+```json
+{
+  "messages": {
+    "campaign_id": "your-campaign-id",
+    "opened_at": { "$empty": true }
+  }
+}
+```
+
 Vous pouvez en savoir plus sur le langage de requête de contacts de Keila dans la documentation.
 
 ## Données de contact au format JSON

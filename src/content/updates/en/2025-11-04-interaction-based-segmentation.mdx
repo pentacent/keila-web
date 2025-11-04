@@ -1,0 +1,68 @@
+---
+title: Interaction-based Segmentation
+slug: interaction-based-segmentation
+type: added
+language: en
+date: 2025-11-04
+version: 0.18.0
+description: "Create segments based on message interactions - target contacts who have received, opened, or clicked specific campaigns."
+ogImage: 2025-11-04-message-segmentation.png
+---
+
+_You can now create segments based on how your contacts interact with your campaigns._
+
+<KeilaImage
+  src="/src/assets/updates/2025-11-04-messages-segments.png"
+  alt="Screenshot showing the message segmentation feature in the Keila segment editor"
+/>
+
+We've added segmentation capabilities that let you target contacts based on their message interactions. You can now create segments for contacts who have received, opened, clicked, bounced, complained about, or unsubscribed from specific campaigns.
+
+Interaction-based segmentations are available in the visual segment builder and the Keila Query Language.
+
+## Message-based segments
+
+The new `messages` field supports filtering by:
+- **campaign_id**: Target contacts who were included in a specific campaign or leave blank to match any campaign
+- **opened_at**: When contact opened your email
+- **clicked_at**: When contact clicked links in your email
+- **bounced_at**: When contact email bounced
+- **unsubscribed_at**: When contact unsubscribed
+
+### Query Language Examples
+
+The following examples can all created easily with the visual segment editor. If you prefer manually creating segments with the Keila Query Language, here are some use cases for the new message-based filtering features:
+
+#### Target by Received Message
+Create segments of all contacts who received a specific campaign:
+
+```json
+{"messages": {"campaign_id": "your-campaign-id"}}
+```
+
+#### Target by Engagement
+Find contacts who opened a specific campaign:
+
+```json
+{"messages": {"campaign_id": "your-campaign-id", "opened_at": {"$empty": false}}}
+```
+
+#### Re-engagement Campaigns
+Target contacts who received but haven't opened a campaign:
+
+```json
+{"messages": {"campaign_id": "your-campaign-id", "opened_at": {"$empty": true}}}
+```
+
+#### Advanced Targeting
+If you want to target all contacts who have not interacted with a given campaign, including those who didn't receive the campaign, you can use the `$not` operator:
+
+```json
+{"$not": {"messages": {"campaign_id": "your-campaign-id", "opened_at": {"$empty": false}}}}
+```
+
+## $empty Operator
+
+This update also introduces the `$empty` operator. This helps when you want to check whether a field, such as the contact name, or a custom data field, is empty or unset.
+
+<I18NLink collection="docs" i18nId="segments" lang="en">Read more about the `messages` filter and the `$empty` operator in the docs.</I18NLink>

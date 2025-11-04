@@ -57,6 +57,17 @@ den "rocket-scientist" Tag haben, würde z. B. so aussehen.
 }
 ```
 
+Du kannst auch Segmente basierend auf Kampagnen-Interaktionen erstellen. Zum Beispiel, um alle Kontakte zu erreichen, die eine Kampagne erhalten, aber nicht geöffnet haben:
+
+```json
+{
+  "messages": {
+    "campaign_id": "your-campaign-id",
+    "opened_at": { "$empty": true }
+  }
+}
+```
+
 <I18NLink collection="docs" i18nid="segments" lang="de">
   Mehr zur Abfrage-Sprache in der Dokumentation erfahren..
 </I18NLink>

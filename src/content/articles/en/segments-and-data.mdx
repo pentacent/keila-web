@@ -54,7 +54,18 @@ _don't_ have the "rocket-scientist" tag would look like this:
 }
 ```
 
-You can read more about Keila’s contact query language in the docs.
+You can also create segments based on campaign interactions. For example, to target all contacts who received but haven't opened a specific campaign:
+
+```json
+{
+  "messages": {
+    "campaign_id": "your-campaign-id",
+    "opened_at": { "$empty": true }
+  }
+}
+```
+
+<I18NLink collection="docs" i18nId="segments" lang="en">Read more about the Keila Query Language in the docs.</I18NLink>
 
 ## Contact Data as JSON
 

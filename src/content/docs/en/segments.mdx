@@ -130,3 +130,95 @@ Match all contacts that were added before January 1 2022:
 ```json
 { "inserted_at": { "$lt": "2022-01-01T00:00:00Z" } }
 ```
+
+### $empty
+
+The `$empty` operator checks if a field is empty. The following values are considered empty:
+- `null`
+- empty string (`""`)
+- empty list  (`[]`)
+- empty object  (`{}`).
+- unset values are also considered empty.
+
+#### Examples
+
+Match all contacts that don't have a first name:
+
+```json
+{ "first_name": { "$empty": true } }
+```
+
+Match all contacts that have a custom field:
+
+```json
+{ "data.custom_field": { "$empty": false } }
+```
+
+### Message-based Segmentation
+
+You can create segments based on how contacts interact with your campaigns using the `messages` field. This allows you to target contacts who have received, opened, or clicked specific campaigns.
+
+The following filters are available for the `messages` field:
+
+- `campaign_id`: The ID of the campaign. If omitted, the contact will be included in the segment if *any* campaign matches the other criteria.
+- `opened_at`: The date and time the contact opened the campaign.
+- `clicked_at`: The date and time the contact clicked a link in the campaign.
+- `bounced_at`: The date and time the contact bounced the campaign.
+- `complaint_received_at`: The date and time a complaint was received about the campaign.
+- `unsubscribed_at`: The date and time a contact unsubscribed from the campaign.
+
+#### Examples
+
+Match contacts who received a specific campaign:
+
+```json
+{ "messages": { "campaign_id": "your-campaign-id" } }
+```
+
+Match contacts who opened a campaign:
+
+```json
+{
+  "messages": {
+    "campaign_id": "your-campaign-id",
+    "opened_at": { "$empty": false }
+  }
+}
+```
+
+Match contacts who clicked a link in a campaign:
+
+```json
+{
+  "messages": {
+    "campaign_id": "your-campaign-id",
+    "clicked_at": { "$empty": false }
+  }
+}
+```
+
+#### Matching contacts who have not interacted with campaigns
+
+If you want to match all contacts who have not interacted with a campaign, including those who have not received it, use the `$not` operator:
+
+```json
+{
+  "$not": {
+    "messages": {
+      "campaign_id": "your-campaign-id",
+      "opened_at": { "$empty": false }
+    }
+  }
+}
+```
+
+If you only want to match contacts who haven't interacted but did receive the campaign, the `$empty` operator is sufficient:
+
+```json
+{
+  "messages": {
+    "campaign_id": "your-campaign-id",
+    "opened_at": { "$empty": true }
+  }
+}
+```
