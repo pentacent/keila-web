@@ -1,0 +1,28 @@
+---
+title: Shared Domains
+slug: shared-domains
+---
+
+
+# Sending Newsletters Without a Custom Domain
+You can set up newsletters in Keila even if you don't have your own domain yet.
+
+<ManagedNote />
+
+## Why can this be a problem?
+When you're using an email address on a shared domain like `mailbox.org`, `proton.me`, or `gmail.com`, you can't add the necessary DNS records to verify them. Because most email providers require this verification, sending newsletters from these addresses would normally result in your emails being flagged as potential spam,
+
+For this reason, it's always best to use your own domain when sending newsletters with Keila (or any other newsletter tool, for that matter).
+Fortunately, if you don't have a custom domain, you can still send newsletters reliably with Keila Cloud.
+
+## How Keila solves this for you
+When Keila detects that your sender email is from a shared domain, it automatically adjusts how your emails are sent to avoid spam filters.
+
+
+<KeilaImage
+  src="/src/assets/docs/shared-domains.png"
+  alt="Screenshot of the shared domains info in the Keila Sender settings"
+  maxWidth={480}
+/>
+
+For example, if you configure your sender to send emails from `test@mailbox.org`, Keila will instead send them from `test.mailbox.org@keilamails.com`. Since we've already configured keilamails.com with proper DNS verification, your emails will be sent from a verified domain. Your original email address will be used as the Reply-To address, which means that when recipients reply to your newsletter, their responses will be sent directly to you.
