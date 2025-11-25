@@ -7,9 +7,10 @@ const images = import.meta.glob<{ default: ImageMetadata }>(
 interface Props {
   src: string;
   alt: string;
+  maxWidth?: number;
 }
 
-const { src, alt } = Astro.props;
+const { src, alt, maxWidth } = Astro.props;
 if (!images[src]) {
   throw new Error(`Image ${src} not found!`);
 }
@@ -21,5 +22,6 @@ if (!images[src]) {
     alt={alt}
     widths={[640, 960, 1280]}
     class="shadow-md rounded overflow-hidden border-4 border-gray-300"
+    style={maxWidth ? `max-width: ${maxWidth}px;` : ""}
   />
 </div>

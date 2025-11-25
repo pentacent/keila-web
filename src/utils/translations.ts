@@ -81,6 +81,7 @@ export const strings = {
     "docs.nav.campaigns": "Campaigns",
     "docs.nav.managed": "Keila  Cloud",
     "docs.nav.managed-dmarc": "Domain setup (SPF, DKIM, DMARC)",
+    "docs.nav.shared-domains": "Sending without a custom domain",
     "docs.nav.self-hosting": "Self-hosting",
     "docs.nav.installation": "Installation",
     "docs.nav.requirements": "Requirements",

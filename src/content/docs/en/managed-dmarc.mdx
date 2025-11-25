@@ -5,49 +5,40 @@ slug: managed-dmarc
 
 # Setting up your domain for SPF, DKIM & DMARC
 
-Setting up your domain to comply with SPF, DKIM and DMARC requirements that are being
-implemented by more and more email providers, is easy with Keila!
+Setting up your domain to comply with SPF, DKIM, and DMARC requirements that are being
+implemented by more and more email providers is easy with Keila!
 
 <ManagedNote />
 
 ## 1. Create a _Send with Keila_ Sender
 
-If you don’t yet have one, create a [Sender](/docs/senders) in your Keila project and select the _Send with Keila_ option.
+If you don't yet have one, create a [Sender](/docs/senders) in your Keila project and select the _Send with Keila_ option.
 Make sure you can receive emails at the _From address_
-(e.g. `newsletter@example.com`) so you can receive the confirmation email.
+(e.g., `newsletter@example.com`) so you can receive the confirmation email.
 
-## 2. Pick your Mail From Domain
+## 2. Update your DNS
 
-Choose a subdomain that is not currently used for anything else. This
-subdomain will become your _Mail From Domain_. Common choices include `mailings.example.com` or `send.example.com`.
+The sender page will now show you the DNS entries you need to add to your DNS settings.
 
-**Note:** You can’t use the _Mail From Domain_ in your _From address_. This
-means if you configure _send.example.com_ as your _Mail From Domain_, you should
-still use an email address on your principal domain (e.g.
-*newsletter@example.com*) as your _From address_ and not an email address on
-your _Mail From Domain_ (i.e. **don’t use** *newsletter@send.example.com*).
+Add them to your DNS settings:
+| Subdomain | Type | Value |
+|-----------|------|-------|
+| keila-mx1 | CNAME | mx1.public.keila.io |
+| keila-mx2 | CNAME | mx2.public.keila.io |
+| keila1._domainkey | CNAME | dkim1.public.keila.io |
+| keila2._domainkey | CNAME | dkim2.public.keila.io |
 
-## 3. Update your DNS
+You also need a valid DMARC entry. If you don't have one yet, you can add a simple entry like this:
+| Subdomain | Type | Value |
+|-----------|------|-------|
+| _dmarc | TXT | v=DMARC1; p=none |
 
-Add the following entries to your DNS settings:
+## 3. Wait for DNS propagation
 
-**Connect your Mail From Domain with CNAME**:  
-`CNAME` `*your-subdomain*.example.com` `public.keila.io`
+It can take some time for DNS changes to propagate to all email providers. Keila usually picks up your changes within a few minutes. You can manually check your settings by clicking the *Check domain* button.
 
-**Add the Keila DKIM key**:  
-`CNAME` `keila._domainkey.example.com` `dkim.public.keila.io`
-
-**Enable DMARC for your main domain**:  
-`TXT` `_dmarc.example.com` `v=DMARC1; p=none`
-
-## 4. Submit the Domain Connection Form
-
-Now you’re almost done! Just submit our domain configuration form and we’ll take
-care of the rest and get in touch with you.
-
-<a
-  href="https://forms.gle/c3SJV8TrLxxzwqZq5"
-  class="inline-block px-4 text-white bg-blue-600 hover:bg-blue-500 hover:shadow no-underline rounded"
->
-  Submit your configuration
-</a>
+<KeilaImage
+  src="/src/assets/docs/dns.png"
+  alt="Screenshot of the DNS settings in Keila"
+  maxWidth={480}
+/>

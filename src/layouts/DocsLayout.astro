@@ -8,21 +8,19 @@ import ManagedNote from "../components/ManagedNote.astro";
 import KeilaImage from "../components/KeilaImage.astro";
 import Email from "../components/Email.astro";
 
-
-const { entry,translations } = Astro.props;
+const { entry, translations } = Astro.props;
 
 const lang = Astro.currentLocale as language;
 const t = useTranslations(lang as language);
-const docsPath = await useTranslateContentPath("docs", lang)
+const docsPath = await useTranslateContentPath("docs", lang);
 const { Content, components } = await entry.render();
-
 ---
 
 <Layout
-title={entry.data.title}
-description={entry.data.description}
-translations={translations}
-contentLanguage={entry.data.lang}
+  title={entry.data.title}
+  description={entry.data.description}
+  translations={translations}
+  contentLanguage={entry.data.lang}
 >
   <div class="grid grid-cols-[20rem,1fr] bg-gray-100 py-5 pb-20 min-h-screen">
     <aside class="text-gray-900 p-5 z-10">
@@ -32,29 +30,19 @@ contentLanguage={entry.data.lang}
             <span>{t("docs.nav.usage")}</span>
             <ul>
               <li>
-                <a href={docsPath("senders")}
-                  >{t("docs.nav.senders")}</a
-                >
+                <a href={docsPath("senders")}>{t("docs.nav.senders")}</a>
               </li>
               <li>
-                <a href={docsPath("contacts")}
-                  >{t("docs.nav.contacts")}</a
-                >
+                <a href={docsPath("contacts")}>{t("docs.nav.contacts")}</a>
               </li>
               <li>
-                <a href={docsPath("segments")}
-                  >{t("docs.nav.segments")}</a
-                >
+                <a href={docsPath("segments")}>{t("docs.nav.segments")}</a>
               </li>
               <li>
-                <a href={docsPath("forms")}
-                  >{t("docs.nav.forms")}</a
-                >
+                <a href={docsPath("forms")}>{t("docs.nav.forms")}</a>
               </li>
               <li>
-                <a href={docsPath("campaigns")}
-                  >{t("docs.nav.campaigns")}</a
-                >
+                <a href={docsPath("campaigns")}>{t("docs.nav.campaigns")}</a>
               </li>
             </ul>
           </li>
@@ -64,6 +52,11 @@ contentLanguage={entry.data.lang}
               <li>
                 <a href={docsPath("managed-dmarc")}
                   >{t("docs.nav.managed-dmarc")}</a
+                >
+              </li>
+              <li>
+                <a href={docsPath("shared-domains")}
+                  >{t("docs.nav.shared-domains")}</a
                 >
               </li>
             </ul>
@@ -82,9 +75,7 @@ contentLanguage={entry.data.lang}
                 >
               </li>
               <li>
-                <a href={docsPath("setup")}
-                  >{t("docs.nav.setup")}</a
-                >
+                <a href={docsPath("setup")}>{t("docs.nav.setup")}</a>
               </li>
             </ul>
           </li>
@@ -93,11 +84,18 @@ contentLanguage={entry.data.lang}
     </aside>
     <main class="3xl:-ml-80">
       <div
-        class="max-w-5xl mx-auto p-5 md:p-10 text-gray-800 text-lg rounded-t bg-white md:pb-16">
+        class="max-w-5xl mx-auto p-5 md:p-10 text-gray-800 text-lg rounded-t bg-white md:pb-16"
+      >
         <div id="markdown-content" class="prose prose-xl mx-auto">
           <Content
             id="content"
-            components={{ ...components, GitHubIssue, KeilaImage, Email, ManagedNote }}
+            components={{
+              ...components,
+              GitHubIssue,
+              KeilaImage,
+              Email,
+              ManagedNote,
+            }}
           />
         </div>
       </div>
@@ -118,7 +116,7 @@ contentLanguage={entry.data.lang}
     }
 
     a {
-      @apply hover:underline
+      @apply hover:underline;
     }
   }
 </style>
