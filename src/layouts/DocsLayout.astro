@@ -86,7 +86,10 @@ const { Content, components } = await entry.render();
       <div
         class="max-w-5xl mx-auto p-5 md:p-10 text-gray-800 text-lg rounded-t bg-white md:pb-16"
       >
-        <div id="markdown-content" class="prose prose-xl mx-auto">
+        <div
+          id="markdown-content"
+          class="prose prose-xl prose-code:before:content-none prose-code:after:content-none prose-code:font-normal prose-code:text-sm prose-code:px-1 prose-code:py-1 prose-code:bg-gray-200 prose-code:rounded-sm mx-auto"
+        >
           <Content
             id="content"
             components={{
