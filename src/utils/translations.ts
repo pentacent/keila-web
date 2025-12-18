@@ -91,6 +91,7 @@ export const strings = {
     "docs.nav.api.contacts": "Contacts",
     "docs.nav.api.segments": "Segments",
     "docs.nav.api.campaigns": "Campaigns",
+    "docs.nav.public-links": "Public archive links",
     "managed-note.heading": "Note:",
     "managed-note.body":
       "This document only applies if you are using Keila Cloud.<br />If you are using a self-hosted instance, these instructions won’t work.",
