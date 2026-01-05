@@ -16,3 +16,7 @@ You can install it from [Docker Hub](https://hub.docker.com/r/pentacent/keila/ta
 
 All you need to run Keila, in addition to the container engine of your choice,
 is a PostgreSQL database.
+
+## Enabling WebSockets
+
+If you intend to run Keila behind a reverse proxy, you need to make sure that WebSockets are correctly forwarded. Caddy and Traefik support WebSockets by default. For nginx you can follow [this guide](https://nginx.org/en/docs/http/websocket.html).
