@@ -27,8 +27,18 @@ const { Content, components } = await entry.render();
     class="max-w-6xl mx-auto p-5 md:p-10 text-gray-800 text-lg rounded-t bg-white md:pb-16"
   >
     <div id="markdown-content" class="prose prose-xl mx-auto">
-      <p class="flex gap-5">
-        <span class="text-sm inline-block">Version {entry.data.version}</span>
+      <p class="flex items-center gap-5">
+        {
+          entry.data.version === "cloud" ? (
+            <span class="text-sm inline-block bg-emerald-100 p-1 rounded-sm">
+              Cloud
+            </span>
+          ) : (
+            <span class="text-sm inline-block">
+              Version {entry.data.version}
+            </span>
+          )
+        }
         <span class="text-sm text-gray-500 inline-block"
           >{localDate(entry.data.date, lang)}</span
         >
