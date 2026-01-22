@@ -12,14 +12,14 @@
     "deploy": "rsync -avz ./dist/ $DEPLOY_TARGET"
   },
   "dependencies": {
-    "@astrojs/alpinejs": "^0.4.0",
-    "@astrojs/mdx": "^2.3.1",
-    "@astrojs/sitemap": "^3.1.4",
-    "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/alpinejs": "^0.4.9",
+    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/sitemap": "^3.7.0",
+    "@astrojs/tailwind": "^6.0.2",
     "@tailwindcss/typography": "^0.5.12",
     "@types/alpinejs": "^3.13.10",
     "alpinejs": "^3.13.8",
-    "astro": "^4.6.1",
+    "astro": "^5.16.12",
     "tailwindcss": "^3.4.3"
   },
   "devDependencies": {
@@ -28,7 +28,7 @@
     "axios": "^1.6.8",
     "country-flag-emoji-polyfill": "^0.1.8",
     "install": "^0.13.0",
-    "npm": "^10.8.0",
+    "npm": "^11.8.0",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "satori": "^0.10.13",
