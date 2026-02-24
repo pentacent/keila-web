@@ -1,0 +1,21 @@
+---
+title: Protected Unsubscribe and Double Opt-In Links
+slug: protected-unsubscribe-links
+type: improved
+language: en
+date: 2026-02-24
+version: 0.19.0
+description: "Unsubscribe and double opt-in links now include an additional verification step to prevent accidental activation by mail scanners."
+ogImage: 2026-02-24-protected-unsubscribe-links.webp
+---
+
+_Unsubscribe and double opt-in links are now protected against accidental activation by mail scanners._
+
+<KeilaImage
+  src="/src/assets/updates/2026-02-24-protected-unsubscribe-links.webp"
+  alt="Animation showing the updated double opt-in verification process with an additional automatic verification step."
+/>
+
+Automated email scanners often automatically follow links in emails, which can lead to accidental unsubscribes or opt-in confirmations. To prevent this, we’ve added an additional verification step for unsubscribe and double opt-in links if they are clicked within three minutes of the message being sent.
+
+For most users, this change will be seamless. The verification is handled automatically via JavaScript, so no manual action is required. If JavaScript is disabled in the browser, a confirmation button will be displayed to ensure the action is intentional.
