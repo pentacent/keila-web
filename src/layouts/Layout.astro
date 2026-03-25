@@ -84,6 +84,22 @@ const t = useTranslations(lang as language);
       if (window.couponCode) {
         window.couponAmount = acceptedCouponCodes[window.couponCode];
       }
+
+      const utmSource = urlParams.get("utm_source");
+      if (utmSource) {
+        document.addEventListener("DOMContentLoaded", () => {
+          document.querySelectorAll("a[href]").forEach((a) => {
+            const url = new URL(a.href);
+            if (
+              [location.hostname, "app.keila.io"].includes(url.hostname) &&
+              !url.searchParams.has("utm_source")
+            ) {
+              url.searchParams.set("utm_source", utmSource);
+              a.href = url.toString();
+            }
+          });
+        });
+      }
     </script>
   </head>
   <body>
