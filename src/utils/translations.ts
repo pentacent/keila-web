@@ -32,6 +32,7 @@ export const strings = {
     "nav.bluesky": "Bluesky",
     "nav.login": "Login",
     "nav.try": "Try now",
+    "nav.status": "Status",
     "nav.credits": "Credits",
     "nav.privacy": "Privacy policy",
     "nav.tos": "Terms & Conditions",

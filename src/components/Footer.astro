@@ -182,6 +182,11 @@ const t = useTranslations(lang);
       <nav class="text-gray-700">
         <ul class="flex flex-wrap items-center justify-center gap-4">
           <li>
+            <a href="https://status.keila.io" target="_blank">
+              {t("nav.status")}
+            </a>
+          </li>
+          <li>
             <I18NLink collection="legal" i18nId="credits" lang={lang}>
               {t("nav.credits")}
             </I18NLink>
@@ -191,14 +196,15 @@ const t = useTranslations(lang);
               {t("nav.privacy")}
             </I18NLink>
           </li>
-
           <li>
             <I18NLink collection="legal" i18nId="terms" lang={lang}>
               {t("nav.tos")}
             </I18NLink>
           </li>
           <li>
-            <a href="/legal" target="_blank" }>{t("nav.legal")}</a>
+            <I18NLink collection="legal" i18nId="index" lang="en">
+              {t("nav.legal")}
+            </I18NLink>
           </li>
         </ul>
       </nav>
