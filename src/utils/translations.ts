@@ -100,6 +100,10 @@ export const strings = {
     "roadmap.inProgress": "In Progress",
     "roadmap.backlog": "Further Ideas",
     "roadmap.completed": "Completed",
+    "cookie-consent.message":
+      "We'd like to store a cookie to remember how you found our website. This helps us understand how visitors learn about Keila.",
+    "cookie-consent.yes": "Okay",
+    "cookie-consent.no": "No",
   },
   de: {
     lang: "Deutsch",
@@ -182,6 +186,10 @@ export const strings = {
     "roadmap.inProgress": "In Arbeit",
     "roadmap.backlog": "Weitere Ideen",
     "roadmap.completed": "Abgeschlossen",
+    "cookie-consent.message":
+      "Wir möchten einen Cookie speichern, um nachzuvollziehen, wie du auf unsere Website aufmerksam geworden bist. So können wir besser verstehen, wie Besucher Keila finden.",
+    "cookie-consent.yes": "Okay",
+    "cookie-consent.no": "Nein",
   },
   fr: {
     lang: "Français",
@@ -279,6 +287,10 @@ export const strings = {
     "managed-note.heading": "Note :",
     "managed-note.body":
       "Ce document s'applique uniquement si vous utilisez Keila Cloud.<br />Si vous utilisez une instance auto-hébergée, ces instructions ne fonctionneront pas.",
+    "cookie-consent.message":
+      "Nous souhaitons enregistrer un cookie pour retenir comment vous avez trouvé notre site. Cela nous aide à comprendre comment les visiteurs découvrent Keila.",
+    "cookie-consent.yes": "Okay",
+    "cookie-consent.no": "Non",
   },
 } as const;
 export type language = keyof typeof strings;

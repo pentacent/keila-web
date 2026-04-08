@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import { useTranslations } from "../utils/i18n";
 import type { language } from "../utils/translations";
+import I18NLink from "../components/I18nLink.astro";
 
 interface Props {
   title: string;
@@ -85,24 +86,28 @@ const t = useTranslations(lang as language);
         window.couponAmount = acceptedCouponCodes[window.couponCode];
       }
 
+      // Extract propagated params from URL
       const propagatedParams = ["ref", "utm_source", "utm_campaign"];
       const propagatedParamValues = {};
+
+      // Set ref from referrer hostname if not already set and if there's no utm_source
+      const referrerHostname = document.referrer
+        ? new URL(document.referrer).hostname
+        : null;
+      if (
+        referrerHostname &&
+        referrerHostname !== location.hostname &&
+        !urlParams.get("utm_source")
+      ) {
+        propagatedParamValues.ref = referrerHostname;
+      }
+
       propagatedParams.forEach((param) => {
-        let value = urlParams.get(param);
-        if (
-          param === "ref" &&
-          !value &&
-          !urlParams.get("utm_source") &&
-          document.referrer
-        ) {
-          const referrerHostname = new URL(document.referrer).hostname;
-          if (referrerHostname !== location.hostname) {
-            value = referrerHostname;
-          }
-        }
+        const value = urlParams.get(param);
         if (value) propagatedParamValues[param] = value;
       });
 
+      // Clean propagated params from visible URL
       const cleanUrl = new URL(location.href);
       propagatedParams.forEach((param) => cleanUrl.searchParams.delete(param));
       history.replaceState(
@@ -111,19 +116,63 @@ const t = useTranslations(lang as language);
         cleanUrl.pathname + cleanUrl.search + cleanUrl.hash
       );
 
-      if (Object.keys(propagatedParamValues).length > 0) {
+      // Read existing _ref cookie
+      function getRefCookie() {
+        const cookies = document.cookie.split("; ");
+        const cookie = cookies.find((cookie) => cookie.startsWith("_ref="));
+        if (cookie) {
+          const value = cookie.substring(5);
+          return Object.fromEntries(new URLSearchParams(value));
+        }
+      }
+
+      function setRefCookie(params) {
+        const value = new URLSearchParams(params).toString();
+        const expires = new Date(
+          Date.now() + 30 * 24 * 60 * 60 * 1000
+        ).toUTCString();
+        document.cookie =
+          "_ref=" + value + "; expires=" + expires + "; path=/; SameSite=Lax";
+      }
+
+      function addAppLinkHandler(params) {
         document.addEventListener("click", (e) => {
           const a = e.target.closest("a[href]");
           if (!a) return;
           const url = new URL(a.href);
-          if (![location.hostname, "app.keila.io"].includes(url.hostname))
-            return;
-          Object.entries(propagatedParamValues).forEach(([param, value]) => {
+          if (url.hostname !== "app.keila.io") return;
+          Object.entries(params).forEach(([param, value]) => {
             if (!url.searchParams.has(param)) {
               url.searchParams.set(param, value);
             }
           });
           a.href = url.toString();
+        });
+      }
+
+      const existingRef = getRefCookie();
+      if (existingRef) {
+        addAppLinkHandler(existingRef);
+      } else if (Object.keys(propagatedParamValues).length > 0) {
+        document.addEventListener("DOMContentLoaded", () => {
+          const template = document.getElementById(
+            "ref-cookie-consent-template"
+          );
+          if (!template) return;
+          const popup = template.content.firstElementChild.cloneNode(true);
+          document.body.appendChild(popup);
+          popup
+            .querySelector("#ref-cookie-yes")
+            .addEventListener("click", () => {
+              setRefCookie(propagatedParamValues);
+              addAppLinkHandler(propagatedParamValues);
+              popup.remove();
+            });
+          popup
+            .querySelector("#ref-cookie-no")
+            .addEventListener("click", () => {
+              popup.remove();
+            });
         });
       }
     </script>
@@ -149,6 +198,38 @@ const t = useTranslations(lang as language);
       </div></template
     >
     <slot />
+    <template id="ref-cookie-consent-template">
+      <div
+        class="fixed bottom-4 right-4 max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg p-5 z-50"
+      >
+        <p class="text-sm text-gray-700 mb-3">
+          {t("cookie-consent.message")}
+          <I18NLink
+            collection="legal"
+            i18nId="privacy"
+            lang={lang}
+            target="_blank"
+            class="text-emerald-600 underline"
+          >
+            {t("nav.privacy")}
+          </I18NLink>
+        </p>
+        <div class="flex justify-end gap-2">
+          <button
+            id="ref-cookie-no"
+            class="px-4 py-2 bg-gray-200 text-gray-700 text-sm font-semibold rounded hover:bg-gray-300"
+          >
+            {t("cookie-consent.no")}
+          </button>
+          <button
+            id="ref-cookie-yes"
+            class="px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded hover:bg-green-500"
+          >
+            {t("cookie-consent.yes")}
+          </button>
+        </div>
+      </div>
+    </template>
     <Footer />
   </body>
   <!-- Matomo -->
