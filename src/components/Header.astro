@@ -111,7 +111,6 @@ const indexPath = lang == "en" ? "/" : `/${lang}`;
               />
               <NavItem
                 href={articlePath("roadmap")}
-                target="_blank"
                 icon="rocket"
                 title={t("nav.roadmap")}
                 description={t("nav.roadmap.details")}
@@ -178,7 +177,7 @@ const indexPath = lang == "en" ? "/" : `/${lang}`;
                           {t("lang", lang)}
                         </a>
                       </li>
-                    ),
+                    )
                 )
               }
             </ul>

@@ -8,6 +8,7 @@ import I18NLink from "./I18nLink.astro";
 import Bluesky from "./icons/Bluesky.astro";
 import GitHub from "./icons/GitHub.astro";
 import Mastodon from "./icons/Mastodon.astro";
+import Logo from "./Logo.astro";
 
 const lang = Astro.currentLocale as language;
 const t = useTranslations(lang);
@@ -144,70 +145,125 @@ const t = useTranslations(lang);
   </section>
 
   <section class="bg-white ring-1 ring-gray-100">
-    <div class="max-w-6xl mx-auto p-5 md:p-10 flex flex-col gap-4 items-center">
-      <p>Made in 🇩🇪 🇪🇺 with ❤️.</p>
-      <nav>
-        <ul class="flex flex-wrap items-center justify-center gap-4">
-          <li>
-            <a
-              href="https://github.com/pentacent/keila"
-              target="_blank"
-              class="flex flex-row gap-1 items-center"
-            >
-              <GitHub class="h-4" />
-              GitHub</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://fosstodon.org/@keila"
-              target="_blank"
-              rel="me"
-              class="flex flex-row gap-1 items-center"
-              ><Mastodon class="h-4" />Mastodon</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://bsky.app/profile/pentacent.bsky.social"
-              target="_blank"
-              class="flex flex-row gap-1 items-center"
-            >
-              <Bluesky class="h-4" />
-              Bluesky</a
-            >
-          </li>
-        </ul>
-      </nav>
-      <nav class="text-gray-700">
-        <ul class="flex flex-wrap items-center justify-center gap-4">
-          <li>
-            <a href="https://status.keila.io" target="_blank">
-              {t("nav.status")}
-            </a>
-          </li>
-          <li>
-            <I18NLink collection="legal" i18nId="credits" lang={lang}>
-              {t("nav.credits")}
-            </I18NLink>
-          </li>
-          <li>
-            <I18NLink collection="legal" i18nId="privacy" lang={lang}>
-              {t("nav.privacy")}
-            </I18NLink>
-          </li>
-          <li>
-            <I18NLink collection="legal" i18nId="terms" lang={lang}>
-              {t("nav.tos")}
-            </I18NLink>
-          </li>
-          <li>
-            <I18NLink collection="legal" i18nId="index" lang="en">
-              {t("nav.legal")}
-            </I18NLink>
-          </li>
-        </ul>
-      </nav>
+    <div
+      class="max-w-6xl mx-auto p-5 md:p-10 flex flex-col gap-5 sm:flex-row sm:items-center"
+    >
+      <div class="sm:flex-grow">
+        <div class="text-gray-900 text-3xl my-5 sm:my-10">
+          <Logo class="h-10 -mr-3 inline-block w-auto" />
+          Keila
+        </div>
+        <p class="text-gray-500">
+          Made in Germany.<br />Hosted in the EU.<br />🇩🇪 🇪🇺
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-5 sm:grid sm:grid-cols-3">
+        <div>
+          <nav>
+            <ul class="flex flex-col gap-2">
+              <li>
+                <a
+                  href="https://status.keila.io"
+                  target="_blank"
+                  class="inline-flex items-center gap-1"
+                >
+                  <img
+                    src="https://status.keila.io/api/badge/3/status?upColor=%23009966&downColor=%23ffb900&pendingColor=%23ffb900&maintenanceColor=%23ffb900&label=&labelPrefix=&upLabel=&downLabel=&style=flat-square"
+                    alt=""
+                    class="inline w-4 h-4 rounded-full"
+                    loading="lazy"
+                  />
+                  {t("nav.status")}
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div>
+          <h4 class="text-gray-500 mb-2">Elsewhere</h4>
+          <nav>
+            <ul class="flex flex-col gap-2">
+              <li>
+                <a
+                  href="https://github.com/pentacent/keila"
+                  target="_blank"
+                  class="flex flex-row gap-1 items-center"
+                >
+                  <GitHub class="h-4" />
+                  GitHub</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://fosstodon.org/@keila"
+                  target="_blank"
+                  rel="me"
+                  class="flex flex-row gap-1 items-center"
+                  ><Mastodon class="h-4" />Mastodon</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://bsky.app/profile/pentacent.bsky.social"
+                  target="_blank"
+                  class="flex flex-row gap-1 items-center"
+                >
+                  <Bluesky class="h-4" />
+                  Bluesky</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div>
+          <h4 class="text-gray-500 mb-2">Legal</h4>
+          <nav>
+            <ul class="flex flex-col gap-2">
+              <li>
+                <I18NLink collection="legal" i18nId="privacy" lang={lang}>
+                  {t("nav.privacy")}
+                </I18NLink>
+              </li>
+              <li>
+                <I18NLink collection="legal" i18nId="terms" lang={lang}>
+                  {t("nav.tos")}
+                </I18NLink>
+              </li>
+              <li>
+                <I18NLink collection="legal" i18nId="index" lang="en">
+                  {t("nav.legal")}
+                </I18NLink>
+              </li>
+              <li>
+                <I18NLink collection="articles" i18nId="contact" lang="en">
+                  {t("nav.contact")}
+                </I18NLink>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div>
+        </div>
+        <div>
+          <h4 class="text-gray-500 mb-2">Compare</h4>
+          <nav>
+            <ul class="flex flex-col gap-2">
+              <li>
+                <I18NLink
+                  collection="articles"
+                  i18nId="open-source-mailchimp-alternative"
+                  lang={lang}
+                >
+                  vs Mailchimp
+                </I18NLink>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
     </div>
   </section>
 </footer>
