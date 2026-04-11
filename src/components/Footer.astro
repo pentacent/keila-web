@@ -149,7 +149,7 @@ const t = useTranslations(lang);
       class="max-w-6xl mx-auto p-5 md:p-10 flex flex-col gap-5 sm:flex-row sm:items-center"
     >
       <div class="sm:flex-grow">
-        <div class="text-gray-900 text-3xl my-5 sm:my-10">
+        <div class="text-gray-900 text-3xl mb-5 sm:mb-10">
           <Logo class="h-10 -mr-3 inline-block w-auto" />
           Keila
         </div>
@@ -160,6 +160,8 @@ const t = useTranslations(lang);
 
       <div class="flex flex-col gap-5 sm:grid sm:grid-cols-3">
         <div>
+          <h4 class="text-gray-500 mb-2">System status</h4>
+
           <nav>
             <ul class="flex flex-col gap-2">
               <li>
@@ -171,7 +173,7 @@ const t = useTranslations(lang);
                   <img
                     src="https://status.keila.io/api/badge/3/status?upColor=%23009966&downColor=%23ffb900&pendingColor=%23ffb900&maintenanceColor=%23ffb900&label=&labelPrefix=&upLabel=&downLabel=&style=flat-square"
                     alt=""
-                    class="inline w-4 h-4 rounded-full"
+                    class="inline w-2 h-2 rounded-full"
                     loading="lazy"
                   />
                   {t("nav.status")}
