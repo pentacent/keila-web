@@ -23,6 +23,17 @@ const docsCollection = defineCollection({
   }),
 });
 
+const legalCollection = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string(),
+    lang: z.string().optional(),
+    localSlug: z.string().optional(),
+    disableTranslations: z.boolean().optional().default(false),
+    description: z.string().optional(),
+  }),
+});
+
 const updateCollection = defineCollection({
   type: "content",
   schema: z.object({
@@ -46,5 +57,6 @@ export const collections = {
   articles: articleCollection,
   docs: docsCollection,
   landing: landingCollection,
+  legalCollection: legalCollection,
   updates: updateCollection,
 };

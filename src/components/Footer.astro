@@ -224,12 +224,17 @@ const t = useTranslations(lang);
           <nav>
             <ul class="flex flex-col gap-2">
               <li>
-                <I18NLink collection="legal" i18nId="privacy" lang={lang}>
+                <I18NLink collection="legal" i18nId="privacy" lang={"en"}>
                   {t("nav.privacy")}
                 </I18NLink>
               </li>
               <li>
-                <I18NLink collection="legal" i18nId="terms" lang={lang}>
+                <I18NLink collection="legal" i18nId="gdpr-dpa" lang={lang}>
+                  {t("nav.gdpr-dpa")}
+                </I18NLink>
+              </li>
+              <li>
+                <I18NLink collection="legal" i18nId="terms" lang={"en"}>
                   {t("nav.tos")}
                 </I18NLink>
               </li>
@@ -239,7 +244,7 @@ const t = useTranslations(lang);
                 </I18NLink>
               </li>
               <li>
-                <I18NLink collection="articles" i18nId="contact" lang="en">
+                <I18NLink collection="articles" i18nId="contact" lang={lang}>
                   {t("nav.contact")}
                 </I18NLink>
               </li>

@@ -38,6 +38,7 @@ export const strings = {
     "nav.tos": "Terms & Conditions",
     "nav.legal": "Legal notice",
     "nav.contact": "Contact",
+    "nav.gdpr-dpa": "GDPR & DPA",
     "nav.coupon":
       "Save %{amount}%  on your Keila Cloud subscription with code %{code}!",
     "footer.newsletter.heading": "Follow the development of Keila!",
@@ -144,6 +145,7 @@ export const strings = {
     "nav.tos": "AGB",
     "nav.legal": "Impressum",
     "nav.contact": "Kontakt",
+    "nav.gdpr-dpa": "DSGVO & AVV",
     "footer.newsletter.heading": "Folge der Entwicklung von Keila!",
     "footer.newsletter.email.label": "E-Mail",
     "footer.newsletter.email.placeholder": "du.bist@wundervoll",
