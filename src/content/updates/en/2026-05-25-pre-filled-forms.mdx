@@ -1,0 +1,27 @@
+---
+title: Pre-filled Form Fields
+slug: pre-filled-forms
+type: added
+language: en
+date: 2026-05-25
+version: 0.20.1
+description: "Pre-fill signup form fields with URL query parameters - perfect for 'Manage preferences' links in your newsletters."
+ogImage: 2026-05-25-pre-filled-forms.png
+---
+
+*You can now pre-fill form fields by passing values as URL query parameters. This is useful if you already have some data about a potential new subscriber or want to let users update their preferences.*
+
+<KeilaImage
+  src="/src/assets/updates/2026-05-25-pre-filled-forms.png"
+  alt="Screenshot of a Keila signup form with pre-filled email and custom fields." maxWidth="600"
+></KeilaImage>
+
+You can now append `?email=…&data[custom_field]=…` to any form URL and the matching fields will open already filled in. Both the standard `email` field and any custom fields stored under `data` are supported.
+
+This is especially useful if you want to add a "Manage preferences" links in your email signature. Combined with Liquid variables, you can generate a link that pre-fills each subscriber's existing data:
+
+```markdown
+[Manage preferences](…/forms/nfrm_…?email={{ contact.email }}&data[custom]={{ contact.data.custom }})
+```
+
+When subscribers click the link, the form opens with their current values.
