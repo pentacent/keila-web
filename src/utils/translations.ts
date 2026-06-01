@@ -17,7 +17,7 @@ export const strings = {
     "nav.about.opensource.details":
       "Keila is AGPLv3-licensed and committed to OpenSource. And you can self-host!",
     "nav.pricing": "Pricing",
-    "nav.community": "Community",
+    "nav.resources": "Resources",
     "nav.github": "GitHub",
     "nav.github.details":
       "Participate in the open development process of Keila with code contributions or translations.",
@@ -94,6 +94,9 @@ export const strings = {
     "docs.nav.api.contacts": "Contacts",
     "docs.nav.api.segments": "Segments",
     "docs.nav.api.campaigns": "Campaigns",
+    "docs.nav.api.overview": "Overview",
+    "docs.nav.api.authentication": "Authentication",
+    "docs.nav.api.playground": "Interactive playground",
     "docs.nav.public-links": "Public archive links",
     "managed-note.heading": "Note:",
     "managed-note.body":
@@ -125,7 +128,7 @@ export const strings = {
     "nav.about.opensource.details":
       "Keila ist AGPLv3-lizenziert vollständig Open Source. Und du kannst Keila selbst hosten!",
     "nav.pricing": "Preise",
-    "nav.community": "Community",
+    "nav.resources": "Informationen",
     "nav.github": "GitHub",
     "nav.github.details":
       "Werde Teil des offenen Entwicklungsprozesses und trage Code oder Übersetzungen bei.",
@@ -215,7 +218,7 @@ export const strings = {
     "nav.about.opensource.details":
       "Keila est disponible comme logiciel libre. Et vous pouvez l'héberger vous-même !",
     "nav.pricing": "Tarifs",
-    "nav.community": "Communauté",
+    "nav.resources": "Plus d'infos",
     "nav.github": "GitHub",
     "nav.github.details":
       "Participez au processus de développement ouvert de Keila avec des contributions de code ou des traductions.",
@@ -288,6 +291,9 @@ export const strings = {
     "docs.nav.api.contacts": "Contacts",
     "docs.nav.api.segments": "Segments",
     "docs.nav.api.campaigns": "Campagnes",
+    "docs.nav.api.overview": "Aperçu",
+    "docs.nav.api.authentication": "Authentification",
+    "docs.nav.api.playground": "Console interactive",
     "managed-note.heading": "Note :",
     "managed-note.body":
       "Ce document s'applique uniquement si vous utilisez Keila Cloud.<br />Si vous utilisez une instance auto-hébergée, ces instructions ne fonctionneront pas.",
@@ -297,9 +303,10 @@ export const strings = {
     "cookie-consent.no": "Non",
   },
 } as const;
-export type language = keyof typeof strings;
-export type key = keyof typeof strings.en;
 
-export const defaultLang: language = "en";
+export type language = keyof typeof strings;
+export type key = keyof (typeof strings)["en"];
+
+export const defaultLang = "en" as const;
 export const showDefaultLang = false;
-export const languages: language[] = Object.keys(strings) as language[];
+export const languages = Object.keys(strings) as language[];

@@ -1,0 +1,101 @@
+---
+import SchemaTable from "./SchemaTable.astro";
+import { operationAnchor } from "../utils/openapi";
+
+const { doc, op } = Astro.props;
+
+const methodColors: Record<string, string> = {
+  get: "bg-green-100 text-green-800",
+  post: "bg-blue-100 text-blue-800",
+  put: "bg-yellow-100 text-yellow-800",
+  patch: "bg-yellow-100 text-yellow-800",
+  delete: "bg-red-100 text-red-800",
+};
+
+const reqBodySchema =
+  op.requestBody?.content?.["application/json"]?.schema ?? null;
+
+const responses = Object.entries(op.responses).map(
+  ([status, r]: [string, any]) => ({
+    status,
+    description: r.description,
+    schema: r.content?.["application/json"]?.schema ?? null,
+  })
+);
+---
+
+<section
+  id={operationAnchor(op)}
+  class="mt-12 pt-12 border-t border-gray-200 scroll-mt-24"
+>
+  <div class="flex items-center gap-3 mb-1">
+    <span
+      class={`px-2 py-1 rounded text-sm font-mono font-bold uppercase ${methodColors[op.method] ?? "bg-gray-100 text-gray-800"}`}
+    >
+      {op.method}
+    </span>
+    <code class="text-base">{op.path}</code>
+  </div>
+  {op.summary && <h3 class="!mt-2">{op.summary}</h3>}
+  {op.description && <p>{op.description}</p>}
+
+  {
+    op.parameters.length > 0 && (
+      <>
+        <h4>Parameters</h4>
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="text-left border-b">
+              <th class="py-1 pr-4">Name</th>
+              <th class="py-1 pr-4">In</th>
+              <th class="py-1 pr-4">Type</th>
+              <th class="py-1 pr-4">Required</th>
+              <th class="py-1">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {op.parameters.map((p: any) => (
+              <tr class="border-b align-top">
+                <td class="py-1 pr-4 font-mono">{p.name}</td>
+                <td class="py-1 pr-4">{p.in}</td>
+                <td class="py-1 pr-4 font-mono text-gray-600">
+                  {p.schema?.type ?? "object"}
+                </td>
+                <td class="py-1 pr-4">{p.required ? "yes" : ""}</td>
+                <td class="py-1">
+                  {p.description}
+                  {p.example !== undefined && (
+                    <span class="block text-gray-500">
+                      Example: <code>{JSON.stringify(p.example)}</code>
+                    </span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    )
+  }
+
+  {
+    reqBodySchema && (
+      <>
+        <h4>Request body</h4>
+        <SchemaTable doc={doc} schema={reqBodySchema} />
+      </>
+    )
+  }
+
+  <h4>Responses</h4>
+  {
+    responses.map((r) => (
+      <div class="mb-4">
+        <p class="font-mono font-bold">
+          {r.status} <span class="font-normal text-gray-600">{r.description}</span>
+        </p>
+        {r.schema && <SchemaTable doc={doc} schema={r.schema} />}
+      </div>
+    ))
+  }
+</section>

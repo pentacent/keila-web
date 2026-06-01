@@ -4,8 +4,9 @@ import { type language, languages } from "../utils/translations";
 
 interface Props {
   translations: Map<language, String>;
+  fullWidth?: boolean;
 }
-const { translations } = Astro.props;
+const { translations, fullWidth } = Astro.props;
 
 import Logo from "./Logo.astro";
 import NavItem from "./NavItem.astro";
@@ -22,11 +23,11 @@ const docsPath = await useTranslateContentPath("docs", lang);
 const indexPath = lang == "en" ? "/" : `/${lang}`;
 ---
 
-<header class="">
-  <div class="container max-w-6xl mx-auto p-5 lg:p-10 flex items-center">
-    <div class="text-gray-900 text-3xl lg:text-5xl text-center">
+<header class="relative z-10">
+  <div class=`container ${fullWidth ? "max-w-none" : "max-w-6xl"} mx-auto p-5 ${fullWidth ? "lg:px-10" : "lg:p-10"} flex items-center`>
+    <div class="text-gray-900 text-3xl ${!fullWidth && "lg:text-5xl"} text-center">
       <a href={indexPath}>
-        <Logo class="h-10 lg:h-16 -mr-3 inline-block w-auto" />
+        <Logo class=`h-10 ${!fullWidth && "lg:h-16"} -mr-3 inline-block w-auto` />
         Keila
       </a>
     </div>
@@ -84,7 +85,7 @@ const indexPath = lang == "en" ? "/" : `/${lang}`;
             class="px-2 md:px-3 py-3 cursor-pointer hover:text-green-900 flex items-center flex-row gap-1"
             x-on:click="open = true"
           >
-            {t("nav.community")}
+            {t("nav.resources")}
             <ChevronDown class="w-4 h-4" />
           </span>
           <div
@@ -97,13 +98,6 @@ const indexPath = lang == "en" ? "/" : `/${lang}`;
               class="rounded-lg shadow-lg bg-white flex flex-col text-left overflow-hidden"
             >
               <NavItem
-                href="https://github.com/pentacent/keila/"
-                target="_blank"
-                icon="github"
-                title={t("nav.github")}
-                description={t("nav.github.details")}
-              />
-              <NavItem
                 href={docsPath("index")}
                 icon="book-open"
                 title={t("nav.docs")}
@@ -114,6 +108,13 @@ const indexPath = lang == "en" ? "/" : `/${lang}`;
                 icon="rocket"
                 title={t("nav.roadmap")}
                 description={t("nav.roadmap.details")}
+              />
+              <NavItem
+                href="https://github.com/pentacent/keila/"
+                target="_blank"
+                icon="github"
+                title={t("nav.github")}
+                description={t("nav.github.details")}
               />
               <NavItem
                 href="https://fosstodon.org/@keila"

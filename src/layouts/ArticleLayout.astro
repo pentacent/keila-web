@@ -26,7 +26,10 @@ const { Content, components } = await entry.render();
   <main
     class="max-w-6xl mx-auto p-5 md:p-10 text-gray-800 text-lg rounded-t bg-white md:pb-16"
   >
-    <div id="markdown-content" class="prose prose-xl mx-auto">
+    <div
+      id="markdown-content"
+      class="prose prose-xl prose-table:text-left prose-th:bg-gray-200 prose-th:p-2 prose-td:p-2 mx-auto"
+    >
       <h1>{entry.data.title}</h1>
       <Content
         id="content"
@@ -45,8 +48,12 @@ const { Content, components } = await entry.render();
   </main>
 </Layout>
 
-<style>
+<style is:global>
   h1 {
     @apply text-5xl font-bold mb-10;
+  }
+
+  table tr:nth-child(even) {
+    @apply bg-gray-50;
   }
 </style>

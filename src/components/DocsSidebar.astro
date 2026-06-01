@@ -1,0 +1,76 @@
+---
+import { useTranslations, useTranslateContentPath } from "../utils/i18n";
+import type { language } from "../utils/translations";
+import { getApiTags, operationAnchor } from "../utils/openapi";
+import SidebarNavItem from "./SidebarNavItem.astro";
+
+const lang = (Astro.currentLocale as language) || "en";
+const t = useTranslations(lang);
+const docsPath = await useTranslateContentPath("docs", lang);
+const apiTags = await getApiTags();
+
+const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const isActive = (href: string) =>
+  currentPath === href || currentPath.startsWith(href + "/");
+
+// A group opens when it contains the current page. Usage also opens as a
+// fallback when nothing else matches (e.g. the docs index).
+const usageOpen = ["senders", "contacts", "segments", "forms", "campaigns", "public-links"].some(
+  (s) => isActive(docsPath(s))
+);
+const cloudOpen = ["managed-dmarc", "shared-domains"].some((s) =>
+  isActive(docsPath(s))
+);
+const selfHostOpen = ["installation", "configuration", "setup"].some((s) =>
+  isActive(docsPath(s))
+);
+const apiOpen = isActive("/docs/api");
+const nothingOpen = !(usageOpen || cloudOpen || selfHostOpen || apiOpen);
+---
+
+<nav class="text-gray-900 bg-white p-4 rounded">
+  <ul class="space-y-1">
+    <SidebarNavItem label={t("docs.nav.usage")} open={usageOpen || nothingOpen}>
+      <SidebarNavItem label={t("docs.nav.senders")} href={docsPath("senders")} />
+      <SidebarNavItem label={t("docs.nav.contacts")} href={docsPath("contacts")} />
+      <SidebarNavItem label={t("docs.nav.segments")} href={docsPath("segments")} />
+      <SidebarNavItem label={t("docs.nav.forms")} href={docsPath("forms")} />
+      <SidebarNavItem label={t("docs.nav.campaigns")} href={docsPath("campaigns")} />
+      <SidebarNavItem label={t("docs.nav.public-links")} href={docsPath("public-links")} />
+    </SidebarNavItem>
+
+    <SidebarNavItem label={t("docs.nav.managed")} open={cloudOpen}>
+      <SidebarNavItem label={t("docs.nav.managed-dmarc")} href={docsPath("managed-dmarc")} />
+      <SidebarNavItem label={t("docs.nav.shared-domains")} href={docsPath("shared-domains")} />
+    </SidebarNavItem>
+
+    <SidebarNavItem label={t("docs.nav.self-hosting")} open={selfHostOpen}>
+      <SidebarNavItem label={t("docs.nav.installation")} href={docsPath("installation")} />
+      <SidebarNavItem label={t("docs.nav.configuration")} href={docsPath("configuration")} />
+      <SidebarNavItem label={t("docs.nav.setup")} href={docsPath("setup")} />
+    </SidebarNavItem>
+
+    <SidebarNavItem label={t("docs.nav.api")} open={apiOpen}>
+      <SidebarNavItem label={t("docs.nav.api.overview")} href="/docs/api" />
+      <SidebarNavItem label={t("docs.nav.api.authentication")} href="/docs/api/authentication" />
+      {
+        apiTags.map((tag) => (
+          <SidebarNavItem
+            label={tag.title}
+            href={`/docs/api/${tag.slug}`}
+            open={isActive(`/docs/api/${tag.slug}`)}
+          >
+            {tag.operations.map((op) => (
+              <SidebarNavItem
+                label={op.summary || `${op.method.toUpperCase()} ${op.path}`}
+                href={`/docs/api/${tag.slug}#${operationAnchor(op)}`}
+                small
+              />
+            ))}
+          </SidebarNavItem>
+        ))
+      }
+      <SidebarNavItem label={t("docs.nav.api.playground")} href="https://app.keila.io/api" external />
+    </SidebarNavItem>
+  </ul>
+</nav>

@@ -10,9 +10,10 @@ interface Props {
   translations: Map<language, String>;
   contentLanguage: string;
   ogImage?: string;
+  fullWidthHeader?: boolean;
 }
 
-const { title, description, translations, contentLanguage, ogImage } =
+const { title, description, translations, contentLanguage, ogImage, fullWidthHeader } =
   Astro.props;
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -178,7 +179,7 @@ const t = useTranslations(lang as language);
     </script>
   </head>
   <body>
-    <Header translations={translations} />
+    <Header translations={translations} fullWidth={fullWidthHeader} />
     {
       lang != contentLanguage && (
         <div class="bg-purple-200 p-5 mb-5">
@@ -265,6 +266,10 @@ const t = useTranslations(lang as language);
 <style is:global>
   body {
     font-family: "Twemoji Country Flags", Inter, Arial, Helvetica, sans-serif;
-    @apply bg-gradient-to-b from-white to-gray-50 to-20% min-h-screen;
+    @apply bg-gradient-to-b from-white to-gray-100 to-20% min-h-screen;
+  }
+
+  .prose pre code {
+    @apply bg-transparent p-0 rounded-none;
   }
 </style>

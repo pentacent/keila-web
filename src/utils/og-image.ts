@@ -5,17 +5,17 @@ import { html } from "satori-html";
 import sharp from "sharp";
 
 const inter = fs.readFileSync(
-  "./node_modules/@fontsource/inter/files/inter-latin-400-normal.woff",
+  "./node_modules/@fontsource/inter/files/inter-latin-400-normal.woff"
 );
 const interBold = fs.readFileSync(
-  "./node_modules/@fontsource/inter/files/inter-latin-700-normal.woff",
+  "./node_modules/@fontsource/inter/files/inter-latin-700-normal.woff"
 );
 
 const defaultTemplate = html(
-  fs.readFileSync("./src/utils/og-images/default.html").toString(),
+  fs.readFileSync("./src/utils/og-images/default.html").toString()
 );
 const updateTemplate = html(
-  fs.readFileSync("./src/utils/og-images/update.html").toString(),
+  fs.readFileSync("./src/utils/og-images/update.html").toString()
 );
 
 const opts = {
@@ -76,7 +76,7 @@ const template = async function (template, assigns, lang) {
 
       const image = await getImageBase64(
         "./src/assets/screenshots/block-editor.png",
-        630,
+        630
       );
       if (image) {
         t.props.children[0].props.children[3].props.children[3].props.src = `data:image/jpeg;base64,${image}`;

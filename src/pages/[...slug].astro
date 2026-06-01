@@ -5,6 +5,10 @@ import ArticleLayout from "../layouts/ArticleLayout.astro";
 import UpdateLayout from "../layouts/UpdateLayout.astro";
 import DocsLayout from "../layouts/DocsLayout.astro";
 import UpdatesLayout from "../layouts/UpdatesLayout.astro";
+import GitHubIssue from "../components/GitHubIssue.astro";
+import ManagedNote from "../components/ManagedNote.astro";
+import KeilaImage from "../components/KeilaImage.astro";
+import Email from "../components/Email.astro";
 
 // async import collection
 // use in curried path function (which is async)
@@ -24,7 +28,10 @@ export async function getStaticPaths() {
   return articlePaths.concat(updatePaths).concat(legalPaths).concat(docsPaths).concat(updateIndexPaths)
 }
 
-const { entry, specialType } = Astro.props;
+const { entry, translations, specialType } = Astro.props;
+
+const { Content: DocsContent, components: docsComponents } =
+entry?.collection === "docs" ? await entry.render() : {}
 ---
 {
   specialType == "updateIndex" ? (
@@ -35,7 +42,17 @@ const { entry, specialType } = Astro.props;
   ) : entry.collection === "updates" ? (
     <UpdateLayout {...Astro.props} />
   ) : entry.collection === "docs" ? (
-    <DocsLayout {...Astro.props} />
+    <DocsLayout
+      title={entry.data.title}
+      description={entry.data.description}
+      translations={translations}
+      contentLanguage={entry.data.lang}
+    >
+      <DocsContent
+        id="content"
+        components={{ ...docsComponents, GitHubIssue, KeilaImage, Email, ManagedNote }}
+      />
+    </DocsLayout>
   ) : (
     <span>Unknown collection</span>
   )

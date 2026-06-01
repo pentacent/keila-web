@@ -1,0 +1,88 @@
+---
+import ChevronDown from "./icons/ChevronDown.astro";
+
+interface Props {
+  label: string;
+  href?: string;
+  open?: boolean;
+  external?: boolean;
+  small?: boolean;
+}
+
+const { label, href, open = false, external = false, small = false } =
+  Astro.props;
+
+// Highlight this item when its href is the current page.
+const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
+const current = !!href && currentPath === href.replace(/\/+$/, "");
+
+// With slotted children it's a collapsible section; without, a plain link.
+const collapsible = Astro.slots.has("default");
+const externalAttrs = external ? { target: "_blank", rel: "noopener" } : {};
+const currentClass = current && "underline font-medium text-gray-900";
+---
+
+{
+  collapsible ? (
+    <li x-data={`{ open: ${open} }`}>
+      <div class="flex items-center gap-1.5">
+        <button
+          type="button"
+          @click="open = !open"
+          class="text-gray-500 hover:text-gray-800 leading-none"
+          aria-label="Toggle section"
+        >
+          <span
+            class="inline-flex shrink-0 transition-transform"
+            style={!open ? "transform: rotate(-90deg)" : undefined}
+            :style="{ transform: open ? 'rotate(0deg)' : 'rotate(-90deg)' }"
+          >
+            <ChevronDown class="h-4 w-4" />
+          </span>
+        </button>
+        {href ? (
+          <a
+            href={href}
+            class:list={["py-1 hover:underline", currentClass]}
+            aria-current={current ? "page" : undefined}
+          >
+            {label}
+          </a>
+        ) : (
+          <button
+            type="button"
+            @click="open = !open"
+            class="py-1 text-left font-bold"
+          >
+            {label}
+          </button>
+        )}
+      </div>
+      <ul
+        class:list={[
+          "space-y-0.5",
+          href ? "pl-4 border-l border-gray-200" : "pl-7",
+        ]}
+        x-show="open"
+        style={!open ? "display:none" : undefined}
+      >
+        <slot />
+      </ul>
+    </li>
+  ) : (
+    <li>
+      <a
+        href={href}
+        class:list={[
+          "hover:underline",
+          small ? "block py-0.5 text-sm text-gray-600 hover:text-gray-900" : "block py-1",
+          currentClass,
+        ]}
+        aria-current={current ? "page" : undefined}
+        {...externalAttrs}
+      >
+        {label}
+      </a>
+    </li>
+  )
+}

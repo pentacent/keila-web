@@ -51,7 +51,7 @@ export function getLangAndI18nId(entry): [language, string] {
 
 export async function getCollectionTranslations(
   collection: keyof ContentEntryMap,
-  filter?: (entry: CollectionEntry<typeof collection>) => boolean,
+  filter?: (entry: CollectionEntry<typeof collection>) => boolean
 ): Promise<Record<string, CollectionEntry<typeof collection>[]>> {
   const entries = await getCollection(collection, filter);
   return entries.reduce((translations, entry) => {
@@ -100,7 +100,7 @@ export async function useTranslateContentPath(collection, lang, entries?) {
 }
 
 export async function getStaticCollectionPaths(
-  collection: keyof ContentEntryMap,
+  collection: keyof ContentEntryMap
 ) {
   const translations = await getCollectionTranslations(collection);
 
@@ -113,7 +113,7 @@ export async function getStaticCollectionPaths(
         collection,
         i18nId,
         lang,
-        translations,
+        translations
       );
       entryTranslationProp[lang] = link;
       const slug = link.substring(1);

@@ -1,0 +1,41 @@
+---
+import { getApiTags, fetchApiSchema } from "../../../utils/openapi";
+import DocsLayout from "../../../layouts/DocsLayout.astro";
+import ApiOperation from "../../../components/ApiOperation.astro";
+import { languages, type language } from "../../../utils/translations";
+
+export async function getStaticPaths() {
+  const tags = await getApiTags();
+  return tags.map((tag) => ({
+    params: { tag: tag.slug },
+    props: { tag },
+  }));
+}
+
+const { tag } = Astro.props;
+const doc = await fetchApiSchema();
+
+// API reference is English-only: every locale entry points at the same English
+// URL so the language switcher does not offer phantom translations.
+const translations = languages.reduce((acc, l) => {
+  acc[l] = Astro.url.pathname;
+  return acc;
+}, {}) as Map<language, String>;
+---
+
+<DocsLayout
+  title={`${tag.title} API`}
+  description={`Reference for the Keila API ${tag.title.toLowerCase()} endpoints, with their request parameters and response fields.`}
+  translations={translations}
+  contentLanguage="en"
+>
+  <h1>{tag.title} API</h1>
+  <p>
+    These are the <strong>{tag.title}</strong> endpoints of the Keila API.
+    For Keila Cloud, the base URL is <code>https://app.keila.io</code>.</p>
+    <p>All endpoints, unless stated differently, require <a
+      href="/docs/api/authentication">Bearer authentication</a
+    >.
+  </p>
+  {tag.operations.map((op) => <ApiOperation doc={doc} op={op} />)}
+</DocsLayout>

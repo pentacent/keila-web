@@ -1,0 +1,101 @@
+---
+import { resolveSchema } from "../utils/openapi";
+
+const { doc, schema: rawSchema, depth = 0 } = Astro.props;
+const schema = resolveSchema(doc, rawSchema);
+
+// If this schema is itself an array, describe its item object's fields.
+const unwrapped =
+  schema?.type === "array" ? resolveSchema(doc, schema.items) : schema;
+const properties = unwrapped?.properties ?? {};
+const required: string[] = unwrapped?.required ?? [];
+
+function typeLabel(s: any): string {
+  s = resolveSchema(doc, s);
+  if (!s) return "any";
+  if (s.type === "array") return `${typeLabel(s.items)}[]`;
+  if (s.enum) return s.enum.map((e: any) => JSON.stringify(e)).join(" | ");
+  return s.type ?? "object";
+}
+
+const fields = Object.entries(properties).map(([name, propRaw]) => {
+  const prop = resolveSchema(doc, propRaw);
+  const objChild = prop?.type === "object" && prop.properties ? prop : null;
+  const arrItem = prop?.type === "array" ? resolveSchema(doc, prop.items) : null;
+  const arrChild =
+    arrItem?.type === "object" && arrItem.properties ? arrItem : null;
+  const childSchema = objChild ?? arrChild ?? null;
+  return {
+    name,
+    type: typeLabel(prop),
+    required: required.includes(name),
+    description: prop?.description,
+    example: prop?.example,
+    childSchema,
+    defaultOpen: depth === 0 && name === "data",
+  };
+});
+---
+
+{
+  depth > 8 ? (
+    <p class="text-sm text-gray-500">…</p>
+  ) : fields.length === 0 ? (
+    <p class="text-sm text-gray-500">No fields.</p>
+  ) : (
+    <ul class="!list-none !pl-0 !my-2 border-l border-gray-200">
+      {fields.map((f) => (
+        <li
+          class="!pl-3 !my-0 py-2 border-b border-gray-100 last:border-b-0"
+          x-data={`{ open: ${f.defaultOpen} }`}
+        >
+          <div class="flex items-baseline gap-2 flex-wrap">
+            {f.childSchema ? (
+              <button
+                type="button"
+                @click="open = !open"
+                class="text-gray-400 hover:text-gray-700 text-xs leading-none focus:outline-none"
+                aria-label="Toggle child fields"
+              >
+                <span
+                  class="inline-block transition-transform"
+                  :class="open ? 'rotate-90' : ''"
+                >
+                  ▶
+                </span>
+              </button>
+            ) : (
+              <span class="inline-block w-3" />
+            )}
+            <span class="font-mono font-semibold text-gray-900 text-base">
+              {f.name}
+            </span>
+            <span class="font-mono text-xs text-gray-500">{f.type}</span>
+            {f.required && (
+              <span class="text-xs font-semibold text-orange-700 uppercase tracking-wide">
+                required
+              </span>
+            )}
+          </div>
+          {f.description && (
+            <p class="text-sm text-gray-600 ml-5 !my-1">{f.description}</p>
+          )}
+          {f.example !== undefined && (
+            <p class="text-sm text-gray-500 ml-5 !my-1">
+              Example: <code>{JSON.stringify(f.example)}</code>
+            </p>
+          )}
+          {f.childSchema && (
+            <div
+              x-show="open"
+              style={f.defaultOpen ? undefined : "display:none"}
+              class="ml-5 mt-1"
+            >
+              <Astro.self doc={doc} schema={f.childSchema} depth={depth + 1} />
+            </div>
+          )}
+        </li>
+      ))}
+    </ul>
+  )
+}
