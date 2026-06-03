@@ -233,6 +233,12 @@ const indexPath = lang == "en" ? "/" : `/${lang}`;
             </a>
           </li>
         </ul>
+        <a
+          class="block p-10 py-3 font-bold hover:text-green-900"
+          href={articlePath("pricing")}
+        >
+          {t("nav.pricing")}
+        </a>
         <h2 class="p-10 py-3 font-bold">{t("nav.about")}</h2>
         <ul class="pl-2">
           <li>
@@ -250,7 +256,7 @@ const indexPath = lang == "en" ? "/" : `/${lang}`;
           <li>
             <a
               class="block p-10 py-3"
-              href={articlePath("segmentation-and-data")}
+              href={articlePath("segments-and-data")}
               >{t("nav.about.segments")}</a
             >
           </li>
@@ -260,8 +266,13 @@ const indexPath = lang == "en" ? "/" : `/${lang}`;
             >
           </li>
         </ul>
-        <h2 class="p-10 py-3 font-bold">{t("nav.community")}</h2>
+        <h2 class="p-10 py-3 font-bold">{t("nav.resources")}</h2>
         <ul class="pl-2">
+          <li>
+            <a class="block p-10 py-3" href={docsPath("index")}
+              >{t("nav.docs")}</a
+            >
+          </li>
           <li>
             <a
               class="block p-10 py-3"
