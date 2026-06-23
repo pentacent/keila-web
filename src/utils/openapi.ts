@@ -16,6 +16,7 @@ export interface ApiTag {
   name: string; // raw tag from the spec, e.g. "Contacts"
   slug: string; // URL slug, e.g. "contacts"
   title: string; // display name, e.g. "Contacts"
+  description?: string; // CommonMark description from the spec's top-level `tags`
   operations: ApiOperation[];
 }
 
@@ -72,6 +73,13 @@ export async function getApiTags(): Promise<ApiTag[]> {
   const doc = await fetchApiSchema();
   const byTag: Record<string, ApiOperation[]> = {};
 
+  // Descriptions from the spec's top-level `tags` array, keyed by raw tag name.
+  // This array may be empty, in which case tags carry no description.
+  const tagDescriptions: Record<string, string> = {};
+  for (const t of doc.tags || []) {
+    if (t?.name && t.description) tagDescriptions[t.name] = t.description;
+  }
+
   for (const [path, methods] of Object.entries<any>(doc.paths || {})) {
     for (const method of HTTP_METHODS) {
       const op = methods[method];
@@ -100,6 +108,7 @@ export async function getApiTags(): Promise<ApiTag[]> {
         name,
         slug: meta?.slug ?? name.toLowerCase(),
         title: meta?.title ?? name,
+        description: tagDescriptions[name],
         operations,
       };
     })

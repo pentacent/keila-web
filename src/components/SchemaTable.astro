@@ -1,5 +1,6 @@
 ---
 import { resolveSchema } from "../utils/openapi";
+import { renderMarkdownInline } from "../utils/markdown";
 
 const { doc, schema: rawSchema, depth = 0 } = Astro.props;
 const schema = resolveSchema(doc, rawSchema);
@@ -13,28 +14,36 @@ const required: string[] = unwrapped?.required ?? [];
 function typeLabel(s: any): string {
   s = resolveSchema(doc, s);
   if (!s) return "any";
+  const union = s.anyOf ?? s.oneOf ?? s.allOf;
+  if (Array.isArray(union)) {
+    const labels = union.map((m: any) => typeLabel(m));
+    return [...new Set(labels)].join(" | ");
+  }
   if (s.type === "array") return `${typeLabel(s.items)}[]`;
   if (s.enum) return s.enum.map((e: any) => JSON.stringify(e)).join(" | ");
   return s.type ?? "object";
 }
 
-const fields = Object.entries(properties).map(([name, propRaw]) => {
-  const prop = resolveSchema(doc, propRaw);
-  const objChild = prop?.type === "object" && prop.properties ? prop : null;
-  const arrItem = prop?.type === "array" ? resolveSchema(doc, prop.items) : null;
-  const arrChild =
-    arrItem?.type === "object" && arrItem.properties ? arrItem : null;
-  const childSchema = objChild ?? arrChild ?? null;
-  return {
-    name,
-    type: typeLabel(prop),
-    required: required.includes(name),
-    description: prop?.description,
-    example: prop?.example,
-    childSchema,
-    defaultOpen: depth === 0 && name === "data",
-  };
-});
+const fields = await Promise.all(
+  Object.entries(properties).map(async ([name, propRaw]) => {
+    const prop = resolveSchema(doc, propRaw);
+    const objChild = prop?.type === "object" && prop.properties ? prop : null;
+    const arrItem =
+      prop?.type === "array" ? resolveSchema(doc, prop.items) : null;
+    const arrChild =
+      arrItem?.type === "object" && arrItem.properties ? arrItem : null;
+    const childSchema = objChild ?? arrChild ?? null;
+    return {
+      name,
+      type: typeLabel(prop),
+      required: required.includes(name),
+      descriptionHtml: await renderMarkdownInline(prop?.description),
+      example: prop?.example,
+      childSchema,
+      defaultOpen: depth === 0 && name === "data",
+    };
+  })
+);
 ---
 
 {
@@ -77,8 +86,8 @@ const fields = Object.entries(properties).map(([name, propRaw]) => {
               </span>
             )}
           </div>
-          {f.description && (
-            <p class="text-sm text-gray-600 ml-5 !my-1">{f.description}</p>
+          {f.descriptionHtml && (
+            <p class="text-sm text-gray-600 ml-5 !my-1" set:html={f.descriptionHtml} />
           )}
           {f.example !== undefined && (
             <p class="text-sm text-gray-500 ml-5 !my-1">

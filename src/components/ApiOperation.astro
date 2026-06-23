@@ -1,8 +1,11 @@
 ---
 import SchemaTable from "./SchemaTable.astro";
 import { operationAnchor } from "../utils/openapi";
+import { renderMarkdown, renderMarkdownInline } from "../utils/markdown";
 
 const { doc, op } = Astro.props;
+
+const descriptionHtml = await renderMarkdown(op.description);
 
 const methodColors: Record<string, string> = {
   get: "bg-green-100 text-green-800",
@@ -15,12 +18,19 @@ const methodColors: Record<string, string> = {
 const reqBodySchema =
   op.requestBody?.content?.["application/json"]?.schema ?? null;
 
-const responses = Object.entries(op.responses).map(
-  ([status, r]: [string, any]) => ({
+const parameters = await Promise.all(
+  op.parameters.map(async (p: any) => ({
+    ...p,
+    descriptionHtml: await renderMarkdownInline(p.description),
+  }))
+);
+
+const responses = await Promise.all(
+  Object.entries(op.responses).map(async ([status, r]: [string, any]) => ({
     status,
-    description: r.description,
+    descriptionHtml: await renderMarkdownInline(r.description),
     schema: r.content?.["application/json"]?.schema ?? null,
-  })
+  }))
 );
 ---
 
@@ -37,10 +47,10 @@ const responses = Object.entries(op.responses).map(
     <code class="text-base">{op.path}</code>
   </div>
   {op.summary && <h3 class="!mt-2">{op.summary}</h3>}
-  {op.description && <p>{op.description}</p>}
+  {descriptionHtml && <Fragment set:html={descriptionHtml} />}
 
   {
-    op.parameters.length > 0 && (
+    parameters.length > 0 && (
       <>
         <h4>Parameters</h4>
         <table class="w-full text-sm">
@@ -54,7 +64,7 @@ const responses = Object.entries(op.responses).map(
             </tr>
           </thead>
           <tbody>
-            {op.parameters.map((p: any) => (
+            {parameters.map((p: any) => (
               <tr class="border-b align-top">
                 <td class="py-1 pr-4 font-mono">{p.name}</td>
                 <td class="py-1 pr-4">{p.in}</td>
@@ -63,7 +73,7 @@ const responses = Object.entries(op.responses).map(
                 </td>
                 <td class="py-1 pr-4">{p.required ? "yes" : ""}</td>
                 <td class="py-1">
-                  {p.description}
+                  <Fragment set:html={p.descriptionHtml} />
                   {p.example !== undefined && (
                     <span class="block text-gray-500">
                       Example: <code>{JSON.stringify(p.example)}</code>
@@ -92,7 +102,8 @@ const responses = Object.entries(op.responses).map(
     responses.map((r) => (
       <div class="mb-4">
         <p class="font-mono font-bold">
-          {r.status} <span class="font-normal text-gray-600">{r.description}</span>
+          {r.status}{" "}
+          <span class="font-normal text-gray-600" set:html={r.descriptionHtml} />
         </p>
         {r.schema && <SchemaTable doc={doc} schema={r.schema} />}
       </div>

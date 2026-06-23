@@ -3,6 +3,7 @@ import { getApiTags, fetchApiSchema } from "../../../utils/openapi";
 import DocsLayout from "../../../layouts/DocsLayout.astro";
 import ApiOperation from "../../../components/ApiOperation.astro";
 import { languages, type language } from "../../../utils/translations";
+import { renderMarkdown } from "../../../utils/markdown";
 
 export async function getStaticPaths() {
   const tags = await getApiTags();
@@ -14,6 +15,8 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.props;
 const doc = await fetchApiSchema();
+
+const tagDescriptionHtml = await renderMarkdown(tag.description);
 
 // API reference is English-only: every locale entry points at the same English
 // URL so the language switcher does not offer phantom translations.
@@ -28,6 +31,7 @@ const translations = languages.reduce((acc, l) => {
   description={`Reference for the Keila API ${tag.title.toLowerCase()} endpoints, with their request parameters and response fields.`}
   translations={translations}
   contentLanguage="en"
+  ogImage={`docs/api/${tag.slug}.png`}
 >
   <h1>{tag.title} API</h1>
   <p>
@@ -37,5 +41,6 @@ const translations = languages.reduce((acc, l) => {
       href="/docs/api/authentication">Bearer authentication</a
     >.
   </p>
+    {tagDescriptionHtml && <Fragment set:html={tagDescriptionHtml} />}
   {tag.operations.map((op) => <ApiOperation doc={doc} op={op} />)}
 </DocsLayout>

@@ -47,6 +47,7 @@ entry?.collection === "docs" ? await entry.render() : {}
       description={entry.data.description}
       translations={translations}
       contentLanguage={entry.data.lang}
+      ogImage={`${Astro.params.slug}.png`}
     >
       <DocsContent
         id="content"

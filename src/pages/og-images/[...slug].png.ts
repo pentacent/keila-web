@@ -1,9 +1,24 @@
 import { getStaticCollectionPaths } from "../../utils/i18n";
+import { getApiTags } from "../../utils/openapi";
 export async function getStaticPaths() {
   const articlePaths = await getStaticCollectionPaths("articles");
   const updatePaths = await getStaticCollectionPaths("updates");
   const legalPaths = await getStaticCollectionPaths("legal");
   const docsPaths = await getStaticCollectionPaths("docs");
+
+  // Generated API reference pages (not content-collection entries) get OG
+  // images through the same default template, keyed by their page slug.
+  const apiTags = await getApiTags();
+  const apiPaths = apiTags.map((tag) => ({
+    params: { slug: `docs/api/${tag.slug}` },
+    props: {
+      entry: {
+        collection: "docs",
+        data: { title: `${tag.title} API` },
+      },
+      lang: "en",
+    },
+  }));
 
   const landingPaths = [
     {
@@ -39,6 +54,7 @@ export async function getStaticPaths() {
     .concat(updatePaths)
     .concat(legalPaths)
     .concat(docsPaths)
+    .concat(apiPaths)
     .concat(landingPaths);
 }
 
