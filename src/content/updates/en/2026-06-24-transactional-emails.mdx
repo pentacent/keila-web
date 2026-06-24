@@ -1,0 +1,93 @@
+---
+title: Transactional Emails
+slug: transactional-emails
+type: added
+language: en
+date: 2026-06-24
+version: 0.30.0
+description: "Send one-off transactional emails through the Keila API, such as order confirmations, password resets, and magic links."
+---
+
+_You can now send one-off transactional emails, such as order confirmations, password resets, and magic links, with the Keila API._
+
+Transactional emails are sent to one recipient at a time, usually in response to an action the user has just taken. Typical use-cases for transactional emails include sending order confirmations or password reset links. You can now use the Keila API to send such messages; either to an existing contact or to a recipient that is not currently in your contact list.
+
+## Sending a Message
+
+Transactional messages can currently only be sent via the API:
+
+```bash
+POST /api/v1/messages
+```
+
+```json
+{
+  "data": {
+    "type": "text",
+    "sender_id": "ms_12345",
+    "recipient_email": "jane@example.com",
+    "subject": "Your order is confirmed",
+    "text_body": "Hi {{ contact.first_name }}, thanks for your order."
+  }
+}
+```
+
+In order to send a transactional email, you need to specify the recipient, the email content and subject, and a sender.
+
+## Choosing the Recipient
+
+You specify the message recipient in one of three ways:
+
+- `recipient_email` – a plain email address.
+- `contact_id` – the ID of a contact in Keila.
+- `external_contact_id` – an ID from your own system, stored in the `external_id` property of the contact.
+
+When the address specified via `recipient_email` matches a contact in your project, Keila automatically links the message to that contact. This makes the contact's details available to your template.
+
+## Specifying Message Content
+
+The email body can be provided directly or you can use a template.
+To provide the message content directly, you need to specify the email type (`mjml`, `html`, or `text`) alongside the corresponding body field (`mjml_body`, `html_body`, `text_body`).
+In this case, you also must specify the `subject` field.
+
+If you specify a template via `template_id`, you still need to specify the email type. But you may now specify content slots instead (`mjml_content`, `html_content`, or `text_content`).
+If you don't specify a subject, the template name will be used as the subject.
+
+Additional variables can be given as `assigns`:
+
+```json
+{
+  "data": {
+    "type": "html",
+    "sender_id": "ms_12345",
+    "template_id": "tpl_12345",
+    "recipient_email": "jane@example.com",
+    "subject": "Your magic link",
+    "assigns": { "magic_link": "https://example.com/login?token=..." }
+  }
+}
+```
+
+## CC and BCC
+
+To copy other people on the message, add `cc` or `bcc`. Each one takes either a single address list as a string or an array of separate addresses:
+
+```json
+"cc": "Jane <jane@example.com>, john@example.com"
+```
+
+```json
+"cc": ["jane@example.com", "john@example.com"]
+```
+
+## Preview Before You Send
+
+You can render a preview of the HTML and plain text versions of a transactional email by calling the render action endpoint.
+
+```bash
+POST /api/v1/messages/actions/render
+```
+
+This returns the rendered `subject`, `html_body`, and `text_body` without actually sending an email.
+
+Read the full API reference in the [Transactional Messages API docs](/docs/api/transactional-messages).
