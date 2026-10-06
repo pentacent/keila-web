@@ -41,9 +41,14 @@ const fields = await Promise.all(
       example: prop?.example,
       childSchema,
       defaultOpen: depth === 0 && name === "data",
+      // `deprecated` may sit next to a $ref, so check the raw node too.
+      deprecated: !!(propRaw?.deprecated || prop?.deprecated),
     };
   })
 );
+
+// List deprecated fields after the rest, keeping the spec order otherwise.
+fields.sort((a, b) => Number(a.deprecated) - Number(b.deprecated));
 ---
 
 {
@@ -76,13 +81,20 @@ const fields = await Promise.all(
             ) : (
               <span class="inline-block w-3" />
             )}
-            <span class="font-mono font-semibold text-gray-900 text-base">
+            <span
+              class={`font-mono font-semibold text-base ${f.deprecated ? "text-gray-500 line-through" : "text-gray-900"}`}
+            >
               {f.name}
             </span>
             <span class="font-mono text-xs text-gray-500">{f.type}</span>
             {f.required && (
               <span class="text-xs font-semibold text-orange-700 uppercase tracking-wide">
                 required
+              </span>
+            )}
+            {f.deprecated && (
+              <span class="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+                deprecated
               </span>
             )}
           </div>
