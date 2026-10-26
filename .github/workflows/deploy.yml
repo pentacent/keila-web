@@ -12,6 +12,9 @@ jobs:
       BASE_URL: https://keila.io
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .tool-versions
       - uses: actions/cache@v4
         with:
           path: |
@@ -19,9 +22,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
       - name: "Build & Deploy"
         run: |
-          # Install Node
-          sudo apt update && sudo apt install nodejs
-
           # Install packages and build
           npm ci
           GITHUB_TOKEN=${{ secrets.GH_TOKEN }} GITHUB_PROJECT_TOKEN=${{ secrets.GH_PROJECT_TOKEN }} npm run build
