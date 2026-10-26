@@ -1,4 +1,4 @@
-import { createMarkdownProcessor } from "@astrojs/markdown-remark";
+import { createSatteriMarkdownProcessor } from "@astrojs/markdown-satteri";
 
 // Render Markdown the same way Astro renders .md/.mdx content. OpenAPI spec
 // `description` fields are CommonMark, so this lets bold/links/code/lists in the
@@ -7,11 +7,12 @@ import { createMarkdownProcessor } from "@astrojs/markdown-remark";
 // The processor is created with default options, matching the (unconfigured)
 // markdown settings in astro.config.mjs. It is memoized because construction is
 // relatively expensive and these helpers run once per description at build time.
-let processorPromise: ReturnType<typeof createMarkdownProcessor> | null = null;
+let processorPromise: ReturnType<typeof createSatteriMarkdownProcessor> | null =
+  null;
 
 function getProcessor() {
   if (!processorPromise) {
-    processorPromise = createMarkdownProcessor();
+    processorPromise = createSatteriMarkdownProcessor();
   }
   return processorPromise;
 }

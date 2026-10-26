@@ -10,11 +10,11 @@ Avec Keila, il est facile de collecter des données personnalisées à partir de
   alt="Capture d'écran du créateur de formulaires Keila avec un champ de tags personnalisés"
 />
 
-## Pourquoi utiliser des champs de données et la segmentation dans les newsletters ?
+## Pourquoi utiliser des champs de données et la segmentation dans les newsletters&nbsp;?
 
 Lorsque vous gérez une newsletter, tous les abonnés ne sont pas forcément intéressés par les mêmes sujets. Par exemple, si votre newsletter est destinée à une entreprise spatiale, certains abonnés (les spécialistes des fusées) seront très intéressés par vos offres d'emploi. D'autres abonnés (les amateurs de livres) auront plus envie à lire vos e-mails concernant votre dernier livre sur l'espace.
 
-La solution : Ajoutez un champ de données personnalisées pour chaque contact afin de savoir s'ils sont des spécialistes des fusées ou des amateurs de livres (ou les deux).
+La solution&nbsp;: Ajoutez un champ de données personnalisées pour chaque contact afin de savoir s'ils sont des spécialistes des fusées ou des amateurs de livres (ou les deux).
 
 Cela vous permet de créer des segments de votre liste de contacts qui incluent automatiquement uniquement les contacts appartenant à l'un des deux groupes. Vous envoyez des offres d'emploi aux spécialistes des fusées et des nouvelles littéraires aux amateurs de livres. Tout le monde est content.
 
@@ -31,7 +31,7 @@ En fonction des champs de données de vos contacts, vous pouvez créer des segme
   alt="Capture d'écran de l'éditeur de segments Keila"
 />
 
-Pour les utilisateurs plus avancés, Keila propose un langage de requête basé sur les documents de requête de MongoDB. Une requête pour inclure tous les contacts qui n'ont pas le tag «&nbsp;rocket-scientist&nbsp;» ressemblerait à ceci :
+Pour les utilisateurs plus avancés, Keila propose un langage de requête basé sur les documents de requête de MongoDB. Une requête pour inclure tous les contacts qui n'ont pas le tag «&nbsp;rocket-scientist&nbsp;» ressemblerait à ceci&nbsp;:
 
 ```json
 {
@@ -39,7 +39,7 @@ Pour les utilisateurs plus avancés, Keila propose un langage de requête basé 
 }
 ```
 
-Vous pouvez également créer des segments basés sur les interactions avec les campagnes. Par exemple, pour cibler tous les contacts qui ont reçu mais n'ont pas ouvert une campagne spécifique :
+Vous pouvez également créer des segments basés sur les interactions avec les campagnes. Par exemple, pour cibler tous les contacts qui ont reçu mais n'ont pas ouvert une campagne spécifique&nbsp;:
 
 ```json
 {
@@ -65,7 +65,7 @@ Keila facilite la gestion et l'importation des données de contact personnalisé
 
 Keila supporte entièrement le langage de modèles Liquid de Shopify dans les campagnes et les objets des e-mails.
 
-Pour vous adresser à vos contacts par leurs prénoms, il vous suffit d'écrire :
+Pour vous adresser à vos contacts par leurs prénoms, il vous suffit d'écrire&nbsp;:
 
 ```
 Bonjour {{ contact.first_name }} !
@@ -73,7 +73,7 @@ Bonjour {{ contact.first_name }} !
 
 Lors de l'envoi de votre campagne, `{{ contact.first_name }}` est remplacé par le prénom réel de chaque contact.
 
-Si vous n'êtes pas sûr que chaque contact ait renseigné son prénom, vous pouvez utiliser le filtre _default_ :
+Si vous n'êtes pas sûr que chaque contact ait renseigné son prénom, vous pouvez utiliser le filtre _default_&nbsp;:
 
 ```
 Bonjour {{ contact.first_name | default: "à tous"}} !
@@ -81,7 +81,7 @@ Bonjour {{ contact.first_name | default: "à tous"}} !
 
 Ainsi, si le prénom n'a pas été défini pour un contact donné, le texte envoyé dans votre newsletter sera «&nbsp;Bonjour à tous&nbsp;».
 
-Vous pouvez même utiliser des expressions plus complexes. Par exemple, si vous avez un champ personnalisé «&nbsp;genre&nbsp;» pour vos contacts, vous pourriez utiliser le snippet suivant pour inclure une salutation appropriée :
+Vous pouvez même utiliser des expressions plus complexes. Par exemple, si vous avez un champ personnalisé «&nbsp;genre&nbsp;» pour vos contacts, vous pourriez utiliser le snippet suivant pour inclure une salutation appropriée&nbsp;:
 
 ```
 {% if contact.data.gender == "female" %}

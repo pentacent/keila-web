@@ -1,4 +1,5 @@
 ---
+import { render } from "astro:content";
 import Layout from "./Layout.astro";
 import { useTranslations, localDate } from "../utils/i18n";
 import type { language } from "../utils/translations";
@@ -13,7 +14,7 @@ const lang = Astro.currentLocale as language;
 const t = useTranslations(lang as language);
 const { entry, translations } = Astro.props;
 const { slug } = Astro.params;
-const { Content, components } = await entry.render();
+const { Content, components } = await render(entry);
 ---
 
 <Layout

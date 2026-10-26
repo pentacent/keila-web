@@ -1,7 +1,7 @@
 import {
   getEntry,
   getCollection,
-  type ContentEntryMap,
+  type CollectionKey,
   type CollectionEntry,
 } from "astro:content";
 
@@ -50,7 +50,7 @@ export function getLangAndI18nId(entry): [language, string] {
 }
 
 export async function getCollectionTranslations(
-  collection: keyof ContentEntryMap,
+  collection: CollectionKey,
   filter?: (entry: CollectionEntry<typeof collection>) => boolean
 ): Promise<Record<string, CollectionEntry<typeof collection>[]>> {
   const entries = await getCollection(collection, filter);
@@ -100,7 +100,7 @@ export async function useTranslateContentPath(collection, lang, entries?) {
 }
 
 export async function getStaticCollectionPaths(
-  collection: keyof ContentEntryMap
+  collection: CollectionKey
 ) {
   const translations = await getCollectionTranslations(collection);
 

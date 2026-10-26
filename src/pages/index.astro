@@ -5,7 +5,7 @@ import { useTranslations, getCollectionTranslations } from "../utils/i18n";
 import { languages, defaultLang } from "../utils/translations";
 
 import PosterImage from "../assets/screenshots/keila-2024-05-01.png";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Testimonial from "../components/Testimonial.astro";
 import ListItem from "../components/ListItem.astro";
 import I18NLink from "../components/I18nLink.astro";
@@ -15,14 +15,14 @@ const lang = Astro.currentLocale as keyof typeof ui;
 const t = useTranslations(lang);
 
 const entries = await getCollection("landing", ({ id }) =>
-  [`${lang}/index.mdx`, `${defaultLang}/index.mdx`].includes(id),
+  [`${lang}/index`, `${defaultLang}/index`].includes(id),
 );
 
-const translatedEntry = entries.find(({ id }) => id == `${lang}/index.mdx`);
+const translatedEntry = entries.find(({ id }) => id == `${lang}/index`);
 const entry = translatedEntry || entries[0];
 const contentLanguage = translatedEntry ? lang : defaultLang;
 
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 
 const translations = languages.reduce((translations, lang) => {
   translations[lang] = lang == "en" ? "/" : `/${lang}`;
