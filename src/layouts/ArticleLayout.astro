@@ -1,5 +1,7 @@
 ---
 import { render } from "astro:content";
+import type { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 import Layout from "./Layout.astro";
 import type { language } from "../utils/translations";
 
@@ -15,6 +17,16 @@ const lang = Astro.currentLocale as language;
 const { entry, translations } = Astro.props;
 const { slug } = Astro.params;
 const { Content, components } = await render(entry);
+const { hero } = entry.data;
+
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/**/*.{jpeg,jpg,png,gif,webp,svg}",
+);
+if (hero && !images[hero.src]) {
+  throw new Error(`Image ${hero.src} not found!`);
+}
+const heroImage = hero && (await images[hero.src]()).default;
+const heroRatio = heroImage && heroImage.width / heroImage.height;
 ---
 
 <Layout
@@ -28,11 +40,27 @@ const { Content, components } = await render(entry);
   <main
     class="max-w-6xl mx-auto p-5 md:p-10 text-gray-800 text-lg rounded-t bg-white md:pb-16"
   >
+    {
+      hero && (
+        <div
+          class="hero mb-8"
+          style={`--hero-ratio: ${heroRatio}; --hero-min-ratio: ${hero.minAspectRatio ?? heroRatio}; --hero-position: ${hero.position}`}
+        >
+          <Image
+            src={heroImage}
+            alt={hero.alt}
+            loading="eager"
+            fetchpriority="high"
+            class="rounded"
+          />
+        </div>
+      )
+    }
     <div
       id="markdown-content"
       class="prose prose-xl prose-table:text-left prose-th:bg-gray-200 prose-th:p-2 prose-td:p-2 mx-auto"
     >
-      <h1>{entry.data.title}</h1>
+      {!entry.data.hideTitle && <h1>{entry.data.title}</h1>}
       <Content
         id="content"
         components={{
@@ -57,5 +85,25 @@ const { Content, components } = await render(entry);
 
   table tr:nth-child(even) {
     @apply bg-gray-50;
+  }
+</style>
+
+<style>
+  /* The hero shows the whole image while it is at least 300px tall. On
+     narrower screens it keeps that height and crops the sides, down to
+     --hero-min-ratio, then scales down at that shape. */
+  .hero {
+    container-type: inline-size;
+  }
+
+  .hero :global(img) {
+    display: block;
+    width: 100%;
+    height: min(
+      calc(100cqw / var(--hero-min-ratio)),
+      max(calc(100cqw / var(--hero-ratio)), 300px)
+    );
+    object-fit: cover;
+    object-position: var(--hero-position);
   }
 </style>

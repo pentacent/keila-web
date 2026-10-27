@@ -17,6 +17,9 @@ const defaultTemplate = html(
 const updateTemplate = html(
   fs.readFileSync("./src/utils/og-images/update.html").toString()
 );
+const heroTemplate = html(
+  fs.readFileSync("./src/utils/og-images/hero.html").toString()
+);
 
 const opts = {
   width: 1200,
@@ -44,7 +47,33 @@ const getImageBase64 = async (path, size) => {
   return image && image.toString("base64");
 };
 
+// The whole hero illustration at full width. Illustrations taller than 530px
+// at that width are cropped, so the logo strip below stays at least 100px high.
+const getHeroImageBase64 = async (hero) => {
+  const path = `.${hero.src}`;
+  const { width, height } = await sharp(path).metadata();
+  const image = await sharp(path, { density: 600 })
+    .resize({
+      width: 1200,
+      height: Math.min(Math.round((1200 * height) / width), 530),
+      fit: "cover",
+    })
+    .png()
+    .toBuffer();
+
+  return image && image.toString("base64");
+};
+
 const template = async function (template, assigns, lang) {
+  if (assigns.hero) {
+    let t = JSON.parse(JSON.stringify(heroTemplate));
+
+    const image = await getHeroImageBase64(assigns.hero);
+    t.props.children[0].props.children[1].props.src = `data:image/png;base64,${image}`;
+
+    return t;
+  }
+
   switch (template) {
     case "updates": {
       let t = JSON.parse(JSON.stringify(updateTemplate));

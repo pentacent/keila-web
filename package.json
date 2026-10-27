@@ -9,6 +9,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write .",
+    "optimize-illustration": "node scripts/optimize-illustration.mjs",
     "deploy": "rsync -avz ./dist/ $DEPLOY_TARGET"
   },
   "dependencies": {
@@ -35,6 +36,7 @@
     "prettier-plugin-astro": "^0.13.0",
     "satori": "^0.10.13",
     "satori-html": "^0.3.2",
-    "sharp": "^0.33.4"
+    "sharp": "^0.33.4",
+    "svgo": "^4.1.0"
   }
 }

@@ -20,7 +20,22 @@ const articleCollection = defineCollection({
     localSlug: z.string().optional(),
     disableTranslations: z.boolean().optional().default(false),
     description: z.string().optional(),
-      noindex: z.boolean().optional().default(false),
+    hideTitle: z.boolean().optional().default(false),
+    noindex: z.boolean().optional().default(false),
+    // Full-width illustration above the title, see ArticleLayout. Also used
+    // for the page's social preview image (see og-image.ts).
+    hero: z
+      .object({
+        // Path like "/src/assets/example.svg", as for KeilaImage.
+        src: z.string(),
+        alt: z.string(),
+        // Narrowest width:height the image may be cropped to on small
+        // screens. Defaults to its own shape (never cropped).
+        minAspectRatio: z.number().optional(),
+        // CSS object-position used when cropping.
+        position: z.string().optional().default("50% 50%"),
+      })
+      .optional(),
   }),
 });
 
