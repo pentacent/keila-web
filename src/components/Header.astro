@@ -25,9 +25,9 @@ const indexPath = lang == "en" ? "/" : `/${lang}`;
 
 <header class="relative z-10">
   <div class=`container ${fullWidth ? "max-w-none" : "max-w-6xl"} mx-auto p-5 ${fullWidth ? "lg:px-10" : "lg:p-10"} flex items-center`>
-    <div class="text-gray-900 text-3xl ${!fullWidth && "lg:text-5xl"} text-center">
+    <div class=`text-gray-900 text-3xl ${fullWidth ? "" : "lg:text-5xl"} text-center`>
       <a href={indexPath}>
-        <Logo class=`h-10 ${!fullWidth && "lg:h-16"} -mr-3 inline-block w-auto` />
+        <Logo class=`h-10 ${fullWidth ? "" : "lg:h-16"} -mr-3 inline-block w-auto` />
         Keila
       </a>
     </div>
