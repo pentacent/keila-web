@@ -23,6 +23,7 @@ const { Content, components } = await render(entry);
   ogImage={`${slug}.png`}
   translations={translations}
   contentLanguage={entry.data.lang}
+  noindex={entry.data.noindex}
 >
   <main
     class="max-w-6xl mx-auto p-5 md:p-10 text-gray-800 text-lg rounded-t bg-white md:pb-16"

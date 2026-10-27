@@ -20,6 +20,7 @@ const articleCollection = defineCollection({
     localSlug: z.string().optional(),
     disableTranslations: z.boolean().optional().default(false),
     description: z.string().optional(),
+      noindex: z.boolean().optional().default(false),
   }),
 });
 

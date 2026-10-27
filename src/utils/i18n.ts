@@ -68,8 +68,8 @@ export async function getCollectionTranslations(
     translations[i18nId][lang] = entry;
 
     // If entry is in the default language, initialize all other languages with
-    // default language entry
-    if (lang === defaultLang) {
+    // default language entry (unless the entry opts out of translations)
+    if (lang === defaultLang && !entry.data.disableTranslations) {
       languages.forEach((lang) => {
         translations[i18nId][lang] = translations[i18nId][lang] || entry;
       });

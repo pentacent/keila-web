@@ -12,9 +12,10 @@ interface Props {
   contentLanguage: string;
   ogImage?: string;
   fullWidthHeader?: boolean;
+  noindex?: boolean;
 }
 
-const { title, description, translations, contentLanguage, ogImage, fullWidthHeader } =
+const { title, description, translations, contentLanguage, ogImage, fullWidthHeader, noindex } =
   Astro.props;
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -52,7 +53,7 @@ const t = useTranslations(lang as language);
     />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    {lang != contentLanguage && <meta name="robots" content="noindex" />}
+    {(noindex || lang != contentLanguage) && <meta name="robots" content="noindex" />}
     <script>
       import { polyfillCountryFlagEmojis } from "country-flag-emoji-polyfill";
       polyfillCountryFlagEmojis(
