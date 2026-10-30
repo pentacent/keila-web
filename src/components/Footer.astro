@@ -64,20 +64,47 @@ const t = useTranslations(lang);
           target="_blank"
           class="grid grid-auto-rows gap-4 row-start-2 md:row-start-1 lg:w-1/3"
           x-on:submit.prevent="maybeExecuteHCaptchaAndSubmit($el, $refs.captcha.id)"
+          data-hcaptcha-lang={lang}
         >
-          <script
-            is:inline
-            src={`https://hcaptcha.com/1/api.js?render=onload&hl=${lang}`}
-            async
-            defer></script>
           <script is:inline>
-            function maybeExecuteHCaptchaAndSubmit(form, captchaWidgetId) {
+            // hCaptcha downloads about 1 MB and sets a third-party cookie, so
+            // it's only loaded once someone gets near this form: when it comes
+            // close to the viewport or gets focus. If it can't load (blocked,
+            // offline), the form is submitted without it.
+            let hCaptchaLoaded;
+            function loadHCaptcha(form) {
+              hCaptchaLoaded ??= new Promise((resolve) => {
+                window.onHCaptchaLoad = resolve;
+                const script = document.createElement("script");
+                script.src = `https://hcaptcha.com/1/api.js?render=onload&onload=onHCaptchaLoad&hl=${form.dataset.hcaptchaLang}`;
+                script.async = true;
+                script.onerror = () => resolve();
+                document.head.append(script);
+              });
+              return hCaptchaLoaded;
+            }
+
+            (() => {
+              const form = document.currentScript.closest("form");
+              const load = () => loadHCaptcha(form);
+              form.addEventListener("focusin", load, { once: true });
+              form.addEventListener("pointerdown", load, { once: true });
+              new IntersectionObserver(
+                (entries, observer) => {
+                  if (entries.some((entry) => entry.isIntersecting)) {
+                    observer.disconnect();
+                    load();
+                  }
+                },
+                { rootMargin: "400px" },
+              ).observe(form);
+            })();
+
+            function executeHCaptchaAndSubmit(form, captchaWidgetId) {
               let captchaCompleted = false;
-              footerForm = form;
-              if (hcaptcha) {
-                hcaptcha
-                  .execute(captchaWidgetId, { async: true })
-                  .then(() => (captchaCompleted = true));
+              window.hcaptcha
+                .execute(captchaWidgetId, { async: true })
+                .then(() => (captchaCompleted = true));
 
                 // This construct is necessary because using hCaptcha’s promise
                 // API wouldn't retain the trusted DOM event, thus preventing
@@ -85,12 +112,19 @@ const t = useTranslations(lang);
                 const interval = setInterval(() => {
                   if (captchaCompleted) {
                     clearInterval(interval);
-                    form.submit();
-                  }
-                }, 150);
-              } else {
-                form.submit();
-              }
+                  form.submit();
+                }
+              }, 150);
+            }
+
+            function maybeExecuteHCaptchaAndSubmit(form, captchaWidgetId) {
+              // Normally hCaptcha is ready long before anyone submits.
+              if (window.hcaptcha) return executeHCaptchaAndSubmit(form, captchaWidgetId);
+              loadHCaptcha(form).then(() =>
+                window.hcaptcha
+                  ? executeHCaptchaAndSubmit(form, captchaWidgetId)
+                  : form.submit(),
+              );
             }
           </script>
           <div class="flex flex-col">
